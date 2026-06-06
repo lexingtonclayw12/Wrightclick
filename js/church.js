@@ -1,5 +1,5 @@
 /* ================================================================
-   Haven Church — Interactive Layer
+   Williamson's Chapel UMC — Interactive Layer
    Premium motion system: Apple · Stripe · Vercel · Linear
    ================================================================ */
 
@@ -66,14 +66,14 @@ function initMeshCanvas(id, palette) {
     frame();
 }
 
-/* Hero & Begin — deep violet / indigo / purple */
-const VIOLET_PALETTE = ['67,56,202', '79,70,229', '109,40,217', '139,92,246'];
-initMeshCanvas('#meshCanvas',  VIOLET_PALETTE);
-initMeshCanvas('#beginCanvas', VIOLET_PALETTE);
+/* Hero & Begin — Lake Norman deep navy to cerulean */
+const LAKE_PALETTE = ['15,52,145', '29,78,216', '14,116,144', '56,189,248'];
+initMeshCanvas('#meshCanvas',  LAKE_PALETTE);
+initMeshCanvas('#beginCanvas', LAKE_PALETTE);
 
-/* Impact — deep blue / navy / cyan (dark section) */
-const BLUE_PALETTE = ['29,78,216', '37,99,235', '6,182,212'];
-initMeshCanvas('#impactCanvas', BLUE_PALETTE);
+/* Impact — midnight navy to teal */
+const DEEP_PALETTE = ['30,58,138', '29,78,216', '8,145,178'];
+initMeshCanvas('#impactCanvas', DEEP_PALETTE);
 
 /* ================================================================
    CUSTOM CURSOR — dot snaps, ring lags via lerp

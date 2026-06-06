@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Haven Church — A place where searching ends. Sunday mornings in Greenville, SC. Everyone welcome.">
-    <title>Haven Church</title>
+    <meta name="description" content="Williamson's Chapel UMC — Changing lives and changing the world through Jesus Christ. Sunday mornings in Mooresville, NC at 9:30 &amp; 11:00. Everyone welcome.">
+    <title>Williamson's Chapel UMC — Mooresville, NC</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,31 +13,35 @@
 </head>
 <body>
 
-<!-- ── Cursor ──────────────────────────────────────────────── -->
+<!-- ── Cursor ──────────────────────────────────────────────────────── -->
 <div id="cursor" aria-hidden="true">
     <div class="c-dot"></div>
     <div class="c-ring"></div>
 </div>
 
-<!-- ── Navigation ─────────────────────────────────────────── -->
+<!-- ── Navigation ─────────────────────────────────────────────────── -->
 <header id="site-nav">
     <nav class="nav-inner" role="navigation" aria-label="Main">
-        <a href="#hero" class="nav-logo" aria-label="Haven Church home">
+        <a href="#hero" class="nav-logo" aria-label="Williamson's Chapel UMC home">
+            <!-- Cross/steeple + three ascending arcs: Trinity · Three Graces · Worship · Growth · Service -->
             <svg class="logo-mark" width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-                <path d="M14 2L26 24H2L14 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                <circle cx="14" cy="14" r="3" fill="currentColor"/>
+                <line x1="14" y1="2" x2="14" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="11" y1="4.5" x2="17" y2="4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M5 13 Q14 8 23 13" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <path d="M4 18 Q14 13 24 18" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <path d="M3 23 Q14 17 25 23" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
             </svg>
-            <span class="logo-word">Haven</span>
+            <span class="logo-word">WCUMC</span>
         </a>
 
         <ul class="nav-links" role="list" id="navLinks">
-            <li><a href="#series"    class="nav-link">Messages</a></li>
+            <li><a href="#series"    class="nav-link">Worship</a></li>
             <li><a href="#services"  class="nav-link">Services</a></li>
-            <li><a href="#community" class="nav-link">Community</a></li>
+            <li><a href="#community" class="nav-link">Grow</a></li>
             <li><a href="#give"      class="nav-link">Give</a></li>
         </ul>
 
-        <a href="#visit" class="nav-cta">Plan a Visit</a>
+        <a href="#visit" class="nav-cta">New Here?</a>
 
         <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
             <span></span><span></span>
@@ -45,25 +49,25 @@
     </nav>
 </header>
 
-<!-- ── Hero ───────────────────────────────────────────────── -->
+<!-- ── Hero ───────────────────────────────────────────────────────── -->
 <section id="hero" class="hero" aria-label="Introduction">
     <canvas id="meshCanvas" aria-hidden="true"></canvas>
 
     <div class="hero-content">
         <p class="hero-eyebrow" aria-label="Location">
             <span class="hero-eyebrow-line"></span>
-            Greenville, South Carolina
+            Mooresville, North Carolina
         </p>
 
         <h1 class="hero-headline">
-            <span class="split-line" data-split>A place</span>
-            <span class="split-line split-line--italic" data-split>where searching</span>
-            <span class="split-line" data-split>ends.</span>
+            <span class="split-line" data-split>Changing lives,</span>
+            <span class="split-line split-line--italic" data-split>changing the world</span>
+            <span class="split-line" data-split>through Christ.</span>
         </h1>
 
         <p class="hero-sub">
-            No matter where you've been or what you've been through.<br>
-            Sunday mornings — 9, 11 &amp; 1. Everyone welcome.
+            Expect to be loved. Expect to be challenged.<br>
+            Sunday mornings — 9:30 &amp; 11:00. Everyone welcome.
         </p>
 
         <div class="hero-actions">
@@ -77,69 +81,71 @@
     </div>
 </section>
 
-<!-- ── Marquee ─────────────────────────────────────────────── -->
+<!-- ── Marquee ─────────────────────────────────────────────────────── -->
 <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
         <span class="marquee-item">Everyone welcome</span>
         <span class="marquee-sep">·</span>
         <span class="marquee-item">Sunday mornings</span>
         <span class="marquee-sep">·</span>
-        <span class="marquee-item">Greenville, SC</span>
+        <span class="marquee-item">Mooresville, NC</span>
         <span class="marquee-sep">·</span>
-        <span class="marquee-item">Est. 1994</span>
+        <span class="marquee-item">Est. 1912</span>
         <span class="marquee-sep">·</span>
-        <span class="marquee-item">Come as you are</span>
+        <span class="marquee-item">Lake Norman</span>
         <span class="marquee-sep">·</span>
-        <span class="marquee-item">Haven Church</span>
+        <span class="marquee-item">A church without walls</span>
         <span class="marquee-sep">·</span>
         <!-- Duplicate for seamless loop -->
         <span class="marquee-item">Everyone welcome</span>
         <span class="marquee-sep">·</span>
         <span class="marquee-item">Sunday mornings</span>
         <span class="marquee-sep">·</span>
-        <span class="marquee-item">Greenville, SC</span>
+        <span class="marquee-item">Mooresville, NC</span>
         <span class="marquee-sep">·</span>
-        <span class="marquee-item">Est. 1994</span>
+        <span class="marquee-item">Est. 1912</span>
         <span class="marquee-sep">·</span>
-        <span class="marquee-item">Come as you are</span>
+        <span class="marquee-item">Lake Norman</span>
         <span class="marquee-sep">·</span>
-        <span class="marquee-item">Haven Church</span>
+        <span class="marquee-item">A church without walls</span>
         <span class="marquee-sep">·</span>
     </div>
 </div>
 
-<!-- ── Manifesto ──────────────────────────────────────────── -->
+<!-- ── Manifesto ──────────────────────────────────────────────────── -->
 <section id="manifesto" class="manifesto section-light" aria-label="Our promise">
     <div class="container container--narrow">
         <p class="manifesto-label">What we believe</p>
         <blockquote class="manifesto-quote" data-word-reveal>
-            "You don't need to have it all figured out."
+            "Expect to be loved. Expect to be challenged."
         </blockquote>
         <p class="manifesto-body reveal">
-            We're a community of imperfect people who've found something worth holding onto.
-            Faith isn't about having all the answers — it's about trusting the One who does.
+            We're building a community of belonging — connecting people to God's purpose
+            through deeper relationships and meaningful service. A church without walls,
+            rooted in Lake Norman since 1912.
         </p>
     </div>
 </section>
 
-<!-- ── Current Series ─────────────────────────────────────── -->
+<!-- ── Current Series ─────────────────────────────────────────────── -->
 <section id="series" class="series section-dark" aria-label="Current sermon series">
     <div class="container">
         <header class="series-header reveal">
             <p class="section-label">Current Series</p>
             <h2 class="series-title">
-                <span class="series-name">ANCHOR</span>
+                <span class="series-name">GRACE</span>
             </h2>
-            <p class="series-tag">A six-part study in Hebrews</p>
+            <p class="series-tag">A six-part study in the three movements of God's love</p>
         </header>
 
         <div class="series-body">
             <div class="series-video reveal">
                 <div class="video-shell">
                     <div class="video-ratio">
+                        <!-- Update VIDEO_ID from youtube.com/@willchapworship each new series -->
                         <iframe
                             src="https://www.youtube.com/embed/SJmFn6LQYMU?rel=0&modestbranding=1&color=white"
-                            title="ANCHOR — When the Storm Doesn't Stop"
+                            title="GRACE — You Were Loved Before You Knew"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
@@ -150,25 +156,26 @@
 
             <div class="series-info reveal">
                 <div class="series-meta">
-                    <span class="mono">Week 4 of 6</span>
+                    <span class="mono">Week 3 of 6</span>
                     <span class="mono">June 8, 2026</span>
-                    <span class="mono">52 min</span>
+                    <span class="mono">48 min</span>
                 </div>
-                <h3 class="series-message-title">When the Storm Doesn't Stop</h3>
+                <h3 class="series-message-title">You Were Loved Before You Knew</h3>
                 <p class="series-desc">
-                    What keeps you grounded when everything shifts? Pastor James unpacks Hebrews 6
-                    and the unshakeable hope that holds us through every season.
+                    Pastors Wes and Toni Ruth unpack the radical nature of prevenient grace —
+                    the love that finds us before we're even looking. A conversation about
+                    belonging, worth, and what it means to come home.
                 </p>
                 <div class="series-actions">
-                    <a href="#" class="btn btn--primary">Watch Now</a>
-                    <a href="#" class="link-subtle">Full Series →</a>
+                    <a href="https://www.youtube.com/@willchapworship" class="btn btn--primary" target="_blank" rel="noopener">Watch on YouTube</a>
+                    <a href="https://www.youtube.com/@willchapworship" class="link-subtle" target="_blank" rel="noopener">Full Series →</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ── Past Messages ──────────────────────────────────────── -->
+<!-- ── Past Messages ──────────────────────────────────────────────── -->
 <section id="messages" class="messages section-light" aria-label="Recent messages">
     <div class="container">
         <header class="messages-header reveal">
@@ -179,63 +186,63 @@
         <div class="messages-grid">
             <article class="msg-card reveal" style="--i:0">
                 <div class="msg-card-art" data-series="1">
-                    <span class="msg-card-series">ANCHOR</span>
+                    <span class="msg-card-series">GRACE</span>
                 </div>
                 <div class="msg-card-body">
-                    <p class="mono msg-date">June 1 · 48 min</p>
-                    <h3 class="msg-card-title">The Weight You Weren't Meant to Carry</h3>
-                    <a href="#" class="link-subtle">Listen →</a>
+                    <p class="mono msg-date">June 1 · 46 min</p>
+                    <h3 class="msg-card-title">The Love That Doesn't Wait</h3>
+                    <a href="https://www.youtube.com/@willchapworship" class="link-subtle" target="_blank" rel="noopener">Watch →</a>
                 </div>
             </article>
 
             <article class="msg-card reveal" style="--i:1">
                 <div class="msg-card-art" data-series="2">
-                    <span class="msg-card-series">ANCHOR</span>
+                    <span class="msg-card-series">GRACE</span>
                 </div>
                 <div class="msg-card-body">
                     <p class="mono msg-date">May 25 · 44 min</p>
-                    <h3 class="msg-card-title">Roots Before Branches</h3>
-                    <a href="#" class="link-subtle">Listen →</a>
+                    <h3 class="msg-card-title">Where Guilt Ends and Grace Begins</h3>
+                    <a href="https://www.youtube.com/@willchapworship" class="link-subtle" target="_blank" rel="noopener">Watch →</a>
                 </div>
             </article>
 
             <article class="msg-card reveal" style="--i:2">
                 <div class="msg-card-art" data-series="3">
-                    <span class="msg-card-series">FLOOD</span>
+                    <span class="msg-card-series">ROOTS</span>
                 </div>
                 <div class="msg-card-body">
-                    <p class="mono msg-date">May 18 · 50 min</p>
-                    <h3 class="msg-card-title">Carried by What You Can't See</h3>
-                    <a href="#" class="link-subtle">Listen →</a>
+                    <p class="mono msg-date">May 18 · 51 min</p>
+                    <h3 class="msg-card-title">What Has Always Been True</h3>
+                    <a href="https://www.youtube.com/@willchapworship" class="link-subtle" target="_blank" rel="noopener">Watch →</a>
                 </div>
             </article>
         </div>
 
         <div class="messages-footer reveal">
-            <a href="#" class="btn btn--outline">View All Messages</a>
+            <a href="https://www.youtube.com/@willchapworship" class="btn btn--outline" target="_blank" rel="noopener">All Messages on YouTube</a>
         </div>
     </div>
 </section>
 
-<!-- ── Services ───────────────────────────────────────────── -->
+<!-- ── Services ───────────────────────────────────────────────────── -->
 <section id="services" class="services section-dark" aria-label="Service times">
     <div class="container">
         <header class="services-header reveal">
-            <p class="section-label">Sundays in Greenville</p>
-            <h2 class="section-title section-title--light">Find your time.</h2>
+            <p class="section-label">Sundays in Mooresville</p>
+            <h2 class="section-title section-title--light">Find your service.</h2>
         </header>
 
         <div class="services-list">
             <div class="service-item reveal" style="--i:0">
                 <div class="service-time-wrap">
-                    <span class="service-time">9:00</span>
+                    <span class="service-time">9:30</span>
                     <span class="service-ampm">AM</span>
                 </div>
                 <div class="service-details">
-                    <h3 class="service-name">First Service</h3>
-                    <p class="service-info">All campuses · Kids ministry available · 75 minutes</p>
+                    <h3 class="service-name">Modern Worship</h3>
+                    <p class="service-info">Contemporary music · Scripture-centered message · WC Kids available · 75 minutes</p>
                 </div>
-                <a href="#visit" class="service-arrow" aria-label="Plan your visit for 9 AM service">→</a>
+                <a href="#visit" class="service-arrow" aria-label="Plan your visit for 9:30 AM">→</a>
             </div>
 
             <div class="service-divider" aria-hidden="true"></div>
@@ -246,25 +253,25 @@
                     <span class="service-ampm">AM</span>
                 </div>
                 <div class="service-details">
-                    <h3 class="service-name">Main Service</h3>
-                    <p class="service-info">All campuses · Kids ministry · Café opens at 10:15</p>
-                    <span class="service-badge">Most attended</span>
+                    <h3 class="service-name">Traditional Worship</h3>
+                    <p class="service-info">Classic hymns · Historic liturgy · Nursery available · All are welcome</p>
+                    <span class="service-badge">Communion first Sunday</span>
                 </div>
-                <a href="#visit" class="service-arrow" aria-label="Plan your visit for 11 AM service">→</a>
+                <a href="#visit" class="service-arrow" aria-label="Plan your visit for 11 AM">→</a>
             </div>
 
             <div class="service-divider" aria-hidden="true"></div>
 
             <div class="service-item reveal" style="--i:2">
                 <div class="service-time-wrap">
-                    <span class="service-time">1:00</span>
-                    <span class="service-ampm">PM</span>
+                    <span class="service-time">7:00</span>
+                    <span class="service-ampm">Wed</span>
                 </div>
                 <div class="service-details">
-                    <h3 class="service-name">Afternoon Service</h3>
-                    <p class="service-info">Main campus only · Relaxed atmosphere · 60 minutes</p>
+                    <h3 class="service-name">Bible Study &amp; Youth</h3>
+                    <p class="service-info">Adult classes · Youth group · All ages · Fellowship Hall</p>
                 </div>
-                <a href="#visit" class="service-arrow" aria-label="Plan your visit for 1 PM service">→</a>
+                <a href="#visit" class="service-arrow" aria-label="Wednesday evening programs">→</a>
             </div>
 
             <div class="service-divider" aria-hidden="true"></div>
@@ -274,88 +281,88 @@
                     <span class="service-time">Online</span>
                 </div>
                 <div class="service-details">
-                    <h3 class="service-name">Church Online</h3>
-                    <p class="service-info">Stream live with every service · On-demand after broadcast</p>
+                    <h3 class="service-name">Watch Live</h3>
+                    <p class="service-info">Stream every Sunday service live on YouTube · On-demand after broadcast</p>
                 </div>
-                <a href="#series" class="service-arrow" aria-label="Watch online">→</a>
+                <a href="https://www.youtube.com/@willchapworship" class="service-arrow" target="_blank" rel="noopener" aria-label="Watch online">→</a>
             </div>
         </div>
 
         <div class="campuses-note reveal">
-            <p class="mono">4 campuses across Greenville County —
-            <a href="#visit" class="link-gold">find one near you →</a></p>
+            <p class="mono">575 Brawley School Rd, Mooresville NC · Off I-77, Exit 35 ·
+            <a href="tel:7046643680" class="link-gold">(704) 664-3680 →</a></p>
         </div>
     </div>
 </section>
 
-<!-- ── Impact ─────────────────────────────────────────────── -->
-<section id="impact" class="impact" aria-label="Our impact">
+<!-- ── Impact ─────────────────────────────────────────────────────── -->
+<section id="impact" class="impact" aria-label="Our story in numbers">
     <canvas id="impactCanvas" aria-hidden="true"></canvas>
     <div class="impact-overlay" aria-hidden="true"></div>
 
     <div class="container">
         <div class="impact-grid">
             <div class="impact-stat reveal" style="--i:0">
-                <span class="impact-num" data-target="2400" data-suffix="+">0</span>
-                <p class="impact-label">People calling Haven home</p>
+                <span class="impact-num" data-target="114" data-suffix=" yrs">0</span>
+                <p class="impact-label">Rooted in the Lake Norman community</p>
             </div>
             <div class="impact-stat reveal" style="--i:1">
-                <span class="impact-num" data-target="32" data-suffix=" yrs">0</span>
-                <p class="impact-label">Serving Greenville since 1994</p>
+                <span class="impact-num" data-target="3">0</span>
+                <p class="impact-label">Ways we change the world: Worship · Growth · Service</p>
             </div>
             <div class="impact-stat reveal" style="--i:2">
-                <span class="impact-num" data-target="120" data-suffix="+">0</span>
-                <p class="impact-label">Countries reached through mission</p>
+                <span class="impact-num" data-target="12" data-suffix="+">0</span>
+                <p class="impact-label">Active ministries for every age and season</p>
             </div>
             <div class="impact-stat reveal" style="--i:3">
-                <span class="impact-num" data-target="180" data-suffix="k">0</span>
-                <p class="impact-label">Meals served this year</p>
+                <span class="impact-num" data-target="5">0</span>
+                <p class="impact-label">Local mission partners in Iredell County</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ── Community ──────────────────────────────────────────── -->
-<section id="community" class="community section-light" aria-label="Community and groups">
+<!-- ── Community ──────────────────────────────────────────────────── -->
+<section id="community" class="community section-light" aria-label="Ministries and groups">
     <div class="container">
         <header class="community-header reveal">
-            <p class="section-label">Community</p>
+            <p class="section-label">Grow Together</p>
             <h2 class="section-title">Life is better<br><em>together.</em></h2>
         </header>
 
         <div class="community-grid">
             <div class="feature-card reveal" style="--i:0">
                 <div class="fc-number mono">01</div>
-                <h3 class="fc-title">Life Groups</h3>
-                <p class="fc-body">Small, intentional communities meeting weekly in homes and coffee shops across Greenville. Real friendships. Real conversations.</p>
-                <a href="#" class="link-subtle">Find a group →</a>
+                <h3 class="fc-title">Life Groups &amp; Bible Studies</h3>
+                <p class="fc-body">Real relationships over coffee and Scripture. Tuesday men's studies, women's circles, evening classes — there's a group for exactly where you are right now.</p>
+                <a href="#visit" class="link-subtle">Find a group →</a>
             </div>
 
             <div class="feature-card reveal" style="--i:1">
                 <div class="fc-number mono">02</div>
-                <h3 class="fc-title">Serve</h3>
-                <p class="fc-body">Faith that moves. From feeding neighbors to planting churches — we believe generosity transforms both the giver and the receiver.</p>
-                <a href="#" class="link-subtle">Start serving →</a>
+                <h3 class="fc-title">WC Kids &amp; Youth</h3>
+                <p class="fc-body">Nursery through high school. WC Kids on Sunday mornings, BeTween for 4th–5th graders, and Fuel Your Family Sunday evenings — faith for every generation.</p>
+                <a href="#visit" class="link-subtle">Explore kids ministry →</a>
             </div>
 
             <div class="feature-card reveal" style="--i:2">
                 <div class="fc-number mono">03</div>
-                <h3 class="fc-title">Next Generation</h3>
-                <p class="fc-body">Kids, students, and young adults — every age group has a place at Haven. We're investing in the people who will carry this forward.</p>
-                <a href="#" class="link-subtle">Explore programs →</a>
+                <h3 class="fc-title">Serve &amp; Missions</h3>
+                <p class="fc-body">A church without walls. From FeedNC and Christian Mission locally to Acres of Hope internationally — we believe generosity transforms both the giver and the world.</p>
+                <a href="#visit" class="link-subtle">Start serving →</a>
             </div>
 
             <div class="feature-card reveal" style="--i:3">
                 <div class="fc-number mono">04</div>
-                <h3 class="fc-title">Global Missions</h3>
-                <p class="fc-body">The work doesn't stop here. Through partnerships in 120+ countries, every dollar given extends the reach of something greater than any one of us.</p>
-                <a href="#" class="link-subtle">See the mission →</a>
+                <h3 class="fc-title">Weekday Preschool</h3>
+                <p class="fc-body">Christian, play-based early learning for ages 3 through Kindergarten. Monday–Friday, 9:00–12:30. Faith-grounded formation from the very beginning.</p>
+                <a href="tel:7046608268" class="link-subtle">(704) 660-8268 →</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ── Stories ────────────────────────────────────────────── -->
+<!-- ── Stories ────────────────────────────────────────────────────── -->
 <section id="stories" class="stories section-dark" aria-label="Changed lives">
     <div class="container">
         <header class="stories-header reveal">
@@ -365,67 +372,68 @@
         <div class="stories-grid">
             <figure class="story-card reveal" style="--i:0">
                 <blockquote class="story-quote">
-                    "I walked in alone and broken. Two years later I have a community, a renewed marriage, and more peace than I've ever known."
+                    "I moved to Mooresville not knowing a single person. Within a month I had a Life Group, honest friendships, and more peace than I'd had in years."
                 </blockquote>
                 <figcaption class="story-attribution">
-                    <span class="story-name">Marcus A.</span>
-                    <span class="mono story-since">Member since 2024</span>
+                    <span class="story-name">Thomas M.</span>
+                    <span class="mono story-since">Member since 2023</span>
                 </figcaption>
             </figure>
 
             <figure class="story-card story-card--featured reveal" style="--i:1">
                 <blockquote class="story-quote">
-                    "Haven doesn't feel like a building. It feels like the first place I've ever truly belonged."
+                    "We showed up skeptical. We stayed because every Sunday — modern or traditional — we leave with something we actually needed to hear."
                 </blockquote>
                 <figcaption class="story-attribution">
-                    <span class="story-name">Rebecca &amp; Daniel L.</span>
-                    <span class="mono story-since">Members since 2021</span>
+                    <span class="story-name">Priya &amp; Daniel W.</span>
+                    <span class="mono story-since">Members since 2022</span>
                 </figcaption>
             </figure>
 
             <figure class="story-card reveal" style="--i:2">
                 <blockquote class="story-quote">
-                    "I came skeptical. I stayed because every Sunday I leave with something I needed to hear."
+                    "I walked into DivorceCare not expecting much. I found grace, a community, and a path forward I didn't think existed anymore."
                 </blockquote>
                 <figcaption class="story-attribution">
-                    <span class="story-name">David T.</span>
-                    <span class="mono story-since">Member since 2023</span>
+                    <span class="story-name">Sandra K.</span>
+                    <span class="mono story-since">Member since 2024</span>
                 </figcaption>
             </figure>
         </div>
     </div>
 </section>
 
-<!-- ── Give ───────────────────────────────────────────────── -->
+<!-- ── Give ───────────────────────────────────────────────────────── -->
 <section id="give" class="give section-light" aria-label="Generosity">
     <div class="container">
         <div class="give-split">
             <div class="give-left reveal">
                 <p class="section-label">Generosity</p>
-                <h2 class="section-title">Every gift<br><em>multiplies.</em></h2>
+                <h2 class="section-title">Every gift<br><em>extends the mission.</em></h2>
                 <p class="give-body">
-                    You're not giving to a budget — you're feeding families, funding mission trips,
-                    and funding a future for the next generation. Every dollar goes further than you know.
+                    You're not giving to a budget. You're feeding families at FeedNC,
+                    sending students on mission trips, and funding the next generation of
+                    faith right here in Iredell County. Every dollar goes further than you know.
                 </p>
                 <div class="give-actions">
-                    <a href="#" class="btn btn--primary">Give Online</a>
-                    <a href="#" class="link-subtle">Text GIVE to (864) 555-0100 →</a>
+                    <a href="https://willchapumc.churchcenter.com/giving" class="btn btn--primary" target="_blank" rel="noopener">Give Online</a>
+                    <a href="sms:7046643680?body=GIVE" class="link-subtle">Text GIVE to (704) 664-3680 →</a>
                 </div>
             </div>
             <div class="give-right reveal">
                 <figure class="give-scripture">
                     <blockquote>
-                        "Each of you should give what you have decided in your heart to give,
-                        not reluctantly or under compulsion, for God loves a cheerful giver."
+                        "And do not forget to do good and to share with others,
+                        for with such sacrifices God is pleased."
                     </blockquote>
-                    <figcaption class="mono">2 Corinthians 9:7</figcaption>
+                    <figcaption class="mono">Hebrews 13:16</figcaption>
                 </figure>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ── Visit ──────────────────────────────────────────────── -->
+<!-- ── Visit ──────────────────────────────────────────────────────── -->
 <section id="visit" class="visit section-dark" aria-label="Plan your visit">
     <div class="container">
         <div class="visit-split">
@@ -436,25 +444,29 @@
                 </h2>
                 <p class="visit-body">
                     No dress code. No perfect record required. Just show up.
-                    Parking is free, coffee is ready, and someone will be glad you came.
+                    Parking is free, coffee is ready, and someone will genuinely be glad you came.
                 </p>
 
                 <div class="visit-details">
                     <div class="visit-detail">
-                        <span class="mono visit-detail-label">Main Campus</span>
-                        <span class="visit-detail-val">4521 Grace Boulevard, Greenville SC</span>
+                        <span class="mono visit-detail-label">Address</span>
+                        <span class="visit-detail-val">575 Brawley School Rd, Mooresville, NC 28117</span>
+                    </div>
+                    <div class="visit-detail">
+                        <span class="mono visit-detail-label">Directions</span>
+                        <span class="visit-detail-val">Off I-77, Exit 35 — near Lake Norman</span>
                     </div>
                     <div class="visit-detail">
                         <span class="mono visit-detail-label">Sunday Services</span>
-                        <span class="visit-detail-val">9:00 · 11:00 · 13:00</span>
+                        <span class="visit-detail-val">9:30 AM (Modern) · 11:00 AM (Traditional)</span>
                     </div>
                     <div class="visit-detail">
                         <span class="mono visit-detail-label">Wednesday</span>
-                        <span class="visit-detail-val">Bible study &amp; youth — 7:00 PM</span>
+                        <span class="visit-detail-val">Bible Study &amp; Youth — 7:00 PM</span>
                     </div>
                     <div class="visit-detail">
-                        <span class="mono visit-detail-label">Contact</span>
-                        <span class="visit-detail-val">hello@havenchurch.com</span>
+                        <span class="mono visit-detail-label">Phone</span>
+                        <span class="visit-detail-val">(704) 664-3680</span>
                     </div>
                 </div>
             </div>
@@ -485,12 +497,12 @@
                     </div>
 
                     <div class="field">
-                        <label for="service">Preferred service time</label>
+                        <label for="service">Preferred service</label>
                         <select id="service" name="service">
-                            <option value="">— Select a time —</option>
-                            <option>Sunday 9:00 AM</option>
-                            <option>Sunday 11:00 AM</option>
-                            <option>Sunday 1:00 PM</option>
+                            <option value="">— Select a service —</option>
+                            <option>Sunday 9:30 AM — Modern Worship</option>
+                            <option>Sunday 11:00 AM — Traditional Worship</option>
+                            <option>Wednesday 7:00 PM — Bible Study</option>
                             <option>I'll watch online</option>
                         </select>
                     </div>
@@ -505,79 +517,82 @@
 
                 <div class="form-success" id="formSuccess" hidden>
                     <div class="success-mark">✓</div>
-                    <p class="success-heading">We'll see you soon.</p>
-                    <p class="success-body">Our team will be in touch within 24 hours.</p>
+                    <p class="success-heading">We'll see you Sunday.</p>
+                    <p class="success-body">Our team will be in touch within 24 hours. We can't wait to meet you.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ── Closing CTA ────────────────────────────────────────── -->
-<section id="begin" class="begin" aria-label="Begin again">
+<!-- ── Closing CTA ─────────────────────────────────────────────────── -->
+<section id="begin" class="begin" aria-label="You belong here">
     <canvas id="beginCanvas" aria-hidden="true"></canvas>
     <div class="begin-overlay" aria-hidden="true"></div>
     <div class="container container--center">
-        <p class="section-label reveal">Haven Church</p>
+        <p class="section-label reveal">Williamson's Chapel UMC</p>
         <h2 class="begin-headline" data-word-reveal>
-            Begin again.
+            You belong here.
         </h2>
         <p class="begin-sub reveal">
-            Your story isn't finished. Sunday mornings at 9, 11 &amp; 1.
+            Sunday mornings at 9:30 and 11:00 in Mooresville, North Carolina.
         </p>
         <a href="#visit" class="btn btn--primary btn--large reveal">Plan Your Visit</a>
     </div>
 </section>
 
-<!-- ── Footer ─────────────────────────────────────────────── -->
+<!-- ── Footer ─────────────────────────────────────────────────────── -->
 <footer class="site-footer" role="contentinfo">
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand">
                 <a href="#hero" class="nav-logo footer-logo">
                     <svg class="logo-mark" width="24" height="24" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-                        <path d="M14 2L26 24H2L14 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                        <circle cx="14" cy="14" r="3" fill="currentColor"/>
+                        <line x1="14" y1="2" x2="14" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="11" y1="4.5" x2="17" y2="4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M5 13 Q14 8 23 13" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                        <path d="M4 18 Q14 13 24 18" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                        <path d="M3 23 Q14 17 25 23" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
                     </svg>
-                    <span class="logo-word">Haven</span>
+                    <span class="logo-word">WCUMC</span>
                 </a>
-                <p class="footer-tagline">A place where searching ends.</p>
-                <p class="mono footer-address">Greenville, South Carolina · Est. 1994</p>
+                <p class="footer-tagline">Changing lives and changing the world<br>through Jesus Christ.</p>
+                <p class="mono footer-address">Mooresville, North Carolina · Est. 1912</p>
             </div>
 
-            <nav class="footer-col" aria-label="Footer navigation">
+            <nav class="footer-col" aria-label="Worship navigation">
                 <h4 class="footer-col-heading mono">Connect</h4>
                 <ul role="list">
                     <li><a href="#series">Messages</a></li>
-                    <li><a href="#series">Watch Online</a></li>
+                    <li><a href="https://www.youtube.com/@willchapworship" target="_blank" rel="noopener">Watch Online</a></li>
                     <li><a href="#visit">Plan a Visit</a></li>
                     <li><a href="#community">Community</a></li>
                 </ul>
             </nav>
 
-            <nav class="footer-col" aria-label="Footer navigation">
+            <nav class="footer-col" aria-label="Growth navigation">
                 <h4 class="footer-col-heading mono">Grow</h4>
                 <ul role="list">
                     <li><a href="#community">Life Groups</a></li>
-                    <li><a href="#community">Serve</a></li>
-                    <li><a href="#">Baptism</a></li>
-                    <li><a href="#">Next Steps</a></li>
+                    <li><a href="#community">WC Kids &amp; Youth</a></li>
+                    <li><a href="#community">Weekday Preschool</a></li>
+                    <li><a href="#community">Bible Studies</a></li>
                 </ul>
             </nav>
 
-            <nav class="footer-col" aria-label="Footer navigation">
+            <nav class="footer-col" aria-label="Contact navigation">
                 <h4 class="footer-col-heading mono">Contact</h4>
                 <ul role="list">
-                    <li><a href="mailto:hello@havenchurch.com">hello@havenchurch.com</a></li>
-                    <li><a href="tel:+18645550199">(864) 555-0199</a></li>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">YouTube</a></li>
+                    <li><a href="tel:7046643680">(704) 664-3680</a></li>
+                    <li><a href="https://www.facebook.com/willchapumc" target="_blank" rel="noopener">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/willchapumc" target="_blank" rel="noopener">Instagram</a></li>
+                    <li><a href="https://www.youtube.com/@willchapworship" target="_blank" rel="noopener">YouTube</a></li>
                 </ul>
             </nav>
         </div>
 
         <div class="footer-bottom">
-            <p class="mono footer-legal">&copy; 2026 Haven Church · All rights reserved</p>
+            <p class="mono footer-legal">&copy; 2026 Williamson's Chapel United Methodist Church · All rights reserved</p>
             <div class="footer-legal-links mono">
                 <a href="#">Privacy</a>
                 <a href="#">Terms</a>

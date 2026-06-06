@@ -1,5 +1,5 @@
 /* ================================================================
-   Haven Church
+   Williamson's Chapel UMC — Mooresville, NC
    Award-winning premium design system
    Ref: Apple · Stripe · Vercel · Linear · Tesla
    ================================================================ */
@@ -36,10 +36,10 @@
   --border-light-h:  rgba(20,18,16,0.18);
   --surface-light:   rgba(20,18,16,0.03);
 
-  /* ── Accent (single, used sparingly) ── */
-  --gold:     #c9a84c;
-  --gold-dim: rgba(201,168,76,0.12);
-  --gold-text: #b8963e;
+  /* ── Accent: Lake Norman blue (baptism water · Lake Norman identity) ── */
+  --gold:     #2563eb;
+  --gold-dim: rgba(37,99,235,0.12);
+  --gold-text: #1d4ed8;
 
   /* ── Typography ── */
   --f-display:  'Fraunces', Georgia, serif;
