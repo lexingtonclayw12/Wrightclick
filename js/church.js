@@ -1,124 +1,114 @@
-/* ============================================================
-   Grace & Glory Church — JavaScript
-   ============================================================ */
+/* ================================================================
+   Grace & Glory Church
+   Inspired by Life.church · Elevation Church · Ginghamsburg UMC
+   ================================================================ */
 
 'use strict';
 
-/* ---- Utility ---------------------------------------------- */
 const qs  = (s, c = document) => c.querySelector(s);
 const qsa = (s, c = document) => [...c.querySelectorAll(s)];
 const lerp = (a, b, t) => a + (b - a) * t;
 const isMobile = () => window.innerWidth <= 768 || 'ontouchstart' in window;
 
-/* ============================================================
-   PRELOADER
-   ============================================================ */
-(function initPreloader() {
-    const el = qs('#preloader');
-    if (!el) return;
+/* ================================================================
+   ANNOUNCEMENT BAR — dismissable, shifts nav
+   ================================================================ */
+(function initAnnounceBar() {
+    const bar  = qs('#announce-bar');
+    const btn  = qs('#announceClose');
+    const nav  = qs('#navbar');
+    if (!bar || !btn || !nav) return;
 
-    const finish = () => {
-        el.classList.add('done');
-        setTimeout(() => el.remove(), 700);
-        document.body.style.overflow = '';
-    };
-
-    document.body.style.overflow = 'hidden';
-
-    if (document.readyState === 'complete') {
-        setTimeout(finish, 1200);
-    } else {
-        window.addEventListener('load', () => setTimeout(finish, 1200), { once: true });
-    }
+    btn.addEventListener('click', () => {
+        bar.classList.add('hidden');
+        nav.classList.add('announce-hidden');
+        setTimeout(() => bar.remove(), 700);
+    });
 })();
 
-/* ============================================================
+/* ================================================================
    CUSTOM CURSOR
-   ============================================================ */
+   ================================================================ */
 (function initCursor() {
     if (isMobile()) return;
 
-    const dot  = qs('#cursorDot');
-    const ring = qs('#cursorRing');
-    if (!dot || !ring) return;
+    const dot  = qs('.cursor-dot') || Object.assign(document.createElement('div'), { className: 'cursor-dot', id: 'cd' });
+    const ring = qs('.cursor-ring') || Object.assign(document.createElement('div'), { className: 'cursor-ring', id: 'cr' });
 
-    let mx = -100, my = -100;
-    let rx = -100, ry = -100;
+    if (!dot.parentNode) document.body.append(dot, ring);
 
-    const move = e => { mx = e.clientX; my = e.clientY; };
-    document.addEventListener('mousemove', move);
+    let mx = -100, my = -100, rx = -100, ry = -100;
 
-    const update = () => {
-        dot.style.transform  = `translate(${mx - 4}px, ${my - 4}px)`;
-        rx = lerp(rx, mx, 0.14);
-        ry = lerp(ry, my, 0.14);
-        ring.style.transform = `translate(${rx - 17}px, ${ry - 17}px)`;
-        requestAnimationFrame(update);
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+    const tick = () => {
+        dot.style.transform  = `translate(${mx - 3}px, ${my - 3}px)`;
+        rx = lerp(rx, mx, 0.13);
+        ry = lerp(ry, my, 0.13);
+        ring.style.transform = `translate(${rx - 15}px, ${ry - 15}px)`;
+        requestAnimationFrame(tick);
     };
-    requestAnimationFrame(update);
+    requestAnimationFrame(tick);
 
-    const hoverEls = qsa('a, button, .glass-card, input, textarea, select, [data-cursor]');
-    hoverEls.forEach(el => {
-        el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
-        el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+    document.addEventListener('mouseover', e => {
+        const hoverable = e.target.closest('a, button, .glass-card, input, textarea, select, .msg-card, .campus-card, .nh-card, .qa-card');
+        ring.classList.toggle('hovering', !!hoverable);
     });
 })();
 
-/* ============================================================
-   NAVBAR
-   ============================================================ */
+/* ================================================================
+   NAVBAR — scroll state + active section + mobile menu
+   ================================================================ */
 (function initNav() {
-    const nav    = qs('#navbar');
-    const btn    = qs('#mobileMenuBtn');
-    const links  = qs('#navLinks');
+    const nav     = qs('#navbar');
+    const btn     = qs('#mobileMenuBtn');
+    const links   = qs('#navLinks');
     if (!nav) return;
 
-    const setScrolled = () => {
-        nav.classList.toggle('scrolled', window.scrollY > 40);
-    };
-    window.addEventListener('scroll', setScrolled, { passive: true });
-    setScrolled();
+    /* scroll state */
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
+    /* mobile toggle */
     btn?.addEventListener('click', () => {
-        const open = btn.classList.toggle('open');
-        links?.classList.toggle('open', open);
+        const o = btn.classList.toggle('open');
+        links?.classList.toggle('open', o);
     });
 
-    qsa('.nav-link, .nav-cta-btn').forEach(a => {
-        a.addEventListener('click', () => {
-            btn?.classList.remove('open');
-            links?.classList.remove('open');
-        });
-    });
+    /* close on link click */
+    qsa('.nav-link, .live-btn').forEach(a => a.addEventListener('click', () => {
+        btn?.classList.remove('open');
+        links?.classList.remove('open');
+    }));
 
-    /* Active link on scroll */
-    const sections = qsa('section[id]');
-    const navLinks = qsa('.nav-link');
-    const onScroll = () => {
-        const mid = window.scrollY + window.innerHeight / 3;
+    /* active section highlight */
+    const sections  = qsa('section[id]');
+    const navLinks  = qsa('.nav-link');
+
+    window.addEventListener('scroll', () => {
+        const mid = window.scrollY + window.innerHeight * 0.4;
         sections.forEach(sec => {
             if (sec.offsetTop <= mid && sec.offsetTop + sec.offsetHeight > mid) {
-                navLinks.forEach(l => {
-                    l.classList.toggle('active', l.getAttribute('href') === '#' + sec.id);
-                });
+                navLinks.forEach(l =>
+                    l.classList.toggle('active', l.getAttribute('href') === '#' + sec.id)
+                );
             }
         });
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
+    }, { passive: true });
 })();
 
-/* ============================================================
-   HERO CANVAS — particle field with connecting lines
-   ============================================================ */
+/* ================================================================
+   HERO CANVAS — particle field with light streaks
+   ================================================================ */
 (function initHeroCanvas() {
     const canvas = qs('#heroCanvas');
     if (!canvas) return;
-
     const ctx = canvas.getContext('2d');
-    let W, H, particles = [];
+    let W, H;
 
-    const COUNT = isMobile() ? 40 : 80;
-    const MAX_DIST = 140;
+    const COUNT = isMobile() ? 35 : 70;
+    const CONNECT_DIST = 130;
 
     const resize = () => {
         W = canvas.width  = canvas.offsetWidth;
@@ -127,67 +117,71 @@ const isMobile = () => window.innerWidth <= 768 || 'ontouchstart' in window;
 
     const rand = (min, max) => Math.random() * (max - min) + min;
 
-    const makeParticle = () => ({
+    let particles = [];
+
+    const makeP = () => ({
         x: rand(0, W), y: rand(0, H),
-        vx: rand(-0.3, 0.3), vy: rand(-0.15, -0.5),
-        r: rand(1, 2.5),
-        alpha: rand(0.3, 0.9),
-        color: Math.random() > 0.5
-            ? `rgba(139,92,246,`    /* purple */
-            : `rgba(251,191,36,`    /* gold */
+        vx: rand(-0.25, 0.25),
+        vy: rand(-0.45, -0.1),
+        r: rand(0.8, 2),
+        alpha: rand(0.2, 0.7),
+        blue: Math.random() > 0.3,
     });
 
     const init = () => {
         resize();
-        particles = Array.from({ length: COUNT }, makeParticle);
+        particles = Array.from({ length: COUNT }, makeP);
     };
 
-    const draw = () => {
+    const frame = () => {
         ctx.clearRect(0, 0, W, H);
 
-        particles.forEach(p => {
-            p.x += p.vx;
-            p.y += p.vy;
-            if (p.y < -4) { p.y = H + 4; p.x = rand(0, W); }
-            if (p.x < 0)  { p.x = W; }
-            if (p.x > W)  { p.x = 0; }
-
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = `${p.color}${p.alpha})`;
-            ctx.fill();
-        });
-
+        /* connections */
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 const a = particles[i], b = particles[j];
                 const dx = a.x - b.x, dy = a.y - b.y;
-                const d  = Math.sqrt(dx * dx + dy * dy);
-                if (d < MAX_DIST) {
-                    const alpha = (1 - d / MAX_DIST) * 0.25;
+                const d = Math.sqrt(dx * dx + dy * dy);
+                if (d < CONNECT_DIST) {
+                    const a_ = (1 - d / CONNECT_DIST) * 0.18;
                     ctx.beginPath();
                     ctx.moveTo(a.x, a.y);
                     ctx.lineTo(b.x, b.y);
-                    ctx.strokeStyle = `rgba(139,92,246,${alpha})`;
-                    ctx.lineWidth = 0.6;
+                    ctx.strokeStyle = `rgba(59,130,246,${a_})`;
+                    ctx.lineWidth = 0.5;
                     ctx.stroke();
                 }
             }
         }
 
-        requestAnimationFrame(draw);
+        /* particles */
+        particles.forEach(p => {
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.y < -4)  { p.y = H + 4; p.x = rand(0, W); }
+            if (p.x < -4)  { p.x = W + 4; }
+            if (p.x > W + 4) { p.x = -4; }
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            const color = p.blue ? `rgba(59,130,246,${p.alpha})` : `rgba(248,250,252,${p.alpha * 0.5})`;
+            ctx.fillStyle = color;
+            ctx.fill();
+        });
+
+        requestAnimationFrame(frame);
     };
 
     window.addEventListener('resize', resize, { passive: true });
     init();
-    draw();
+    frame();
 })();
 
-/* ============================================================
-   GIVE CANVAS — floating orbs / aurora
-   ============================================================ */
-(function initGiveCanvas() {
-    const canvas = qs('#giveCanvas');
+/* ================================================================
+   SERVE / MISSIONS CANVAS — aurora/orb atmosphere
+   ================================================================ */
+(function initServeCanvas() {
+    const canvas = qs('#serveCanvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     let W, H, t = 0;
@@ -196,134 +190,190 @@ const isMobile = () => window.innerWidth <= 768 || 'ontouchstart' in window;
         W = canvas.width  = canvas.offsetWidth;
         H = canvas.height = canvas.offsetHeight;
     };
-
     resize();
     window.addEventListener('resize', resize, { passive: true });
 
     const orbs = [
-        { cx: 0.5, cy: 0.5, r: 0.35, color: '109,40,217', speed: 0.0007 },
-        { cx: 0.3, cy: 0.4, r: 0.22, color: '217,119,6',  speed: 0.0011 },
-        { cx: 0.7, cy: 0.6, r: 0.18, color: '6,182,212',  speed: 0.0009 },
+        { cx: 0.5, cy: 0.5, r: 0.4,  col: '29,78,216',  sp: 0.0008 },
+        { cx: 0.2, cy: 0.3, r: 0.25, col: '79,70,229',  sp: 0.0012 },
+        { cx: 0.8, cy: 0.7, r: 0.2,  col: '59,130,246', sp: 0.001  },
     ];
 
-    const draw = () => {
+    const frame = () => {
         ctx.clearRect(0, 0, W, H);
-        t += 1;
-
+        t++;
         orbs.forEach((o, i) => {
-            const ox = Math.sin(t * o.speed * 1000 + i * 2) * 0.12;
-            const oy = Math.cos(t * o.speed * 800  + i)     * 0.10;
-            const x  = (o.cx + ox) * W;
-            const y  = (o.cy + oy) * H;
-            const r  = o.r * Math.min(W, H);
-            const g  = ctx.createRadialGradient(x, y, 0, x, y, r);
-            g.addColorStop(0,   `rgba(${o.color},0.35)`);
-            g.addColorStop(0.5, `rgba(${o.color},0.10)`);
-            g.addColorStop(1,   `rgba(${o.color},0)`);
+            const ox = Math.sin(t * o.sp * 1000 + i * 2.1) * 0.1;
+            const oy = Math.cos(t * o.sp * 900  + i * 1.7) * 0.08;
+            const x = (o.cx + ox) * W;
+            const y = (o.cy + oy) * H;
+            const r = o.r * Math.min(W, H);
+            const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+            g.addColorStop(0,   `rgba(${o.col},0.3)`);
+            g.addColorStop(0.5, `rgba(${o.col},0.08)`);
+            g.addColorStop(1,   `rgba(${o.col},0)`);
             ctx.beginPath();
             ctx.arc(x, y, r, 0, Math.PI * 2);
             ctx.fillStyle = g;
             ctx.fill();
         });
-
-        requestAnimationFrame(draw);
+        requestAnimationFrame(frame);
     };
-
-    draw();
+    frame();
 })();
 
-/* ============================================================
+/* ================================================================
+   HERO HEADLINE — staggered reveal on load
+   ================================================================ */
+(function initHeroReveal() {
+    const rows = qsa('.hl-row');
+    if (!rows.length) return;
+
+    const onLoad = () => {
+        rows.forEach((row, i) => {
+            setTimeout(() => {
+                row.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+                row.style.opacity = '1';
+                row.style.transform = 'translateY(0)';
+            }, 200 + i * 120);
+        });
+    };
+
+    rows.forEach(r => {
+        r.style.opacity = '0';
+        r.style.transform = 'translateY(30px)';
+    });
+
+    if (document.readyState === 'complete') onLoad();
+    else window.addEventListener('load', onLoad, { once: true });
+})();
+
+/* ================================================================
+   HORIZONTAL MESSAGE SCROLL
+   ================================================================ */
+(function initMsgScroll() {
+    const scroll  = qs('#msgScroll');
+    const leftBtn = qs('#msgLeft');
+    const rightBtn= qs('#msgRight');
+    if (!scroll) return;
+
+    const scrollBy = dir => {
+        const card = scroll.querySelector('.msg-card');
+        const cardW = card ? card.offsetWidth + 20 : 260;
+        scroll.scrollBy({ left: dir * cardW * 2, behavior: 'smooth' });
+    };
+
+    leftBtn?.addEventListener('click',  () => scrollBy(-1));
+    rightBtn?.addEventListener('click', () => scrollBy(1));
+
+    /* drag-to-scroll on desktop */
+    if (!isMobile()) {
+        let isDown = false, startX, scrollLeft;
+        scroll.style.cursor = 'grab';
+
+        scroll.addEventListener('mousedown', e => {
+            isDown = true;
+            scroll.style.cursor = 'grabbing';
+            startX = e.pageX - scroll.offsetLeft;
+            scrollLeft = scroll.scrollLeft;
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDown = false;
+            scroll.style.cursor = 'grab';
+        });
+
+        scroll.addEventListener('mousemove', e => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - scroll.offsetLeft;
+            scroll.scrollLeft = scrollLeft - (x - startX) * 1.5;
+        });
+    }
+})();
+
+/* ================================================================
    SCROLL REVEAL
-   ============================================================ */
+   ================================================================ */
 (function initScrollReveal() {
     const els = qsa('.reveal-up, .reveal-left, .reveal-right');
     if (!els.length) return;
 
-    const io = new IntersectionObserver((entries) => {
+    const io = new IntersectionObserver(entries => {
         entries.forEach(e => {
             if (e.isIntersecting) {
                 e.target.classList.add('visible');
                 io.unobserve(e.target);
             }
         });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 
     els.forEach(el => io.observe(el));
 })();
 
-/* ============================================================
+/* ================================================================
    ANIMATED COUNTERS
-   ============================================================ */
+   ================================================================ */
 (function initCounters() {
     const nums = qsa('.stat-number[data-target]');
     if (!nums.length) return;
 
-    const ease = t => 1 - Math.pow(1 - t, 4);
+    const easeOut = t => 1 - Math.pow(1 - t, 4);
 
-    const animateCounter = (el) => {
+    const animate = el => {
         const target   = +el.dataset.target;
-        const duration = 1800;
+        const duration = target > 10000 ? 2200 : 1600;
         const start    = performance.now();
 
-        const tick = (now) => {
+        const tick = now => {
             const prog = Math.min((now - start) / duration, 1);
-            el.textContent = Math.floor(ease(prog) * target).toLocaleString();
+            const val  = Math.floor(easeOut(prog) * target);
+            el.textContent = val >= 1000 ? val.toLocaleString() : val;
             if (prog < 1) requestAnimationFrame(tick);
             else el.textContent = target.toLocaleString();
         };
-
         requestAnimationFrame(tick);
     };
 
-    const io = new IntersectionObserver((entries) => {
+    const io = new IntersectionObserver(entries => {
         entries.forEach(e => {
-            if (e.isIntersecting) {
-                animateCounter(e.target);
-                io.unobserve(e.target);
-            }
+            if (e.isIntersecting) { animate(e.target); io.unobserve(e.target); }
         });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.4 });
 
     nums.forEach(el => io.observe(el));
 })();
 
-/* ============================================================
-   COUNTDOWN TIMER
-   ============================================================ */
+/* ================================================================
+   COUNTDOWN TIMER — Revival event
+   ================================================================ */
 (function initCountdown() {
     const target = new Date('2026-06-15T18:00:00');
-    const daysEl  = qs('#cd-days');
-    const hrsEl   = qs('#cd-hours');
-    const minsEl  = qs('#cd-mins');
-    const secsEl  = qs('#cd-secs');
-
-    if (!daysEl) return;
+    const dEl    = qs('#ecd-d');
+    const hEl    = qs('#ecd-h');
+    const mEl    = qs('#ecd-m');
+    if (!dEl) return;
 
     const pad = n => String(n).padStart(2, '0');
 
     const update = () => {
         const diff = target - Date.now();
-        if (diff <= 0) {
-            daysEl.textContent = hrsEl.textContent = minsEl.textContent = secsEl.textContent = '00';
-            return;
-        }
-        const s   = Math.floor(diff / 1000);
-        const m   = Math.floor(s / 60);
-        const h   = Math.floor(m / 60);
-        const d   = Math.floor(h / 24);
-        daysEl.textContent = pad(d);
-        hrsEl.textContent  = pad(h % 24);
-        minsEl.textContent = pad(m % 60);
-        secsEl.textContent = pad(s % 60);
+        if (diff <= 0) { dEl.textContent = hEl.textContent = mEl.textContent = '00'; return; }
+        const s  = Math.floor(diff / 1000);
+        const m  = Math.floor(s / 60);
+        const h  = Math.floor(m / 60);
+        const d  = Math.floor(h / 24);
+        dEl.textContent = pad(d);
+        hEl.textContent = pad(h % 24);
+        mEl.textContent = pad(m % 60);
     };
-
     update();
-    setInterval(update, 1000);
+    setInterval(update, 60000); /* update each minute */
 })();
 
-/* ============================================================
+/* ================================================================
    CONTACT FORM
-   ============================================================ */
+   ================================================================ */
 (function initForm() {
     const form    = qs('#visitForm');
     const success = qs('#formSuccess');
@@ -333,21 +383,20 @@ const isMobile = () => window.innerWidth <= 768 || 'ontouchstart' in window;
         e.preventDefault();
         if (!form.checkValidity()) { form.reportValidity(); return; }
 
-        /* Simulate async submission */
         const btn = form.querySelector('button[type="submit"]');
         btn.disabled = true;
-        btn.querySelector('span').textContent = 'Sending…';
+        btn.textContent = 'Sending…';
 
         setTimeout(() => {
             form.hidden = true;
-            success.hidden = false;
-        }, 1000);
+            if (success) success.hidden = false;
+        }, 900);
     });
 })();
 
-/* ============================================================
-   SMOOTH SCROLL for nav links
-   ============================================================ */
+/* ================================================================
+   SMOOTH SCROLL — offset for sticky nav
+   ================================================================ */
 (function initSmoothScroll() {
     qsa('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
@@ -355,67 +404,49 @@ const isMobile = () => window.innerWidth <= 768 || 'ontouchstart' in window;
             const sec = document.getElementById(id);
             if (!sec) return;
             e.preventDefault();
-            const offset = 80; /* nav height */
+            const offset = 80;
             const top    = sec.getBoundingClientRect().top + window.scrollY - offset;
             window.scrollTo({ top, behavior: 'smooth' });
         });
     });
 })();
 
-/* ============================================================
-   NAVBAR CURSOR HOVER — re-register after nav is ready
-   ============================================================ */
-(function refreshCursorHovers() {
-    if (isMobile()) return;
-    const ring = qs('#cursorRing');
-    if (!ring) return;
-
-    document.addEventListener('mouseover', e => {
-        const isHoverable = e.target.closest('a, button, .glass-card, input, textarea, select');
-        ring.classList.toggle('hovering', !!isHoverable);
-    });
-})();
-
-/* ============================================================
-   CARD TILT EFFECT (desktop only, subtle)
-   ============================================================ */
+/* ================================================================
+   CARD TILT — subtle 3D on glass cards
+   ================================================================ */
 (function initTilt() {
     if (isMobile()) return;
 
-    qsa('.glass-card').forEach(card => {
+    qsa('.glass-card, .campus-card').forEach(card => {
         card.addEventListener('mousemove', e => {
-            const r    = card.getBoundingClientRect();
-            const cx   = r.left + r.width  / 2;
-            const cy   = r.top  + r.height / 2;
-            const dx   = (e.clientX - cx) / (r.width  / 2);
-            const dy   = (e.clientY - cy) / (r.height / 2);
-            card.style.transform = `perspective(800px) rotateY(${dx * 5}deg) rotateX(${-dy * 5}deg) translateY(-4px)`;
+            const r   = card.getBoundingClientRect();
+            const cx  = r.left + r.width  / 2;
+            const cy  = r.top  + r.height / 2;
+            const dx  = (e.clientX - cx) / (r.width  / 2);
+            const dy  = (e.clientY - cy) / (r.height / 2);
+            card.style.transform = `perspective(700px) rotateY(${dx * 4}deg) rotateX(${-dy * 4}deg) translateY(-3px)`;
         });
 
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
-        });
+        card.addEventListener('mouseleave', () => { card.style.transform = ''; });
     });
 })();
 
-/* ============================================================
-   PARALLAX — subtle depth on hero background
-   ============================================================ */
+/* ================================================================
+   HERO PARALLAX — beams drift on scroll (subtle depth)
+   ================================================================ */
 (function initParallax() {
     if (isMobile()) return;
-    const beams = qs('.light-beams');
-    if (!beams) return;
+    const overlay = qs('.hero-overlay');
+    if (!overlay) return;
 
     let ticking = false;
-    const onScroll = () => {
+    window.addEventListener('scroll', () => {
         if (ticking) return;
         ticking = true;
         requestAnimationFrame(() => {
             const y = window.scrollY;
-            beams.style.transform = `translateY(${y * 0.25}px)`;
+            overlay.style.transform = `translateY(${y * 0.15}px)`;
             ticking = false;
         });
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
+    }, { passive: true });
 })();
