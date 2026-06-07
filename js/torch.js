@@ -1,54 +1,90 @@
-/* TORCH INTERACTIVE — Main Script */
+/* ============================================================
+   TORCH INTERACTIVE — Main Script
+   ============================================================ */
+
 (function () {
   'use strict';
+
+  /* ---- Ember Particle System ---- */
   const canvas = document.getElementById('heroCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   let particles = [];
+  let raf;
 
-  function resizeCanvas() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+  function resizeCanvas() {
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
 
   class Ember {
     constructor(x, y, fromTorch) {
-      this.x = x + (Math.random() - 0.5) * (fromTorch ? 16 : 60);
-      this.y = y + (Math.random() - 0.5) * (fromTorch ? 8 : 20);
+      this.x  = x + (Math.random() - 0.5) * (fromTorch ? 16 : 60);
+      this.y  = y + (Math.random() - 0.5) * (fromTorch ? 8 : 20);
       this.vx = (Math.random() - 0.5) * (fromTorch ? 2.5 : 1.2);
       this.vy = -(Math.random() * (fromTorch ? 4.5 : 2) + (fromTorch ? 1.5 : 0.4));
-      this.life = 1;
-      this.decay = fromTorch ? (Math.random() * 0.018 + 0.01) : (Math.random() * 0.006 + 0.003);
-      this.size = Math.random() * (fromTorch ? 2.8 : 1.5) + 0.5;
+      this.life    = 1;
+      this.decay   = fromTorch
+        ? (Math.random() * 0.018 + 0.01)
+        : (Math.random() * 0.006 + 0.003);
+      this.size    = Math.random() * (fromTorch ? 2.8 : 1.5) + 0.5;
       this.maxSize = this.size;
       const r = Math.random();
       this.color = r > 0.65 ? '#ff6b1a' : r > 0.35 ? '#ffbf35' : '#ff3000';
     }
-    update() { this.x += this.vx; this.y += this.vy; this.vy += 0.04; this.vx *= 0.988; this.life -= this.decay; this.size = this.maxSize * this.life; }
+
+    update() {
+      this.x   += this.vx;
+      this.y   += this.vy;
+      this.vy  += 0.04;
+      this.vx  *= 0.988;
+      this.life -= this.decay;
+      this.size  = this.maxSize * this.life;
+    }
+
     draw() {
       if (this.life <= 0) return;
-      ctx.save(); ctx.globalAlpha = Math.min(this.life, 0.85); ctx.fillStyle = this.color;
-      ctx.shadowBlur = 8; ctx.shadowColor = this.color;
-      ctx.beginPath(); ctx.arc(this.x, this.y, Math.max(this.size, 0.1), 0, Math.PI * 2); ctx.fill(); ctx.restore();
+      ctx.save();
+      ctx.globalAlpha = Math.min(this.life, 0.85);
+      ctx.fillStyle   = this.color;
+      ctx.shadowBlur  = 8;
+      ctx.shadowColor = this.color;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, Math.max(this.size, 0.1), 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
     }
   }
 
+  /* Torch flame positions relative to canvas */
   let torchPoints = [];
+
   function updateTorchPoints() {
     torchPoints = [];
     const cr = canvas.getBoundingClientRect();
     document.querySelectorAll('.torch-flame-zone').forEach(el => {
       const r = el.getBoundingClientRect();
-      torchPoints.push({ x: r.left - cr.left + r.width / 2, y: r.top - cr.top + r.height / 2 });
+      torchPoints.push({
+        x: r.left - cr.left + r.width  / 2,
+        y: r.top  - cr.top  + r.height / 2
+      });
     });
   }
 
   function spawnEmbers() {
+    /* Ambient drifting embers from screen edges */
     if (Math.random() < 0.18) {
-      const side = Math.random() < 0.5 ? 0 : canvas.width;
+      const side   = Math.random() < 0.5 ? 0 : canvas.width;
       const yStart = canvas.height * 0.5 + Math.random() * canvas.height * 0.45;
       particles.push(new Ember(side, yStart, false));
     }
+
+    /* Torch-specific particles */
     for (const pt of torchPoints) {
       const count = Math.random() < 0.4 ? 2 : 1;
-      for (let i = 0; i < count; i++) particles.push(new Ember(pt.x, pt.y, true));
+      for (let i = 0; i < count; i++) {
+        particles.push(new Ember(pt.x, pt.y, true));
+      }
     }
   }
 
@@ -57,35 +93,39 @@
     spawnEmbers();
     particles = particles.filter(p => p.life > 0);
     for (const p of particles) { p.update(); p.draw(); }
-    requestAnimationFrame(animateCanvas);
+    raf = requestAnimationFrame(animateCanvas);
   }
 
+  /* ---- Scroll Reveal ---- */
   function initReveal() {
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
-        const el = entry.target;
+        const el    = entry.target;
         const delay = el.dataset.delay || '0';
         el.style.setProperty('--delay', delay + 'ms');
         el.classList.add('visible');
         obs.unobserve(el);
       });
     }, { threshold: 0.12 });
+
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   }
 
+  /* ---- Stat Counters ---- */
   function initCounters() {
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
-        const el = entry.target;
+        const el     = entry.target;
         const target = parseInt(el.dataset.count, 10);
-        const dur = 1800;
-        let start = null;
+        const dur    = 1800;
+        let start    = null;
+
         function step(ts) {
           if (!start) start = ts;
           const progress = Math.min((ts - start) / dur, 1);
-          const ease = 1 - Math.pow(1 - progress, 3);
+          const ease     = 1 - Math.pow(1 - progress, 3);
           el.textContent = Math.floor(ease * target);
           if (progress < 1) requestAnimationFrame(step);
           else el.textContent = target;
@@ -94,9 +134,41 @@
         obs.unobserve(el);
       });
     }, { threshold: 0.5 });
+
     document.querySelectorAll('[data-count]').forEach(el => obs.observe(el));
   }
 
+  /* ---- Cursor spotlight ---- */
+  function initSpotlight() {
+    const spotlight = document.getElementById('heroSpotlight');
+    const hero      = document.querySelector('.hero');
+    if (!spotlight || !hero) return;
+
+    let targetX = hero.offsetWidth  / 2;
+    let targetY = hero.offsetHeight / 2;
+    let currentX = targetX;
+    let currentY = targetY;
+
+    hero.addEventListener('mousemove', (e) => {
+      const r = hero.getBoundingClientRect();
+      targetX = e.clientX - r.left;
+      targetY = e.clientY - r.top;
+    });
+    hero.addEventListener('mouseleave', () => {
+      targetX = hero.offsetWidth  / 2;
+      targetY = hero.offsetHeight / 2;
+    });
+
+    (function lerp() {
+      currentX += (targetX - currentX) * 0.08;
+      currentY += (targetY - currentY) * 0.08;
+      spotlight.style.left = currentX + 'px';
+      spotlight.style.top  = currentY + 'px';
+      requestAnimationFrame(lerp);
+    })();
+  }
+
+  /* ---- Nav scroll state ---- */
   function initNav() {
     const nav = document.querySelector('.nav');
     if (!nav) return;
@@ -105,11 +177,35 @@
     onScroll();
   }
 
-  function init() {
-    resizeCanvas(); updateTorchPoints(); animateCanvas(); initReveal(); initCounters(); initNav();
+  /* ---- Fuse loop reset ---- */
+  function initFuse() {
+    const burned = document.querySelector('.fuse-burned');
+    if (!burned) return;
+    burned.addEventListener('animationiteration', () => {
+      /* pause to let the "explosion" moment sit, then loop naturally */
+    });
   }
 
-  window.addEventListener('resize', () => { resizeCanvas(); updateTorchPoints(); }, { passive: true });
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-  else init();
+  /* ---- Init ---- */
+  function init() {
+    resizeCanvas();
+    updateTorchPoints();
+    animateCanvas();
+    initReveal();
+    initCounters();
+    initNav();
+    initFuse();
+    initSpotlight();
+  }
+
+  window.addEventListener('resize', () => {
+    resizeCanvas();
+    updateTorchPoints();
+  }, { passive: true });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
