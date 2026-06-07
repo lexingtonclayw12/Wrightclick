@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Torch Interactive — Ignite Your Next Great Idea</title>
+  <meta name="description" content="Torch Interactive is a creative digital agency. We light the fuse that ignites your next great idea." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/torch.css" />
+</head>
+<body>
+
+  <!-- ======================================================
+       NAV
+  ====================================================== -->
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav-logo">
+      <!-- Flame icon -->
+      <span class="nav-logo-icon">
+        <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 2C11 2 6 8 6 13C6 15.76 7.34 18.2 9.5 19.66C9.19 18.78 9 17.86 9 17C9 14.5 11 12 11 12C11 12 13 14.5 13 17C13 17.86 12.81 18.78 12.5 19.66C14.66 18.2 16 15.76 16 13C16 8 11 2 11 2Z" fill="#ff6b1a"/>
+          <path d="M11 14C11 14 9.5 15.5 9.5 17.5C9.5 19.43 10.12 21 11 22C11.88 21 12.5 19.43 12.5 17.5C12.5 15.5 11 14 11 14Z" fill="#ffbf35"/>
+        </svg>
+      </span>
+      Torch Interactive
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#mission"  class="nav-link">Mission</a></li>
+      <li><a href="#work"     class="nav-link">Work</a></li>
+      <li><a href="#contact"  class="nav-link nav-link--cta">Ignite →</a></li>
+    </ul>
+  </nav>
+
+  <!-- ======================================================
+       HERO
+  ====================================================== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-grain"></div>
+
+    <!-- Left Torch -->
+    <div class="torch-left" aria-hidden="true">
+      <div class="torch-wall-glow"></div>
+      <div class="torch-flame-zone">
+        <div class="torch-halo"></div>
+        <div class="flame-stack">
+          <div class="fl fl-outer"></div>
+          <div class="fl fl-mid"></div>
+          <div class="fl fl-inner"></div>
+          <div class="fl fl-core"></div>
+        </div>
+      </div>
+      <div class="torch-cup"></div>
+      <div class="torch-pole"></div>
+      <div class="torch-base-glow"></div>
+    </div>
+
+    <!-- Right Torch -->
+    <div class="torch-right" aria-hidden="true">
+      <div class="torch-wall-glow"></div>
+      <div class="torch-flame-zone">
+        <div class="torch-halo"></div>
+        <div class="flame-stack">
+          <div class="fl fl-outer"></div>
+          <div class="fl fl-mid"></div>
+          <div class="fl fl-inner"></div>
+          <div class="fl fl-core"></div>
+        </div>
+      </div>
+      <div class="torch-cup"></div>
+      <div class="torch-pole"></div>
+      <div class="torch-base-glow"></div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-bracket">[</span>
+        &nbsp;Ignition Sequence Initiated&nbsp;
+        <span class="eyebrow-bracket">]</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="hero-title-solid">TORCH</span>
+        <span class="hero-title-outline">INTERACTIVE</span>
+      </h1>
+
+      <!-- Burning fuse SVG -->
+      <div class="hero-fuse-wrap" aria-hidden="true">
+        <svg class="fuse-svg" viewBox="0 0 620 48" preserveAspectRatio="none">
+          <defs>
+            <filter id="fuseGlow" x="-30%" y="-200%" width="160%" height="500%">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+            <filter id="sparkGlow" x="-200%" y="-200%" width="500%" height="500%">
+              <feGaussianBlur stdDeviation="5" result="blur"/>
+              <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- Unlit fuse track -->
+          <path
+            id="fuseTrack"
+            class="fuse-track"
+            d="M 10 28 C 80 8, 160 44, 240 24 C 320 4, 400 44, 480 28 C 530 18, 570 24, 610 28"
+            pathLength="1"
+          />
+
+          <!-- Burning fuse (animated stroke) -->
+          <path
+            class="fuse-burned"
+            d="M 10 28 C 80 8, 160 44, 240 24 C 320 4, 400 44, 480 28 C 530 18, 570 24, 610 28"
+            pathLength="1"
+          />
+
+          <!-- Moving spark dot -->
+          <g class="fuse-spark">
+            <circle r="5" fill="#ffbf35">
+              <animateMotion dur="3.5s" repeatCount="indefinite" begin="1.4s">
+                <mpath href="#fuseTrack"/>
+              </animateMotion>
+            </circle>
+            <circle r="3" fill="#ffffff" opacity="0.9">
+              <animateMotion dur="3.5s" repeatCount="indefinite" begin="1.4s">
+                <mpath href="#fuseTrack"/>
+              </animateMotion>
+            </circle>
+          </g>
+        </svg>
+      </div>
+
+      <p class="hero-tagline">
+        We light the <em>fuse</em> that ignites<br/>your next great idea.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn--primary">
+          Light the Fuse <span class="btn-arrow">→</span>
+        </a>
+        <a href="#work" class="btn btn--ghost">View Our Work</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       MARQUEE STRIP
+  ====================================================== -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Ignite</span><span class="m-sep">✦</span>
+      <span>Spark</span><span class="m-sep">✦</span>
+      <span>Create</span><span class="m-sep">✦</span>
+      <span>Burn Bright</span><span class="m-sep">✦</span>
+      <span>Illuminate</span><span class="m-sep">✦</span>
+      <span>Detonate Ideas</span><span class="m-sep">✦</span>
+      <span>Light the Fuse</span><span class="m-sep">✦</span>
+      <span>Go Torch</span><span class="m-sep">✦</span>
+      <!-- Duplicate for seamless loop -->
+      <span>Ignite</span><span class="m-sep">✦</span>
+      <span>Spark</span><span class="m-sep">✦</span>
+      <span>Create</span><span class="m-sep">✦</span>
+      <span>Burn Bright</span><span class="m-sep">✦</span>
+      <span>Illuminate</span><span class="m-sep">✦</span>
+      <span>Detonate Ideas</span><span class="m-sep">✦</span>
+      <span>Light the Fuse</span><span class="m-sep">✦</span>
+      <span>Go Torch</span><span class="m-sep">✦</span>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       SERVICES
+  ====================================================== -->
+  <section class="services section" id="services">
+    <div class="container">
+      <div class="services-header">
+        <div>
+          <div class="section-label">What We Ignite</div>
+          <h2 class="section-title">Every Spark,<br/>A New Possibility</h2>
+        </div>
+        <p class="section-desc">From concept to combustion — we fan every flame of your digital presence until it blazes.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card reveal" data-delay="0">
+          <div class="service-spark"></div>
+          <div class="service-num">01</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 40 40" fill="none"><path d="M8 6h24a2 2 0 012 2v6H6V8a2 2 0 012-2z" stroke="currentColor" stroke-width="1.8"/><rect x="6" y="14" width="28" height="20" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M14 22h12M14 27h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Interactive Design</h3>
+          <p>Experiences that pull people in and don't let go. We craft digital products that feel alive — responsive, kinetic, unforgettable.</p>
+        </div>
+
+        <div class="service-card reveal" data-delay="80">
+          <div class="service-spark"></div>
+          <div class="service-num">02</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 40 40" fill="none"><path d="M20 4L4 12v8c0 8 6.4 15.5 16 18 9.6-2.5 16-10 16-18v-8L20 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 20l4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Brand Strategy</h3>
+          <p>A brand isn't a logo — it's a lit fuse. We build brand identities that cut through the dark and demand attention.</p>
+        </div>
+
+        <div class="service-card reveal" data-delay="160">
+          <div class="service-spark"></div>
+          <div class="service-num">03</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="1.8"/><path d="M14 20c0-3.3 2.7-6 6-6s6 2.7 6 6-2.7 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="20" cy="20" r="2" fill="currentColor"/></svg>
+          </div>
+          <h3>Motion & Animation</h3>
+          <p>Static is dead. We animate your story — from micro-interactions to full cinematic sequences that stop thumbs cold.</p>
+        </div>
+
+        <div class="service-card reveal" data-delay="0">
+          <div class="service-spark"></div>
+          <div class="service-num">04</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 40 40" fill="none"><path d="M10 14l-6 6 6 6M30 14l6 6-6 6M22 8l-4 24" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Web Development</h3>
+          <p>Blazing-fast code built to endure. We ship clean, performant frontends with the kind of attention to detail that matters at scale.</p>
+        </div>
+
+        <div class="service-card reveal" data-delay="80">
+          <div class="service-spark"></div>
+          <div class="service-num">05</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 40 40" fill="none"><path d="M6 8h4l4.5 18h15l4.5-14H10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="32" r="2.5" stroke="currentColor" stroke-width="1.8"/><circle cx="28" cy="32" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>
+          </div>
+          <h3>Campaign Ignition</h3>
+          <p>Digital campaigns designed not just to reach but to detonate. Strategy, creative, and execution that create a lasting impact.</p>
+        </div>
+
+        <div class="service-card reveal" data-delay="160">
+          <div class="service-spark"></div>
+          <div class="service-num">06</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 40 40" fill="none"><path d="M10 20a10 10 0 1020 0 10 10 0 00-20 0z" stroke="currentColor" stroke-width="1.8"/><path d="M20 10v10l6 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Always-On Strategy</h3>
+          <p>The fire doesn't go out after launch. We stay in the trenches — iterating, optimising, and keeping your presence burning bright.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       MISSION
+  ====================================================== -->
+  <section class="mission section" id="mission">
+    <div class="mission-grid-overlay"></div>
+    <div class="container">
+      <div class="mission-layout">
+
+        <!-- Left: Dossier card -->
+        <div class="dossier-wrap reveal">
+          <div class="classified-stamp">CLASSIFIED</div>
+          <div class="dossier-card">
+            <div class="dossier-header">
+              <div class="dossier-led"></div>
+              Mission Dossier — TI-0001
+            </div>
+            <div class="dossier-body">
+              <div class="dossier-row">
+                <span class="dk">Agency</span>
+                <span class="dv">Torch Interactive</span>
+              </div>
+              <div class="dossier-row">
+                <span class="dk">Clearance</span>
+                <span class="dv dv--fire">Level IGNITE</span>
+              </div>
+              <div class="dossier-row">
+                <span class="dk">Specialty</span>
+                <span class="dv">Creative Digital Ops</span>
+              </div>
+              <div class="dossier-row">
+                <span class="dk">HQ</span>
+                <span class="dv">Remote-First · Worldwide</span>
+              </div>
+              <div class="dossier-row">
+                <span class="dk">Founded</span>
+                <span class="dv">2019</span>
+              </div>
+              <div class="dossier-row">
+                <span class="dk">Status</span>
+                <span class="dv dv--active">
+                  <span class="active-dot"></span>
+                  Accepting Missions
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Copy + Stats -->
+        <div class="mission-text reveal" data-delay="150">
+          <div class="section-label">Our Mission</div>
+          <h2 class="section-title">Your Mission,<br/>Should You Accept.</h2>
+
+          <p>We didn't build an agency. We assembled a <em>strike team</em> for the most ambitious ideas on the internet — the ones too big, too bold, or too unconventional for anyone else to touch.</p>
+
+          <p>At Torch Interactive, <em>lighting the fuse is just the beginning.</em> We stay with you through the burn — through every sprint, pivot, and campaign — until your idea detonates in the market the way it was always meant to.</p>
+
+          <p>This message will not self-destruct. But your competitors' market share might.</p>
+
+          <div class="mission-stats">
+            <div class="stat-block">
+              <div class="stat-num"><span data-count="180">0</span><span class="stat-suf">+</span></div>
+              <div class="stat-lbl">Missions Completed</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-num"><span data-count="97">0</span><span class="stat-suf">%</span></div>
+              <div class="stat-lbl">Client Retention</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-num"><span data-count="6">0</span><span class="stat-suf">+</span></div>
+              <div class="stat-lbl">Years in the Field</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       PORTFOLIO / WORK
+  ====================================================== -->
+  <section class="portfolio section" id="work">
+    <div class="container">
+      <div class="section-header" style="margin-bottom:0;">
+        <div class="section-label reveal">Ignited Work</div>
+        <h2 class="section-title reveal" data-delay="80">Selected Missions</h2>
+        <p class="section-desc reveal" data-delay="160">A curated look at operations we've run — and the impact left behind.</p>
+      </div>
+
+      <div class="portfolio-grid">
+
+        <div class="pcard pcard--a reveal" data-delay="0">
+          <div class="pcard-bg"></div>
+          <div class="pcard-overlay"></div>
+          <div class="pcard-info">
+            <div class="pcard-tags"><span>Brand Identity</span><span>Motion</span></div>
+            <h3>Helios Rebrand</h3>
+            <p>Full brand overhaul for a global energy startup. Identity, site, and launch campaign. 4× engagement lift.</p>
+            <div class="pcard-cta">View Case Study <span class="btn-arrow">→</span></div>
+          </div>
+        </div>
+
+        <div class="pcard pcard--b reveal" data-delay="120">
+          <div class="pcard-bg"></div>
+          <div class="pcard-overlay"></div>
+          <div class="pcard-info">
+            <div class="pcard-tags"><span>Interactive</span><span>Dev</span></div>
+            <h3>Vanta Platform</h3>
+            <p>Immersive SaaS dashboard with real-time animations. Complexity made effortless.</p>
+            <div class="pcard-cta">View Case Study <span class="btn-arrow">→</span></div>
+          </div>
+        </div>
+
+        <div class="pcard pcard--c reveal" data-delay="0">
+          <div class="pcard-bg"></div>
+          <div class="pcard-overlay"></div>
+          <div class="pcard-info">
+            <div class="pcard-tags"><span>Campaign</span><span>Social</span></div>
+            <h3>Ember Labs</h3>
+            <p>6-month digital campaign for a biotech firm. From zero to 280K followers and a Series B close.</p>
+            <div class="pcard-cta">View Case Study <span class="btn-arrow">→</span></div>
+          </div>
+        </div>
+
+        <div class="pcard pcard--d reveal" data-delay="120">
+          <div class="pcard-bg"></div>
+          <div class="pcard-overlay"></div>
+          <div class="pcard-info">
+            <div class="pcard-tags"><span>E-Commerce</span><span>UX</span></div>
+            <h3>Solstice Store</h3>
+            <p>Premium DTC store with cinematic product storytelling. 230% revenue increase post-launch.</p>
+            <div class="pcard-cta">View Case Study <span class="btn-arrow">→</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       CONTACT / IGNITE CTA
+  ====================================================== -->
+  <section class="ignite-cta" id="contact">
+    <div class="ignite-cta-glow"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="section-label reveal">Ready to Begin</div>
+      <h2 class="reveal" data-delay="80">
+        Ready to<br/><span class="accent">Light the Fuse?</span>
+      </h2>
+      <p class="reveal" data-delay="160">
+        Drop us a line. We respond within 24 hours, and we never ghost a good idea.
+      </p>
+      <div class="reveal" data-delay="240" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="mailto:hello@torchinteractive.com" class="btn btn--primary" style="font-size:1rem;padding:1.05rem 2.75rem;">
+          hello@torchinteractive.com <span class="btn-arrow">→</span>
+        </a>
+        <a href="#work" class="btn btn--ghost">
+          See Our Work
+        </a>
+      </div>
+      <p class="cta-sub reveal" data-delay="320">No retainer lock-in · Remote-first · Worldwide</p>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       FOOTER
+  ====================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-logo">
+          <svg width="20" height="24" viewBox="0 0 22 26" fill="none">
+            <path d="M11 2C11 2 6 8 6 13C6 15.76 7.34 18.2 9.5 19.66C9.19 18.78 9 17.86 9 17C9 14.5 11 12 11 12C11 12 13 14.5 13 17C13 17.86 12.81 18.78 12.5 19.66C14.66 18.2 16 15.76 16 13C16 8 11 2 11 2Z" fill="#ff6b1a"/>
+            <path d="M11 14C11 14 9.5 15.5 9.5 17.5C9.5 19.43 10.12 21 11 22C11.88 21 12.5 19.43 12.5 17.5C12.5 15.5 11 14 11 14Z" fill="#ffbf35"/>
+          </svg>
+          Torch Interactive
+        </div>
+        <ul class="footer-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#mission">Mission</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Torch Interactive. All rights reserved.</span>
+        <span class="footer-tagline">Lighting fuses since 2019 🔥</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/torch.js"></script>
+</body>
+</html>
