@@ -38,16 +38,20 @@
        HERO
   ====================================================== -->
   <section class="hero" id="hero">
-    <div class="hero-bg"></div>
+    <!-- Slow-motion fuse footage as full-bleed background -->
+    <div class="hero-video-bg">
+      <div id="heroYTPlayer"></div>
+    </div>
+    <div class="hero-vignette"></div>
+    <div class="hero-fade-top"></div>
+
     <canvas id="heroCanvas"></canvas>
     <div class="hero-grain"></div>
 
-    <!-- Floating ambient orbs (21st.dev style) -->
     <div class="orb orb--1" aria-hidden="true"></div>
     <div class="orb orb--2" aria-hidden="true"></div>
     <div class="orb orb--3" aria-hidden="true"></div>
 
-    <!-- Cursor spotlight -->
     <div class="hero-spotlight" id="heroSpotlight" aria-hidden="true"></div>
 
     <!-- Left Torch -->
@@ -92,12 +96,13 @@
         <span class="eyebrow-bracket">]</span>
       </div>
 
-      <h1 class="hero-title">
-        <span class="hero-title-solid">TORCH</span>
-        <span class="hero-title-outline">INTERACTIVE</span>
-      </h1>
+      <!-- Spark statement leads into the title -->
+      <div class="hero-spark">
+        <p class="hero-spark-line">One Spark.</p>
+        <p class="hero-spark-accent">That's All It Takes.</p>
+      </div>
 
-      <!-- Burning fuse SVG -->
+      <!-- Burning fuse bridges spark → title -->
       <div class="hero-fuse-wrap" aria-hidden="true">
         <svg class="fuse-svg" viewBox="0 0 620 48" preserveAspectRatio="none">
           <defs>
@@ -116,23 +121,12 @@
               </feMerge>
             </filter>
           </defs>
-
-          <!-- Unlit fuse track -->
-          <path
-            id="fuseTrack"
-            class="fuse-track"
+          <path id="fuseTrack" class="fuse-track"
             d="M 10 28 C 80 8, 160 44, 240 24 C 320 4, 400 44, 480 28 C 530 18, 570 24, 610 28"
-            pathLength="1"
-          />
-
-          <!-- Burning fuse (animated stroke) -->
-          <path
-            class="fuse-burned"
+            pathLength="1" />
+          <path class="fuse-burned"
             d="M 10 28 C 80 8, 160 44, 240 24 C 320 4, 400 44, 480 28 C 530 18, 570 24, 610 28"
-            pathLength="1"
-          />
-
-          <!-- Moving spark dot -->
+            pathLength="1" />
           <g class="fuse-spark">
             <circle r="5" fill="#ffbf35">
               <animateMotion dur="3.5s" repeatCount="indefinite" begin="1.4s">
@@ -147,6 +141,11 @@
           </g>
         </svg>
       </div>
+
+      <h1 class="hero-title">
+        <span class="hero-title-solid">TORCH</span>
+        <span class="hero-title-outline">INTERACTIVE</span>
+      </h1>
 
       <p class="hero-tagline">
         We light the <em>fuse</em> that ignites<br/>your next great idea.
@@ -190,41 +189,6 @@
       <span>Go Torch</span><span class="m-sep">✦</span>
     </div>
   </div>
-
-  <!-- ======================================================
-       IGNITION — CINEMATIC VIDEO BACKGROUND
-  ====================================================== -->
-  <section class="ignition-cinema" id="ignition">
-    <!-- Slow-motion fuse footage plays muted as full-bleed background -->
-    <div class="ignition-video-bg">
-      <iframe
-        src="https://www.youtube.com/embed/gLH5aCin_2Q?autoplay=1&mute=1&loop=1&playlist=gLH5aCin_2Q&controls=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
-        title="Ignition footage"
-        allow="autoplay; encrypted-media"
-        frameborder="0"></iframe>
-    </div>
-    <!-- Dark + fire overlays -->
-    <div class="ignition-vignette"></div>
-    <div class="ignition-fade-top"></div>
-    <div class="ignition-fade-bot"></div>
-    <!-- Dramatic copy on top -->
-    <div class="container ignition-container">
-      <div class="ignition-body">
-        <div class="ignition-eyebrow reveal">
-          <span class="ign-led"></span>
-          Live Ignition Feed
-        </div>
-        <h2 class="ignition-headline reveal" data-delay="100">
-          One Spark.<br/>
-          <span class="ignition-accent">That's All It Takes.</span>
-        </h2>
-        <p class="ignition-sub reveal" data-delay="220">
-          This is the moment we live for — the instant an idea catches fire.<br/>
-          We make yours burn like this.
-        </p>
-      </div>
-    </div>
-  </section>
 
   <!-- ======================================================
        SERVICES

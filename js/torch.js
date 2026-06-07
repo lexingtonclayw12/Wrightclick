@@ -178,6 +178,34 @@
     onScroll();
   }
 
+  /* ---- YouTube background — slow-motion fuse at 1.5× speed ---- */
+  function initYouTubeBackground() {
+    const el = document.getElementById('heroYTPlayer');
+    if (!el) return;
+
+    window.onYouTubeIframeAPIReady = function () {
+      new YT.Player('heroYTPlayer', {
+        videoId: 'gLH5aCin_2Q',
+        playerVars: {
+          autoplay: 1, mute: 1, loop: 1,
+          playlist: 'gLH5aCin_2Q',
+          controls: 0, rel: 0,
+          iv_load_policy: 3, modestbranding: 1, playsinline: 1,
+        },
+        events: {
+          onReady: function (e) {
+            e.target.setPlaybackRate(1.5);
+            e.target.playVideo();
+          },
+        },
+      });
+    };
+
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+  }
+
   /* ---- Fuse loop reset ---- */
   function initFuse() {
     const burned = document.querySelector('.fuse-burned');
@@ -197,6 +225,7 @@
     initNav();
     initFuse();
     initSpotlight();
+    initYouTubeBackground();
   }
 
   window.addEventListener('resize', () => {
