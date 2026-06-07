@@ -1,0 +1,58 @@
+name: Deploy Premium Landing to GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - claude/premium-landing-gsap-cbVh5
+    paths:
+      - 'app/**'
+      - '.github/workflows/deploy-pages.yml'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: Configure Pages (sets base_path)
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Install dependencies
+        working-directory: app
+        run: npm ci
+
+      - name: Build (with correct GitHub Pages base path)
+        working-directory: app
+        run: npm run build -- --base="${{ steps.pages.outputs.base_path }}"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: app/dist
+
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
