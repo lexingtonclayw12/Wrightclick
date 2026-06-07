@@ -6,14 +6,14 @@ import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 
 const MENU_ITEMS = [
-  { icon: '⚡',  label: 'Initialize System', sub: 'boot sequence',   color: '#4f46e5' },
-  { icon: '</>',  label: 'View Source',       sub: 'inspect code',    color: '#0891b2', divider: true },
-  { icon: '▲',   label: 'Deploy Core',        sub: 'launch sequence', color: '#7c3aed' },
-  { icon: '_',   label: 'Access Terminal',    sub: 'cli interface',   color: '#0891b2', divider: true },
-  { icon: '×',   label: 'Exit Protocol',      sub: 'shutdown',        color: '#e11d48' },
+  { key: 'init',     icon: '⚡',   label: 'Initialize System', sub: 'boot sequence',   color: '#4f46e5' },
+  { key: 'source',   icon: '</>',  label: 'View Source',       sub: 'inspect code',    color: '#0891b2', divider: true },
+  { key: 'deploy',   icon: '▲',   label: 'Deploy Core',        sub: 'launch sequence', color: '#7c3aed' },
+  { key: 'terminal', icon: '_',   label: 'Access Terminal',    sub: 'cli interface',   color: '#0891b2', divider: true },
+  { key: 'exit',     icon: '×',   label: 'Exit Protocol',      sub: 'shutdown',        color: '#e11d48' },
 ]
 
-export default function ContextMenu({ visible, position }) {
+export default function ContextMenu({ visible, position, onAction }) {
   const menuRef  = useRef(null)
   const itemsRef = useRef([])
 
@@ -70,7 +70,8 @@ export default function ContextMenu({ visible, position }) {
         <div key={item.label}>
           {item.divider && <div className="mx-4 border-t border-[#4f46e5]/08" />}
           <div ref={el => { itemsRef.current[i] = el }}
-               className="ctx-item flex items-center gap-3 px-4 py-2.5 cursor-pointer group">
+               className="ctx-item flex items-center gap-3 px-4 py-2.5 cursor-pointer group"
+               onClick={() => onAction?.(item.key)}>
             <span className="font-mono text-[13px] w-6 text-center shrink-0 transition-colors duration-150"
                   style={{ color: `${item.color}99` }}>
               {item.icon}

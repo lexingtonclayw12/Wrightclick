@@ -13,6 +13,7 @@ import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import VirtualCursor from './VirtualCursor'
 import ContextMenu   from './ContextMenu'
+import Terminal      from './Terminal'
 
 const ICONS = [
   { emoji: '⚡', label: 'system.init' },
@@ -102,7 +103,9 @@ export default function DesktopEnvironment({ phase }) {
   const caBlueRef   = useRef(null)
   const glintBarRef = useRef(null)
   const cursorRef   = useRef(null)
-  const [menuState, setMenuState] = useState({ visible: false, position: { x: 0, y: 0 } })
+  const [menuState,    setMenuState]    = useState({ visible: false, position: { x: 0, y: 0 } })
+  const [showTerminal, setShowTerminal] = useState(false)
+  const [toast,        setToast]        = useState(null)
 
   const uiVisible = phase !== 'hidden'
 
@@ -131,6 +134,29 @@ export default function DesktopEnvironment({ phase }) {
   }, [phase])
 
   const handleMenuReady = (pos) => setMenuState({ visible: true, position: pos })
+
+  const handleAction = (key) => {
+    setMenuState(s => ({ ...s, visible: false }))
+    switch (key) {
+      case 'init':
+        window.location.reload()
+        break
+      case 'source':
+        window.open('https://github.com/lexingtonclayw12/Wrightclick', '_blank', 'noopener,noreferrer')
+        break
+      case 'deploy':
+        setToast('Deploy pipeline armed — build queued')
+        setTimeout(() => setToast(null), 3500)
+        break
+      case 'terminal':
+        setShowTerminal(true)
+        break
+      case 'exit':
+        break
+      default:
+        break
+    }
+  }
 
   return (
     <div className="relative w-full h-full bg-screen overflow-hidden scanlines gpu">
@@ -213,7 +239,20 @@ export default function DesktopEnvironment({ phase }) {
       )}
 
       {/* Context menu */}
-      <ContextMenu visible={menuState.visible} position={menuState.position} />
+      <ContextMenu visible={menuState.visible} position={menuState.position} onAction={handleAction} />
+
+      {/* Terminal modal */}
+      {showTerminal && <Terminal onClose={() => setShowTerminal(false)} />}
+
+      {/* Deploy toast */}
+      {toast && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[200] px-5 py-3 rounded-xl
+                        bg-white/90 backdrop-blur-xl border border-neon-indigo/25
+                        shadow-lg font-mono text-[12px] text-neon-indigo tracking-wide
+                        animate-fade-in-up pointer-events-none">
+          <span className="text-emerald-500 mr-2">✓</span>{toast}
+        </div>
+      )}
 
       <Dock visible={uiVisible} />
     </div>
