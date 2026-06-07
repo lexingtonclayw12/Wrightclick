@@ -36,15 +36,17 @@ jobs:
           cache: npm
           cache-dependency-path: app/package-lock.json
 
-      - name: Configure Pages (sets base_path)
+      - name: Configure Pages (auto-enable + get base_path)
         id: pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Install dependencies
         working-directory: app
         run: npm ci
 
-      - name: Build (with correct GitHub Pages base path)
+      - name: Build with correct GitHub Pages base path
         working-directory: app
         run: npm run build -- --base="${{ steps.pages.outputs.base_path }}"
 
