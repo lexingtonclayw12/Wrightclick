@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carrie's Piano Studio — Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="wp-theme/carries-piano-studio/assets/css/theme.css">
+<style>
+  /* preview-only overrides */
+  body { cursor: default; }
+  .site-header { position: relative; background: rgba(9,9,11,0.95); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .hero { min-height: 100vh; }
+</style>
+</head>
+<body class="home front-page">
+
+<div id="page" class="site">
+  <a class="skip-link screen-reader-text" href="#primary">Skip to content</a>
+
+  <!-- ── HEADER ── -->
+  <header id="masthead" class="site-header" data-scroll="true">
+    <div class="header-inner">
+      <div class="site-branding">
+        <a href="#" class="site-name-link" rel="home">
+          <span class="site-name-script">Carrie's</span>
+          <span class="site-name-serif">Piano Studio</span>
+        </a>
+      </div>
+
+      <nav id="site-navigation" class="main-navigation" aria-label="Primary menu">
+        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="screen-reader-text">Menu</span>
+        </button>
+        <ul id="primary-menu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#lessons">Lessons</a></li>
+          <li><a href="#schedule">Schedule</a></li>
+          <li><a href="#music">Music</a></li>
+          <li><a href="#repertoire">Repertoire</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="#contact" class="header-cta btn btn-gold">Book a Lesson</a>
+    </div>
+  </header>
+
+  <!-- ── MAIN ── -->
+  <main id="primary" class="site-main front-page">
+
+    <!-- HERO -->
+    <section id="hero" class="hero" aria-label="Hero">
+      <div class="hero-video-placeholder" aria-hidden="true"></div>
+      <canvas id="piano-strings-canvas" class="piano-strings-canvas" aria-hidden="true"></canvas>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">
+          <span class="eyebrow-line"></span>
+          Charlotte, NC · Since 1999
+          <span class="eyebrow-line"></span>
+        </p>
+        <h1 class="hero-heading">The Art of Piano</h1>
+        <p class="hero-subheading">Piano lessons for all ages &amp; levels in Charlotte, NC</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-gold btn-lg">Begin Your Journey</a>
+          <a href="#about"   class="btn btn-ghost btn-lg">Meet Carrie</a>
+        </div>
+      </div>
+      <div class="hero-scroll-indicator" aria-hidden="true">
+        <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-strip" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-item"><span class="marquee-dot">♩</span> Piano Lessons</span>
+        <span class="marquee-item"><span class="marquee-dot">♩</span> All Ages &amp; Levels</span>
+        <span class="marquee-item"><span class="marquee-dot">♩</span> Charlotte, NC</span>
+        <span class="marquee-item"><span class="marquee-dot">♩</span> B.S. Music Education</span>
+        <span class="marquee-item"><span class="marquee-dot">♩</span> SMU Alumna</span>
+        <span class="marquee-item"><span class="marquee-dot">♩</span> Teaching Since 1999</span>
+        <span class="marquee-item"><span class="marquee-dot">♩</span> Faber Piano Adventures</span>
+        <span class="marquee-item"><span class="marquee-dot">♩</span> In-Home Studio</span>
+        <span class="marquee-item"><span class="marquee-dot">♩</span> Piano Lessons</span>
+        <span class="marquee-item"><span class="marquee-dot">♩</span> All Ages &amp; Levels</span>
+        <span class="marquee-item"><span class="marquee-dot">♩</span> Charlotte, NC</span>
+        <span class="marquee-item"><span class="marquee-dot">♩</span> B.S. Music Education</span>
+        <span class="marquee-item"><span class="marquee-dot">♩</span> SMU Alumna</span>
+        <span class="marquee-item"><span class="marquee-dot">♩</span> Teaching Since 1999</span>
+        <span class="marquee-item"><span class="marquee-dot">♩</span> Faber Piano Adventures</span>
+        <span class="marquee-item"><span class="marquee-dot">♩</span> In-Home Studio</span>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about" class="section about-section" data-reveal>
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-image-col" data-reveal-child>
+            <div class="about-image-frame">
+              <div class="about-portrait-placeholder">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:80px;height:80px;color:var(--cps-muted)">
+                  <circle cx="50" cy="35" r="20" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M10 90c0-22 18-38 40-38s40 16 40 38" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <div class="about-credential-badge">
+                <span class="badge-label">B.S. Music Education</span>
+                <span class="badge-school">Southern Methodist University</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-text-col" data-reveal-child>
+            <p class="section-eyebrow">About Your Instructor</p>
+            <h2 class="section-title">Music is a lifelong conversation between the hands and the heart.</h2>
+            <p>Carrie Wright holds a B.S. in Music Education from Southern Methodist University (1999), with concentrations in piano and clarinet. She has been teaching piano since high school — a passion that has only deepened over the decades.</p>
+            <p>Carrie teaches students of all ages and levels, from complete beginners discovering the keyboard for the first time to experienced players looking to refine their technique. Her approach blends classical fundamentals with genuine encouragement, creating a studio where every student feels confident and inspired.</p>
+            <div class="about-stats">
+              <div class="stat-item">
+                <span class="stat-number">25+</span>
+                <span class="stat-label">Years Teaching</span>
+              </div>
+              <div class="stat-divider" aria-hidden="true"></div>
+              <div class="stat-item">
+                <span class="stat-number">All</span>
+                <span class="stat-label">Ages Welcome</span>
+              </div>
+              <div class="stat-divider" aria-hidden="true"></div>
+              <div class="stat-item">
+                <span class="stat-number">2</span>
+                <span class="stat-label">Studio Locations</span>
+              </div>
+            </div>
+            <a href="#contact" class="btn btn-gold">Inquire About Lessons</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ORNAMENT -->
+    <div class="ornament-divider" aria-hidden="true">
+      <span class="ornament-line"></span>
+      <span class="ornament-glyph">♪</span>
+      <span class="ornament-line"></span>
+    </div>
+
+    <!-- LESSONS -->
+    <section id="lessons" class="section lessons-section" data-reveal>
+      <div class="container">
+        <div class="section-header text-center" data-reveal-child>
+          <p class="section-eyebrow">What to Expect</p>
+          <h2 class="section-title">Lessons Tailored to You</h2>
+          <p class="section-desc">Whether you're picking up the piano for the first time or advancing your existing skills, lessons are personalized to match your goals, pace, and musical interests.</p>
+        </div>
+        <div class="lessons-grid" data-reveal-child>
+          <div class="lesson-card glass-card">
+            <div class="lesson-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            </div>
+            <h3>Beginner</h3>
+            <p>Start your musical journey from scratch. Learn proper technique, note reading, rhythm, and foundational pieces in a supportive, encouraging environment.</p>
+            <ul class="lesson-features">
+              <li>No prior experience needed</li>
+              <li>Ages 5 and up</li>
+              <li>Faber Piano Adventures curriculum</li>
+            </ul>
+          </div>
+          <div class="lesson-card glass-card featured-card">
+            <div class="card-badge">Most Popular</div>
+            <div class="lesson-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1"/></svg>
+            </div>
+            <h3>Intermediate</h3>
+            <p>Refine your technique, expand your repertoire, and develop musicianship. Explore classical, contemporary, and everything in between.</p>
+            <ul class="lesson-features">
+              <li>Build on existing skills</li>
+              <li>Theory &amp; sight-reading</li>
+              <li>Performance opportunities</li>
+            </ul>
+          </div>
+          <div class="lesson-card glass-card">
+            <div class="lesson-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h3>Advanced &amp; Adult</h3>
+            <p>For adult learners returning to piano or experienced students ready to push their artistry. Flexible scheduling includes homeschool and morning slots.</p>
+            <ul class="lesson-features">
+              <li>Adult &amp; homeschool-friendly</li>
+              <li>Thursday morning slots available</li>
+              <li>Goal-oriented curriculum</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section id="schedule" class="section schedule-section dark-section" data-reveal>
+      <div class="container">
+        <div class="section-header text-center" data-reveal-child>
+          <p class="section-eyebrow">Availability</p>
+          <h2 class="section-title">Studio Schedule</h2>
+        </div>
+        <div class="schedule-grid" data-reveal-child>
+          <div class="schedule-card glass-card">
+            <div class="schedule-day">Monday</div>
+            <div class="schedule-time">Afternoon</div>
+            <div class="schedule-note">All ages &amp; levels</div>
+          </div>
+          <div class="schedule-card glass-card">
+            <div class="schedule-day">Thursday</div>
+            <div class="schedule-time">Morning &amp; Afternoon</div>
+            <div class="schedule-note">Mornings reserved for homeschool students &amp; adults</div>
+          </div>
+        </div>
+        <p class="schedule-note-global text-center">Schedule is subject to change. Contact Carrie to check current availability and reserve your spot.</p>
+        <div class="text-center" data-reveal-child>
+          <a href="#contact" class="btn btn-gold">Check Availability</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="section testimonials-section dark-section" data-reveal>
+      <div class="container">
+        <div class="section-header text-center" data-reveal-child>
+          <p class="section-eyebrow">What Families Say</p>
+          <h2 class="section-title">Student Stories</h2>
+        </div>
+        <div class="testimonials-track-wrap" data-reveal-child>
+          <div class="testimonials-track">
+            <div class="testimonial-card glass-card">
+              <div class="testimonial-stars"><span class="star star-filled">★</span><span class="star star-filled">★</span><span class="star star-filled">★</span><span class="star star-filled">★</span><span class="star star-filled">★</span></div>
+              <blockquote class="testimonial-quote"><p>Carrie has a wonderful gift for meeting students exactly where they are. My daughter started with no experience and now plays beautifully. The patience and encouragement she shows every session is remarkable.</p></blockquote>
+              <cite class="testimonial-author"><span class="author-name">Sarah M.</span><span class="author-role">Parent of Student</span></cite>
+            </div>
+            <div class="testimonial-card glass-card">
+              <div class="testimonial-stars"><span class="star star-filled">★</span><span class="star star-filled">★</span><span class="star star-filled">★</span><span class="star star-filled">★</span><span class="star star-filled">★</span></div>
+              <blockquote class="testimonial-quote"><p>As an adult returning to piano after 20 years away, I was nervous. Carrie made it completely comfortable and tailored every lesson to exactly what I needed. Highly recommend!</p></blockquote>
+              <cite class="testimonial-author"><span class="author-name">James T.</span><span class="author-role">Adult Student</span></cite>
+            </div>
+            <div class="testimonial-card glass-card">
+              <div class="testimonial-stars"><span class="star star-filled">★</span><span class="star star-filled">★</span><span class="star star-filled">★</span><span class="star star-filled">★</span><span class="star star-filled">★</span></div>
+              <blockquote class="testimonial-quote"><p>My son has been with Carrie for three years. His technique and love for music has grown tremendously. She has a way of making even difficult pieces feel achievable.</p></blockquote>
+              <cite class="testimonial-author"><span class="author-name">Michelle K.</span><span class="author-role">Parent of Student</span></cite>
+            </div>
+            <div class="testimonial-card glass-card">
+              <div class="testimonial-stars"><span class="star star-filled">★</span><span class="star star-filled">★</span><span class="star star-filled">★</span><span class="star star-filled">★</span><span class="star star-filled">★</span></div>
+              <blockquote class="testimonial-quote"><p>We drive 30 minutes to lessons because Carrie is simply the best piano teacher we've encountered. Worth every mile. Our homeschool student loves Thursday mornings with her.</p></blockquote>
+              <cite class="testimonial-author"><span class="author-name">Rachel D.</span><span class="author-role">Homeschool Parent</span></cite>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REPERTOIRE -->
+    <section id="repertoire" class="section repertoire-section" data-reveal>
+      <div class="container">
+        <div class="repertoire-grid">
+          <div class="repertoire-text" data-reveal-child>
+            <p class="section-eyebrow">Materials</p>
+            <h2 class="section-title">Repertoire &amp; Supplies</h2>
+            <p>Carrie uses the Faber Piano Adventures series as the primary curriculum — one of the most respected and comprehensive piano methods available. It provides a clear, musical, and enjoyable progression from beginner through advanced levels.</p>
+            <p>Students will also need access to a piano or keyboard at home to practice between sessions. Carrie can advise on suitable instruments for every budget.</p>
+            <div class="supplies-list">
+              <div class="supply-item">
+                <div class="supply-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+                <div><strong>Faber Piano Adventures</strong><span>Primary method books — level selected at first lesson</span></div>
+              </div>
+              <div class="supply-item">
+                <div class="supply-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                <div><strong>Piano or Keyboard at Home</strong><span>Required for daily practice. At minimum 61 weighted keys recommended.</span></div>
+              </div>
+              <div class="supply-item">
+                <div class="supply-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                <div><strong>Supplemental Music Folder</strong><span>For sheet music, worksheets, and notes from lessons</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="repertoire-visual" data-reveal-child aria-hidden="true">
+            <div class="piano-keys-graphic">
+              <div class="piano-key white-key"></div>
+              <div class="piano-key black-key"></div>
+              <div class="piano-key white-key"></div>
+              <div class="piano-key black-key"></div>
+              <div class="piano-key white-key"></div>
+              <div class="piano-key white-key"></div>
+              <div class="piano-key black-key"></div>
+              <div class="piano-key white-key"></div>
+              <div class="piano-key black-key"></div>
+              <div class="piano-key white-key"></div>
+              <div class="piano-key black-key"></div>
+              <div class="piano-key white-key"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section id="location" class="section location-section dark-section" data-reveal>
+      <div class="container">
+        <div class="section-header text-center" data-reveal-child>
+          <p class="section-eyebrow">Where to Find Us</p>
+          <h2 class="section-title">Studio Locations</h2>
+        </div>
+        <div class="locations-grid" data-reveal-child>
+          <div class="location-card glass-card">
+            <div class="location-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            <h3>Home Studio</h3>
+            <p>Latta Springs Subdivision off Beatties Ford Road, near Latta Springs Plantation and Francis Bradley Middle School, Charlotte, NC</p>
+            <span class="location-tag">Primary Location</span>
+          </div>
+          <div class="location-card glass-card">
+            <div class="location-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+            <h3>Hawthorne Lane UMC</h3>
+            <p>For students closer to Uptown Charlotte. Lessons held at Hawthorne Lane United Methodist Church — contact Carrie for specific room details.</p>
+            <span class="location-tag">Secondary Location</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact-section" data-reveal>
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info" data-reveal-child>
+            <p class="section-eyebrow">Get in Touch</p>
+            <h2 class="section-title">Ready to Start?</h2>
+            <p>Reach out to ask about availability, pricing, or to schedule a meet-and-greet. Carrie typically responds within one business day.</p>
+            <div class="contact-methods">
+              <a href="mailto:carriewright1977@me.com" class="contact-method">
+                <div class="contact-method-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                <div>
+                  <span class="contact-method-label">Email</span>
+                  <span class="contact-method-value">carriewright1977@me.com</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="contact-form-wrap glass-card" data-reveal-child>
+            <form id="cps-contact-form" class="contact-form" novalidate>
+              <div class="form-group">
+                <label for="cps-name">Full Name <span aria-hidden="true">*</span></label>
+                <input type="text" id="cps-name" name="name" autocomplete="name" required>
+              </div>
+              <div class="form-group">
+                <label for="cps-email">Email Address <span aria-hidden="true">*</span></label>
+                <input type="email" id="cps-email" name="email" autocomplete="email" required>
+              </div>
+              <div class="form-group">
+                <label for="cps-level">Experience Level</label>
+                <select id="cps-level" name="level">
+                  <option value="">Select a level…</option>
+                  <option value="beginner">Complete Beginner</option>
+                  <option value="some">Some Prior Experience</option>
+                  <option value="intermediate">Intermediate</option>
+                  <option value="advanced">Advanced</option>
+                  <option value="returning-adult">Returning Adult Learner</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="cps-message">Message <span aria-hidden="true">*</span></label>
+                <textarea id="cps-message" name="message" rows="5" placeholder="Tell Carrie a little about yourself or your student…" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-gold btn-full">
+                <span class="btn-text">Send Message</span>
+                <span class="btn-loading" aria-hidden="true"></span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="colophon" class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="footer-logo-link">
+          <span class="site-name-script">Carrie's</span>
+          <span class="site-name-serif">Piano Studio</span>
+        </a>
+        <p class="footer-tagline">Piano lessons for all ages &amp; levels</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#lessons">Lessons</a></li>
+          <li><a href="#schedule">Schedule</a></li>
+          <li><a href="#music">Music</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact-block">
+        <h4>Contact</h4>
+        <p><a href="mailto:carriewright1977@me.com" class="footer-email">carriewright1977@me.com</a></p>
+        <p>Charlotte, NC</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="copyright">&copy; 2024 Carrie's Piano Studio. All rights reserved.</p>
+      <p class="footer-credit">Design by <a href="https://wrightclickstudio.com" target="_blank" rel="noopener">Wright Click Studio</a></p>
+    </div>
+  </footer>
+</div>
+
+<script src="wp-theme/carries-piano-studio/assets/js/theme.js"></script>
+</body>
+</html>
