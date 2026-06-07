@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #07070f;
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Fine Grid Background ──────────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ─── Neon Glow Utilities ───────────────────────────────── */
+.glow-indigo { filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.8)); }
+.glow-cyan   { filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.8)); }
+.glow-soft   { filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.25)); }
+
+/* ─── Scanline Overlay ──────────────────────────────────── */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.06) 3px,
+    rgba(0, 0, 0, 0.06) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── Chromatic Aberration Text ──────────────────────────── */
+.company-name-wrap {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+}
+.company-name-wrap .ca-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+}
+.ca-red  { color: #ff2244; mix-blend-mode: screen; }
+.ca-blue { color: #2244ff; mix-blend-mode: screen; }
+
+/* ─── Glint Sweep ───────────────────────────────────────── */
+.glint-sweep {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.glint-bar {
+  position: absolute;
+  top: 0;
+  left: -40%;
+  width: 28%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 70%
+  );
+  transform: skewX(-12deg);
+  will-change: transform;
+}
+
+/* ─── Desktop Icon Card ──────────────────────────────────── */
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.desktop-icon:hover { opacity: 0.8; }
+.desktop-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(20, 20, 40, 0.8);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+.desktop-icon-label {
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+
+/* ─── Context Menu ───────────────────────────────────────── */
+.ctx-menu {
+  background: rgba(7, 7, 18, 0.92);
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(99, 102, 241, 0.08),
+    0 0 40px rgba(99, 102, 241, 0.12),
+    0 25px 80px rgba(0, 0, 0, 0.85);
+}
+.ctx-item {
+  position: relative;
+  transition: background 0.15s;
+}
+.ctx-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #6366f1;
+  opacity: 0;
+  transition: opacity 0.15s;
+  border-radius: 0 2px 2px 0;
+}
+.ctx-item:hover::before { opacity: 1; }
+.ctx-item:hover { background: rgba(99, 102, 241, 0.08); }
+
+/* ─── Dock Blur ──────────────────────────────────────────── */
+.dock-bar {
+  background: rgba(10, 10, 22, 0.7);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: none;
+}
+
+/* ─── Responsive Monitor Scale ───────────────────────────── */
+.monitor-responsive {
+  transform-origin: center center;
+  width: min(560px, 88vw);
+}
+
+/* ─── Vignette Overlay ───────────────────────────────────── */
+.vignette {
+  background: radial-gradient(ellipse at center,
+    transparent 45%,
+    rgba(7, 7, 15, 0.6) 75%,
+    rgba(7, 7, 15, 0.95) 100%
+  );
+}
+
+/* ─── Hardware-accelerated defaults ─────────────────────── */
+.gpu {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
