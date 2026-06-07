@@ -17,7 +17,6 @@
   ====================================================== -->
   <nav class="nav" id="nav">
     <a href="#hero" class="nav-logo">
-      <!-- Flame icon -->
       <span class="nav-logo-icon">
         <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M11 2C11 2 6 8 6 13C6 15.76 7.34 18.2 9.5 19.66C9.19 18.78 9 17.86 9 17C9 14.5 11 12 11 12C11 12 13 14.5 13 17C13 17.86 12.81 18.78 12.5 19.66C14.66 18.2 16 15.76 16 13C16 8 11 2 11 2Z" fill="#ff6b1a"/>
@@ -42,12 +41,10 @@
     <canvas id="heroCanvas"></canvas>
     <div class="hero-grain"></div>
 
-    <!-- Floating ambient orbs (21st.dev style) -->
     <div class="orb orb--1" aria-hidden="true"></div>
     <div class="orb orb--2" aria-hidden="true"></div>
     <div class="orb orb--3" aria-hidden="true"></div>
 
-    <!-- Cursor spotlight -->
     <div class="hero-spotlight" id="heroSpotlight" aria-hidden="true"></div>
 
     <!-- Left Torch -->
@@ -116,23 +113,12 @@
               </feMerge>
             </filter>
           </defs>
-
-          <!-- Unlit fuse track -->
-          <path
-            id="fuseTrack"
-            class="fuse-track"
+          <path id="fuseTrack" class="fuse-track"
             d="M 10 28 C 80 8, 160 44, 240 24 C 320 4, 400 44, 480 28 C 530 18, 570 24, 610 28"
-            pathLength="1"
-          />
-
-          <!-- Burning fuse (animated stroke) -->
-          <path
-            class="fuse-burned"
+            pathLength="1" />
+          <path class="fuse-burned"
             d="M 10 28 C 80 8, 160 44, 240 24 C 320 4, 400 44, 480 28 C 530 18, 570 24, 610 28"
-            pathLength="1"
-          />
-
-          <!-- Moving spark dot -->
+            pathLength="1" />
           <g class="fuse-spark">
             <circle r="5" fill="#ffbf35">
               <animateMotion dur="3.5s" repeatCount="indefinite" begin="1.4s">
@@ -179,7 +165,6 @@
       <span>Detonate Ideas</span><span class="m-sep">&#10022;</span>
       <span>Light the Fuse</span><span class="m-sep">&#10022;</span>
       <span>Go Torch</span><span class="m-sep">&#10022;</span>
-      <!-- Duplicate for seamless loop -->
       <span>Ignite</span><span class="m-sep">&#10022;</span>
       <span>Spark</span><span class="m-sep">&#10022;</span>
       <span>Create</span><span class="m-sep">&#10022;</span>
@@ -192,47 +177,36 @@
   </div>
 
   <!-- ======================================================
-       VIDEO — THE MOMENT OF IGNITION
+       IGNITION — CINEMATIC VIDEO BACKGROUND
   ====================================================== -->
-  <section class="video-section section" id="ignition">
-    <div class="container">
-      <div class="video-section-header">
-        <div class="section-label reveal">The Spark</div>
-        <h2 class="section-title reveal" data-delay="80">This Is What We<br/>Light the Fuse For</h2>
-        <p class="section-desc reveal" data-delay="160">One spark. That's all it takes. Watch it happen in real time — then imagine what your idea looks like when it catches.</p>
-      </div>
-
-      <div class="video-wrap reveal" data-delay="240">
-        <div class="video-frame-outer">
-          <div class="video-classification">
-            <span class="video-classification-led"></span>
-            Live ignition footage — classified reference material
-          </div>
-
-          <div class="video-container">
-            <!-- Corner brackets -->
-            <div class="video-corner video-corner--tl"></div>
-            <div class="video-corner video-corner--tr"></div>
-            <div class="video-corner video-corner--bl"></div>
-            <div class="video-corner video-corner--br"></div>
-
-            <iframe
-              src="https://www.youtube.com/embed/gLH5aCin_2Q?rel=0&modestbranding=1&color=white&iv_load_policy=3"
-              title="Match Lighting a Fuse — Slow Motion"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
-          </div>
-
-          <div class="video-fuse">
-            <div class="video-fuse-spark"></div>
-          </div>
-
-          <div class="video-meta">
-            <span>Source: Match-Lighting-Fuse &middot; Ultra Slow Motion</span>
-            <span class="video-meta-tag">Ignition Protocol</span>
-          </div>
+  <section class="ignition-cinema" id="ignition">
+    <!-- Slow-motion fuse footage plays muted as full-bleed background -->
+    <div class="ignition-video-bg">
+      <iframe
+        src="https://www.youtube.com/embed/gLH5aCin_2Q?autoplay=1&mute=1&loop=1&playlist=gLH5aCin_2Q&controls=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
+        title="Ignition footage"
+        allow="autoplay; encrypted-media"
+        frameborder="0"></iframe>
+    </div>
+    <!-- Dark + fire overlays -->
+    <div class="ignition-vignette"></div>
+    <div class="ignition-fade-top"></div>
+    <div class="ignition-fade-bot"></div>
+    <!-- Dramatic copy on top -->
+    <div class="container ignition-container">
+      <div class="ignition-body">
+        <div class="ignition-eyebrow reveal">
+          <span class="ign-led"></span>
+          Live Ignition Feed
         </div>
+        <h2 class="ignition-headline reveal" data-delay="100">
+          One Spark.<br/>
+          <span class="ignition-accent">That's All It Takes.</span>
+        </h2>
+        <p class="ignition-sub reveal" data-delay="220">
+          This is the moment we live for — the instant an idea catches fire.<br/>
+          We make yours burn like this.
+        </p>
       </div>
     </div>
   </section>
@@ -330,7 +304,6 @@
     <div class="container">
       <div class="mission-layout">
 
-        <!-- Left: Dossier card -->
         <div class="dossier-wrap reveal">
           <div class="classified-stamp">CLASSIFIED</div>
           <div class="dossier-card">
@@ -370,17 +343,12 @@
           </div>
         </div>
 
-        <!-- Right: Copy + Stats -->
         <div class="mission-text reveal" data-delay="150">
           <div class="section-label">Our Mission</div>
           <h2 class="section-title">Your Mission,<br/>Should You Accept.</h2>
-
           <p>We didn't build an agency. We assembled a <em>strike team</em> for the most ambitious ideas on the internet — the ones too big, too bold, or too unconventional for anyone else to touch.</p>
-
           <p>At Torch Interactive, <em>lighting the fuse is just the beginning.</em> We stay with you through the burn — through every sprint, pivot, and campaign — until your idea detonates in the market the way it was always meant to.</p>
-
           <p>This message will not self-destruct. But your competitors' market share might.</p>
-
           <div class="mission-stats">
             <div class="stat-block">
               <div class="stat-num"><span data-count="180">0</span><span class="stat-suf">+</span></div>
@@ -411,9 +379,7 @@
         <h2 class="section-title reveal" data-delay="80">Selected Missions</h2>
         <p class="section-desc reveal" data-delay="160">A curated look at operations we've run — and the impact left behind.</p>
       </div>
-
       <div class="portfolio-grid">
-
         <div class="pcard pcard--a reveal" data-delay="0">
           <div class="pcard-bg"></div>
           <div class="pcard-overlay"></div>
@@ -424,7 +390,6 @@
             <div class="pcard-cta">View Case Study <span class="btn-arrow">&rarr;</span></div>
           </div>
         </div>
-
         <div class="pcard pcard--b reveal" data-delay="120">
           <div class="pcard-bg"></div>
           <div class="pcard-overlay"></div>
@@ -435,7 +400,6 @@
             <div class="pcard-cta">View Case Study <span class="btn-arrow">&rarr;</span></div>
           </div>
         </div>
-
         <div class="pcard pcard--c reveal" data-delay="0">
           <div class="pcard-bg"></div>
           <div class="pcard-overlay"></div>
@@ -446,7 +410,6 @@
             <div class="pcard-cta">View Case Study <span class="btn-arrow">&rarr;</span></div>
           </div>
         </div>
-
         <div class="pcard pcard--d reveal" data-delay="120">
           <div class="pcard-bg"></div>
           <div class="pcard-overlay"></div>
@@ -457,7 +420,6 @@
             <div class="pcard-cta">View Case Study <span class="btn-arrow">&rarr;</span></div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -479,9 +441,7 @@
         <a href="mailto:hello@torchinteractive.com" class="btn btn--primary" style="font-size:1rem;padding:1.05rem 2.75rem;">
           hello@torchinteractive.com <span class="btn-arrow">&rarr;</span>
         </a>
-        <a href="#work" class="btn btn--ghost">
-          See Our Work
-        </a>
+        <a href="#work" class="btn btn--ghost">See Our Work</a>
       </div>
       <p class="cta-sub reveal" data-delay="320">No retainer lock-in &middot; Remote-first &middot; Worldwide</p>
     </div>
