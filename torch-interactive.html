@@ -192,47 +192,36 @@
   </div>
 
   <!-- ======================================================
-       VIDEO — THE MOMENT OF IGNITION
+       IGNITION — CINEMATIC VIDEO BACKGROUND
   ====================================================== -->
-  <section class="video-section section" id="ignition">
-    <div class="container">
-      <div class="video-section-header">
-        <div class="section-label reveal">The Spark</div>
-        <h2 class="section-title reveal" data-delay="80">This Is What We<br/>Light the Fuse For</h2>
-        <p class="section-desc reveal" data-delay="160">One spark. That's all it takes. Watch it happen in real time — then imagine what your idea looks like when it catches.</p>
-      </div>
-
-      <div class="video-wrap reveal" data-delay="240">
-        <div class="video-frame-outer">
-          <div class="video-classification">
-            <span class="video-classification-led"></span>
-            Live ignition footage — classified reference material
-          </div>
-
-          <div class="video-container">
-            <!-- Corner brackets -->
-            <div class="video-corner video-corner--tl"></div>
-            <div class="video-corner video-corner--tr"></div>
-            <div class="video-corner video-corner--bl"></div>
-            <div class="video-corner video-corner--br"></div>
-
-            <iframe
-              src="https://www.youtube.com/embed/gLH5aCin_2Q?rel=0&modestbranding=1&color=white&iv_load_policy=3"
-              title="Match Lighting a Fuse — Slow Motion"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
-          </div>
-
-          <div class="video-fuse">
-            <div class="video-fuse-spark"></div>
-          </div>
-
-          <div class="video-meta">
-            <span>Source: Match-Lighting-Fuse · Ultra Slow Motion</span>
-            <span class="video-meta-tag">Ignition Protocol</span>
-          </div>
+  <section class="ignition-cinema" id="ignition">
+    <!-- Slow-motion fuse footage plays muted as full-bleed background -->
+    <div class="ignition-video-bg">
+      <iframe
+        src="https://www.youtube.com/embed/gLH5aCin_2Q?autoplay=1&mute=1&loop=1&playlist=gLH5aCin_2Q&controls=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
+        title="Ignition footage"
+        allow="autoplay; encrypted-media"
+        frameborder="0"></iframe>
+    </div>
+    <!-- Dark + fire overlays -->
+    <div class="ignition-vignette"></div>
+    <div class="ignition-fade-top"></div>
+    <div class="ignition-fade-bot"></div>
+    <!-- Dramatic copy on top -->
+    <div class="container ignition-container">
+      <div class="ignition-body">
+        <div class="ignition-eyebrow reveal">
+          <span class="ign-led"></span>
+          Live Ignition Feed
         </div>
+        <h2 class="ignition-headline reveal" data-delay="100">
+          One Spark.<br/>
+          <span class="ignition-accent">That's All It Takes.</span>
+        </h2>
+        <p class="ignition-sub reveal" data-delay="220">
+          This is the moment we live for — the instant an idea catches fire.<br/>
+          We make yours burn like this.
+        </p>
       </div>
     </div>
   </section>
