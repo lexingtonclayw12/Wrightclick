@@ -4,12 +4,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        'screen':   '#07070f',
-        'chassis':  '#12121f',
-        'bezel':    '#0e0e1c',
-        'neon-indigo': '#6366f1',
-        'neon-cyan':   '#06b6d4',
-        'neon-purple': '#a855f7',
+        'screen':      '#eef0f8',
+        'chassis':     '#d8dcea',
+        'bezel':       '#e5e8f2',
+        'neon-indigo': '#4f46e5',
+        'neon-cyan':   '#0891b2',
+        'neon-purple': '#7c3aed',
       },
       fontFamily: {
         display: ['Orbitron', 'sans-serif'],

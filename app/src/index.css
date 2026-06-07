@@ -8,25 +8,25 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: #07070f;
-  color: #e2e8f0;
+  background-color: #eef0f8;
+  color: #0f1029;
   -webkit-font-smoothing: antialiased;
 }
 
 /* ─── Fine Grid Background ──────────────────────────────── */
 .grid-bg {
   background-image:
-    linear-gradient(rgba(99, 102, 241, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99, 102, 241, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(79, 70, 229, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 70, 229, 0.06) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
 /* ─── Neon Glow Utilities ───────────────────────────────── */
-.glow-indigo { filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.8)); }
-.glow-cyan   { filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.8)); }
-.glow-soft   { filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.25)); }
+.glow-indigo { filter: drop-shadow(0 0 6px rgba(79, 70, 229, 0.5)); }
+.glow-cyan   { filter: drop-shadow(0 0 6px rgba(8, 145, 178, 0.5)); }
+.glow-soft   { filter: drop-shadow(0 0 16px rgba(79, 70, 229, 0.18)); }
 
-/* ─── Scanline Overlay ──────────────────────────────────── */
+/* ─── Scanlines — very subtle on light bg ───────────────── */
 .scanlines::after {
   content: '';
   position: absolute;
@@ -35,8 +35,8 @@ body {
     0deg,
     transparent,
     transparent 3px,
-    rgba(0, 0, 0, 0.06) 3px,
-    rgba(0, 0, 0, 0.06) 4px
+    rgba(79, 70, 229, 0.018) 3px,
+    rgba(79, 70, 229, 0.018) 4px
   );
   pointer-events: none;
   z-index: 1;
@@ -57,8 +57,8 @@ body {
   pointer-events: none;
   user-select: none;
 }
-.ca-red  { color: #ff2244; mix-blend-mode: screen; }
-.ca-blue { color: #2244ff; mix-blend-mode: screen; }
+.ca-red  { color: #e11d48; mix-blend-mode: multiply; }
+.ca-blue { color: #2563eb; mix-blend-mode: multiply; }
 
 /* ─── Glint Sweep ───────────────────────────────────────── */
 .glint-sweep {
@@ -76,7 +76,7 @@ body {
   background: linear-gradient(
     105deg,
     transparent 30%,
-    rgba(255, 255, 255, 0.18) 50%,
+    rgba(255, 255, 255, 0.55) 50%,
     transparent 70%
   );
   transform: skewX(-12deg);
@@ -92,13 +92,14 @@ body {
   cursor: pointer;
   transition: opacity 0.2s;
 }
-.desktop-icon:hover { opacity: 0.8; }
+.desktop-icon:hover { opacity: 0.75; }
 .desktop-icon-box {
   width: 52px;
   height: 52px;
   border-radius: 12px;
-  background: rgba(20, 20, 40, 0.8);
-  border: 1px solid rgba(99, 102, 241, 0.25);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(79, 70, 229, 0.18);
+  box-shadow: 0 2px 12px rgba(79, 70, 229, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,24 +108,24 @@ body {
 .desktop-icon-label {
   font-size: 10px;
   font-family: 'JetBrains Mono', monospace;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(15, 16, 41, 0.5);
   text-align: center;
 }
 
-/* ─── Context Menu ───────────────────────────────────────── */
+/* ─── Context Menu — light glassmorphism ─────────────────── */
 .ctx-menu {
-  background: rgba(7, 7, 18, 0.92);
-  backdrop-filter: blur(28px) saturate(160%);
-  -webkit-backdrop-filter: blur(28px) saturate(160%);
-  border: 1px solid rgba(99, 102, 241, 0.35);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(79, 70, 229, 0.2);
   box-shadow:
-    0 0 0 1px rgba(99, 102, 241, 0.08),
-    0 0 40px rgba(99, 102, 241, 0.12),
-    0 25px 80px rgba(0, 0, 0, 0.85);
+    0 0 0 1px rgba(79, 70, 229, 0.06),
+    0 0 32px rgba(79, 70, 229, 0.1),
+    0 20px 60px rgba(15, 16, 41, 0.18);
 }
 .ctx-item {
   position: relative;
-  transition: background 0.15s;
+  transition: background 0.12s;
 }
 .ctx-item::before {
   content: '';
@@ -133,21 +134,22 @@ body {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: #6366f1;
+  background: #4f46e5;
   opacity: 0;
-  transition: opacity 0.15s;
+  transition: opacity 0.12s;
   border-radius: 0 2px 2px 0;
 }
 .ctx-item:hover::before { opacity: 1; }
-.ctx-item:hover { background: rgba(99, 102, 241, 0.08); }
+.ctx-item:hover { background: rgba(79, 70, 229, 0.06); }
 
-/* ─── Dock Blur ──────────────────────────────────────────── */
+/* ─── Dock Blur — light ──────────────────────────────────── */
 .dock-bar {
-  background: rgba(10, 10, 22, 0.7);
-  backdrop-filter: blur(20px) saturate(150%);
-  -webkit-backdrop-filter: blur(20px) saturate(150%);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(79, 70, 229, 0.12);
   border-bottom: none;
+  box-shadow: 0 -4px 24px rgba(79, 70, 229, 0.06);
 }
 
 /* ─── Responsive Monitor Scale ───────────────────────────── */
@@ -156,12 +158,12 @@ body {
   width: min(560px, 88vw);
 }
 
-/* ─── Vignette Overlay ───────────────────────────────────── */
+/* ─── Vignette Overlay — light ───────────────────────────── */
 .vignette {
   background: radial-gradient(ellipse at center,
     transparent 45%,
-    rgba(7, 7, 15, 0.6) 75%,
-    rgba(7, 7, 15, 0.95) 100%
+    rgba(238, 240, 248, 0.5) 75%,
+    rgba(238, 240, 248, 0.9) 100%
   );
 }
 

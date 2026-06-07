@@ -102,8 +102,10 @@ export default function HeroScene() {
     // MICRO-INTERACTION — cursor + context menu  (~6.8s → ~8.5s)
     // ─────────────────────────────────────────────────────
     tl.addLabel('interact', 'phase3+=2.5')
-    tl.call(() => setDesktopPhase('cursor'), null, 'interact')
-    tl.call(() => setDesktopPhase('menu'),   null, 'interact+=2.0')
+    tl.call(() => setDesktopPhase('cursor'),  null, 'interact')
+    tl.call(() => setDesktopPhase('menu'),    null, 'interact+=2.0')
+    // Cursor + menu have faded; page rests in settled state
+    tl.call(() => setDesktopPhase('settled'), null, 'interact+=5.8')
 
     return () => {
       tl.kill()
@@ -129,8 +131,8 @@ export default function HeroScene() {
           height: '560px',
           background: `
             radial-gradient(ellipse at 50% 44%,
-              rgba(99,102,241,0.10) 0%,
-              rgba(6,182,212,0.05) 40%,
+              rgba(79,70,229,0.09) 0%,
+              rgba(8,145,178,0.05) 40%,
               transparent 68%
             )
           `,
