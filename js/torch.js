@@ -138,6 +138,37 @@
     document.querySelectorAll('[data-count]').forEach(el => obs.observe(el));
   }
 
+  /* ---- Cursor spotlight ---- */
+  function initSpotlight() {
+    const spotlight = document.getElementById('heroSpotlight');
+    const hero      = document.querySelector('.hero');
+    if (!spotlight || !hero) return;
+
+    let targetX = hero.offsetWidth  / 2;
+    let targetY = hero.offsetHeight / 2;
+    let currentX = targetX;
+    let currentY = targetY;
+
+    hero.addEventListener('mousemove', (e) => {
+      const r = hero.getBoundingClientRect();
+      targetX = e.clientX - r.left;
+      targetY = e.clientY - r.top;
+    });
+    hero.addEventListener('mouseleave', () => {
+      targetX = hero.offsetWidth  / 2;
+      targetY = hero.offsetHeight / 2;
+    });
+
+    /* Smooth lerp so it follows with a slight lag */
+    (function lerp() {
+      currentX += (targetX - currentX) * 0.08;
+      currentY += (targetY - currentY) * 0.08;
+      spotlight.style.left = currentX + 'px';
+      spotlight.style.top  = currentY + 'px';
+      requestAnimationFrame(lerp);
+    })();
+  }
+
   /* ---- Nav scroll state ---- */
   function initNav() {
     const nav = document.querySelector('.nav');
@@ -165,6 +196,7 @@
     initCounters();
     initNav();
     initFuse();
+    initSpotlight();
   }
 
   window.addEventListener('resize', () => {

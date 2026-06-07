@@ -42,6 +42,14 @@
     <canvas id="heroCanvas"></canvas>
     <div class="hero-grain"></div>
 
+    <!-- Floating ambient orbs (21st.dev style) -->
+    <div class="orb orb--1" aria-hidden="true"></div>
+    <div class="orb orb--2" aria-hidden="true"></div>
+    <div class="orb orb--3" aria-hidden="true"></div>
+
+    <!-- Cursor spotlight -->
+    <div class="hero-spotlight" id="heroSpotlight" aria-hidden="true"></div>
+
     <!-- Left Torch -->
     <div class="torch-left" aria-hidden="true">
       <div class="torch-wall-glow"></div>
@@ -184,6 +192,52 @@
   </div>
 
   <!-- ======================================================
+       VIDEO — THE MOMENT OF IGNITION
+  ====================================================== -->
+  <section class="video-section section" id="ignition">
+    <div class="container">
+      <div class="video-section-header">
+        <div class="section-label reveal">The Spark</div>
+        <h2 class="section-title reveal" data-delay="80">This Is What We<br/>Light the Fuse For</h2>
+        <p class="section-desc reveal" data-delay="160">One spark. That's all it takes. Watch it happen in real time — then imagine what your idea looks like when it catches.</p>
+      </div>
+
+      <div class="video-wrap reveal" data-delay="240">
+        <div class="video-frame-outer">
+          <div class="video-classification">
+            <span class="video-classification-led"></span>
+            Live ignition footage — classified reference material
+          </div>
+
+          <div class="video-container">
+            <!-- Corner brackets -->
+            <div class="video-corner video-corner--tl"></div>
+            <div class="video-corner video-corner--tr"></div>
+            <div class="video-corner video-corner--bl"></div>
+            <div class="video-corner video-corner--br"></div>
+
+            <iframe
+              src="https://www.youtube.com/embed/gLH5aCin_2Q?rel=0&modestbranding=1&color=white&iv_load_policy=3"
+              title="Match Lighting a Fuse — Slow Motion"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <div class="video-fuse">
+            <div class="video-fuse-spark"></div>
+          </div>
+
+          <div class="video-meta">
+            <span>Source: Match-Lighting-Fuse · Ultra Slow Motion</span>
+            <span class="video-meta-tag">Ignition Protocol</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
        SERVICES
   ====================================================== -->
   <section class="services section" id="services">
@@ -199,6 +253,7 @@
       <div class="services-grid">
 
         <div class="service-card reveal" data-delay="0">
+          <div class="service-stripe"></div>
           <div class="service-spark"></div>
           <div class="service-num">01</div>
           <div class="service-icon">
@@ -209,6 +264,7 @@
         </div>
 
         <div class="service-card reveal" data-delay="80">
+          <div class="service-stripe"></div>
           <div class="service-spark"></div>
           <div class="service-num">02</div>
           <div class="service-icon">
@@ -219,6 +275,7 @@
         </div>
 
         <div class="service-card reveal" data-delay="160">
+          <div class="service-stripe"></div>
           <div class="service-spark"></div>
           <div class="service-num">03</div>
           <div class="service-icon">
@@ -229,6 +286,7 @@
         </div>
 
         <div class="service-card reveal" data-delay="0">
+          <div class="service-stripe"></div>
           <div class="service-spark"></div>
           <div class="service-num">04</div>
           <div class="service-icon">
@@ -239,6 +297,7 @@
         </div>
 
         <div class="service-card reveal" data-delay="80">
+          <div class="service-stripe"></div>
           <div class="service-spark"></div>
           <div class="service-num">05</div>
           <div class="service-icon">
@@ -249,6 +308,7 @@
         </div>
 
         <div class="service-card reveal" data-delay="160">
+          <div class="service-stripe"></div>
           <div class="service-spark"></div>
           <div class="service-num">06</div>
           <div class="service-icon">

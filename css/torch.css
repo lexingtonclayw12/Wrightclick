@@ -1119,6 +1119,243 @@ img { display: block; max-width: 100%; }
 }
 
 /* ============================================================
+   21ST.DEV ENHANCEMENTS
+   ============================================================ */
+
+/* ---- Fire shimmer on TORCH title ---- */
+.hero-title-solid {
+  background: linear-gradient(
+    105deg,
+    var(--cream) 0%,
+    #fff 25%,
+    var(--gold) 42%,
+    var(--fire) 52%,
+    #fff 62%,
+    var(--cream) 80%,
+    var(--cream) 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: title-fire-shimmer 6s linear infinite;
+}
+@keyframes title-fire-shimmer {
+  0%   { background-position: 100% center; }
+  100% { background-position: -100% center; }
+}
+
+/* ---- Floating ambient orbs ---- */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  pointer-events: none;
+  will-change: transform;
+}
+.orb--1 {
+  width: 520px; height: 520px;
+  background: rgba(255,107,26,0.1);
+  top: -80px; left: -140px;
+  animation: orb-float-a 15s ease-in-out infinite;
+  z-index: 0;
+}
+.orb--2 {
+  width: 360px; height: 360px;
+  background: rgba(255,48,0,0.07);
+  top: 35%; right: -90px;
+  animation: orb-float-b 11s ease-in-out infinite;
+  z-index: 0;
+}
+.orb--3 {
+  width: 620px; height: 620px;
+  background: rgba(255,191,53,0.04);
+  bottom: -180px; left: 22%;
+  animation: orb-float-a 19s ease-in-out infinite;
+  animation-delay: -7s;
+  z-index: 0;
+}
+@keyframes orb-float-a {
+  0%, 100% { transform: translate(0, 0); }
+  33%       { transform: translate(45px, -55px); }
+  66%       { transform: translate(-28px, 32px); }
+}
+@keyframes orb-float-b {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(-35px, 45px); }
+}
+
+/* ---- Cursor spotlight ---- */
+.hero-spotlight {
+  position: absolute;
+  width: 650px; height: 650px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center,
+    rgba(255,107,26,0.1) 0%,
+    rgba(255,107,26,0.04) 35%,
+    transparent 65%);
+  pointer-events: none;
+  z-index: 1;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  will-change: left, top;
+}
+
+/* ---- Video Section ---- */
+.video-section { background: var(--surface); position: relative; overflow: hidden; }
+
+.video-section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3.5rem;
+}
+.video-section-header .section-label { justify-content: center; }
+.video-section-header .section-label::before { display: none; }
+.video-section-header .section-title,
+.video-section-header .section-desc { text-align: center; max-width: 100%; margin: 0 auto; }
+
+.video-frame-outer { max-width: 940px; margin: 0 auto; position: relative; }
+
+.video-classification {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-label);
+  font-size: 0.63rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.9rem;
+}
+.video-classification-led {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--fire);
+  box-shadow: 0 0 8px var(--fire);
+  animation: led-blink 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.video-container {
+  position: relative;
+  aspect-ratio: 16/9;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255,107,26,0.3);
+  box-shadow:
+    0 0 0 1px rgba(255,107,26,0.07),
+    0 30px 80px rgba(0,0,0,0.75),
+    0 0 60px rgba(255,107,26,0.2),
+    0 0 120px rgba(255,107,26,0.08);
+}
+.video-container iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+.video-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.28) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* MI-style corner bracket accents */
+.video-corner {
+  position: absolute;
+  width: 18px; height: 18px;
+  z-index: 2; pointer-events: none;
+  opacity: 0.9;
+}
+.video-corner--tl { top: 10px;  left: 10px;  border-top: 2px solid var(--fire); border-left: 2px solid var(--fire); }
+.video-corner--tr { top: 10px;  right: 10px; border-top: 2px solid var(--fire); border-right: 2px solid var(--fire); }
+.video-corner--bl { bottom: 10px; left: 10px;  border-bottom: 2px solid var(--fire); border-left: 2px solid var(--fire); }
+.video-corner--br { bottom: 10px; right: 10px; border-bottom: 2px solid var(--fire); border-right: 2px solid var(--fire); }
+
+/* Animated fuse line below video */
+.video-fuse {
+  position: relative;
+  height: 2px;
+  background: linear-gradient(to right,
+    transparent 0%,
+    var(--ember) 15%,
+    var(--fire) 40%,
+    var(--gold) 60%,
+    var(--fire) 85%,
+    transparent 100%);
+  overflow: visible;
+}
+.video-fuse-spark {
+  position: absolute;
+  top: 50%; transform: translate(-50%, -50%);
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 10px var(--gold), 0 0 24px var(--fire), 0 0 48px rgba(255,107,26,0.35);
+  animation: fuse-travel 3.5s ease-in-out infinite;
+}
+@keyframes fuse-travel {
+  0%   { left: 0%;   opacity: 1; }
+  90%  { left: 100%; opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+.video-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  font-family: var(--font-label);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.video-meta-tag {
+  color: var(--fire);
+  border: 1px solid rgba(255,107,26,0.28);
+  padding: 0.2rem 0.65rem;
+  border-radius: 2px;
+  font-size: 0.6rem;
+}
+
+/* ---- Enhanced Dossier Glassmorphism ---- */
+.dossier-card {
+  background: rgba(20, 17, 13, 0.6) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1px solid rgba(255,107,26,0.22) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04) !important;
+}
+.dossier-header {
+  background: rgba(28,23,16,0.8) !important;
+}
+
+/* ---- Left-edge glow stripe on service cards ---- */
+.service-card {
+  isolation: isolate;
+}
+.service-stripe {
+  position: absolute;
+  left: 0; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--fire), var(--gold), var(--fire), transparent);
+  transform: scaleY(0);
+  transform-origin: center;
+  border-radius: 1px;
+  transition: transform 0.5s var(--ease) 0.05s;
+  box-shadow: 0 0 8px var(--fire);
+}
+.service-card:hover .service-stripe { transform: scaleY(1); }
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1100px) {
