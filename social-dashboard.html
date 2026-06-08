@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Social Media Dashboard — Wright Click Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="dash-nav">
+    <div class="dash-nav-inner">
+      <a href="index.html" class="dash-nav-logo">
+        <span class="dash-nav-logo-icon">⌘</span>
+        <span>Wright Click <span style="color:var(--text-muted)">/ Social Dashboard</span></span>
+      </a>
+      <div class="dash-nav-links">
+        <a href="diagnostic.html" class="dash-nav-link">Free Diagnostic</a>
+        <a href="index.html" class="dash-nav-link">Main Site</a>
+        <a href="#" class="dash-nav-link dash-nav-link--cta" id="publishNowBtn">Publish Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="sdash-body">
+    <div class="sdash-main">
+
+      <!-- Sidebar -->
+      <aside class="sdash-sidebar">
+        <div class="sdash-sidebar-label">Create</div>
+        <div class="sdash-sidebar-item active" data-panel="content">
+          <span class="sdash-sidebar-icon">✦</span> Content Generator
+        </div>
+        <div class="sdash-sidebar-item" data-panel="scripts">
+          <span class="sdash-sidebar-icon">▶</span> Video Scripts
+        </div>
+        <div class="sdash-sidebar-section">
+          <div class="sdash-sidebar-label">Manage</div>
+          <div class="sdash-sidebar-item" data-panel="calendar">
+            <span class="sdash-sidebar-icon">◎</span> 30-Day Calendar
+          </div>
+          <div class="sdash-sidebar-item" data-panel="leads">
+            <span class="sdash-sidebar-icon">◈</span> Leads
+          </div>
+        </div>
+        <div class="sdash-sidebar-section">
+          <div class="sdash-sidebar-label">Settings</div>
+          <div class="sdash-sidebar-item" data-panel="api">
+            <span class="sdash-sidebar-icon">⚙</span> API Setup
+          </div>
+        </div>
+      </aside>
+
+      <!-- Content -->
+      <main class="sdash-content">
+
+        <!-- ====== CONTENT GENERATOR ====== -->
+        <div class="sdash-panel active" id="panel-content">
+          <div class="sdash-panel-header">
+            <h1>Content Generator</h1>
+            <p>Generate platform-ready posts for your free diagnostic campaign. Select a platform and template, then copy and post.</p>
+          </div>
+
+          <div class="cgen-layout">
+            <!-- Controls -->
+            <div class="cgen-controls">
+              <div>
+                <h3>Platform</h3>
+                <div class="platform-tabs" id="platformTabs">
+                  <div class="platform-tab active" data-platform="facebook"><span class="platform-icon">f</span> Facebook</div>
+                  <div class="platform-tab" data-platform="instagram"><span class="platform-icon">◈</span> Instagram</div>
+                  <div class="platform-tab" data-platform="tiktok"><span class="platform-icon">♪</span> TikTok</div>
+                </div>
+              </div>
+              <div>
+                <h3>Campaign Type</h3>
+                <div class="form-group">
+                  <select id="campaignType">
+                    <option value="diagnostic">Free Diagnostic Promo</option>
+                    <option value="pain_point">Pain Point Hook</option>
+                    <option value="transformation">Before / After</option>
+                    <option value="value">Design Tip (Value)</option>
+                    <option value="social_proof">Social Proof</option>
+                    <option value="urgency">Urgency / Limited Spots</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <h3>Tone</h3>
+                <div class="form-group">
+                  <select id="postTone">
+                    <option value="professional">Professional &amp; Direct</option>
+                    <option value="conversational">Casual &amp; Conversational</option>
+                    <option value="bold">Bold &amp; Punchy</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <h3>Business Focus</h3>
+                <div class="form-group">
+                  <select id="bizFocus">
+                    <option value="general">General Small Business</option>
+                    <option value="restaurant">Restaurants</option>
+                    <option value="retail">Retail / E-Commerce</option>
+                    <option value="services">Professional Services</option>
+                    <option value="fitness">Fitness / Wellness</option>
+                    <option value="realestate">Real Estate</option>
+                  </select>
+                </div>
+              </div>
+              <button class="btn btn--primary" id="generateBtn">
+                <span>Generate Posts</span>
+                <span class="btn-arrow">→</span>
+              </button>
+              <button class="btn btn--ghost btn--sm" id="generateAllBtn">Generate All Platforms</button>
+            </div>
+
+            <!-- Previews -->
+            <div class="cgen-preview" id="postPreviews">
+              <div class="preview-card" id="mainPreview">
+                <div class="preview-card-header">
+                  <div class="preview-platform-badge">
+                    <div class="preview-platform-dot"></div>
+                    <span id="previewPlatformName">Facebook</span>
+                  </div>
+                  <div class="preview-actions">
+                    <button class="copy-btn" data-target="mainPostText">Copy Post</button>
+                    <button class="copy-btn" data-target="mainHashtagsText">Copy Tags</button>
+                  </div>
+                </div>
+                <div class="preview-text" id="mainPostText">Click "Generate Posts" to create your first post ✦</div>
+                <div class="preview-hashtags" id="mainHashtagsText"></div>
+                <div class="preview-char-count" id="mainCharCount"></div>
+              </div>
+
+              <div class="preview-card" id="altPreview" style="display:none">
+                <div class="preview-card-header">
+                  <div class="preview-platform-badge">
+                    <div class="preview-platform-dot" style="background:var(--accent)"></div>
+                    <span id="altPreviewName">Variation</span>
+                  </div>
+                  <div class="preview-actions">
+                    <button class="copy-btn" data-target="altPostText">Copy Post</button>
+                  </div>
+                </div>
+                <div class="preview-text" id="altPostText"></div>
+                <div class="preview-char-count" id="altCharCount"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ====== VIDEO SCRIPTS ====== -->
+        <div class="sdash-panel" id="panel-scripts">
+          <div class="sdash-panel-header">
+            <h1>Video Script Generator</h1>
+            <p>Ready-to-record scripts for TikTok, Instagram Reels, and YouTube Shorts — all built around the free diagnostic offer.</p>
+          </div>
+
+          <div class="vscript-layout">
+            <div class="vscript-selector" id="scriptTypeSelector">
+              <div class="vscript-type-card active" data-script="website_roast">
+                <h4>Website Roast</h4>
+                <p>React to real website mistakes businesses make</p>
+                <span class="duration-badge">30–45 sec</span>
+              </div>
+              <div class="vscript-type-card" data-script="3_mistakes">
+                <h4>3 Mistakes Hook</h4>
+                <p>"3 website mistakes killing your sales"</p>
+                <span class="duration-badge">45–60 sec</span>
+              </div>
+              <div class="vscript-type-card" data-script="before_after">
+                <h4>Before &amp; After</h4>
+                <p>Show a transformation with a free offer CTA</p>
+                <span class="duration-badge">30–45 sec</span>
+              </div>
+              <div class="vscript-type-card" data-script="question_hook">
+                <h4>Question Hook</h4>
+                <p>"Does your website pass this 5-second test?"</p>
+                <span class="duration-badge">20–30 sec</span>
+              </div>
+              <div class="vscript-type-card" data-script="tip_value">
+                <h4>Design Tip</h4>
+                <p>Give real value, build trust, soft CTA</p>
+                <span class="duration-badge">30–45 sec</span>
+              </div>
+            </div>
+
+            <div class="vscript-output">
+              <div class="vscript-output-header">
+                <h3 id="scriptOutputTitle">Website Roast Script</h3>
+                <div style="display:flex;gap:8px">
+                  <button class="copy-btn" id="copyScriptBtn">Copy Full Script</button>
+                  <button class="copy-btn" id="copyPromptBtn">Copy AI Prompt</button>
+                </div>
+              </div>
+              <div class="vscript-output-body" id="scriptOutput">
+                <!-- Generated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ====== CALENDAR ====== -->
+        <div class="sdash-panel" id="panel-calendar">
+          <div class="sdash-panel-header">
+            <h1>30-Day Content Calendar</h1>
+            <p>A ready-made posting schedule designed to drive diagnostic sign-ups and build your audience across all three platforms.</p>
+          </div>
+
+          <div class="cal-layout">
+            <div class="cal-legend">
+              <div class="cal-legend-item"><div class="cal-dot cal-dot--diag"></div> Diagnostic Promo</div>
+              <div class="cal-legend-item"><div class="cal-dot cal-dot--value"></div> Value / Tips</div>
+              <div class="cal-legend-item"><div class="cal-dot cal-dot--social"></div> Social Proof</div>
+              <div class="cal-legend-item"><div class="cal-dot cal-dot--behind"></div> Behind the Scenes</div>
+            </div>
+            <div class="cal-grid" id="calGrid"><!-- Built by JS --></div>
+          </div>
+        </div>
+
+        <!-- ====== LEADS ====== -->
+        <div class="sdash-panel" id="panel-leads">
+          <div class="sdash-panel-header">
+            <h1>Diagnostic Leads</h1>
+            <p>Manage everyone who requested a free website diagnostic through your social media campaigns.</p>
+          </div>
+
+          <div class="leads-stats">
+            <div class="leads-stat-card">
+              <div class="num num--primary" id="statTotal">0</div>
+              <div class="label">Total Leads</div>
+            </div>
+            <div class="leads-stat-card">
+              <div class="num num--amber" id="statNew">0</div>
+              <div class="label">Awaiting Review</div>
+            </div>
+            <div class="leads-stat-card">
+              <div class="num num--green" id="statConverted">0</div>
+              <div class="label">Converted to Clients</div>
+            </div>
+            <div class="leads-stat-card">
+              <div class="num num--cyan" id="statSent">0</div>
+              <div class="label">Reports Sent</div>
+            </div>
+          </div>
+
+          <div class="leads-table-wrap">
+            <div class="leads-table-header">
+              <h3>All Leads</h3>
+              <button class="btn btn--ghost btn--sm" id="exportLeadsBtn">Export CSV</button>
+            </div>
+            <div style="overflow-x:auto">
+              <table class="leads-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Website</th>
+                    <th>Business Type</th>
+                    <th>Submitted</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="leadsTableBody">
+                  <tr><td colspan="7" style="text-align:center;color:var(--text-muted);padding:40px">No leads yet. Share your diagnostic link to start collecting!</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ====== API SETUP ====== -->
+        <div class="sdash-panel" id="panel-api">
+          <div class="sdash-panel-header">
+            <h1>API Setup</h1>
+            <p>Connect your social media accounts to enable direct publishing from this dashboard. The backend server must be running.</p>
+          </div>
+
+          <div class="api-setup-layout">
+
+            <!-- Meta (Facebook + Instagram) -->
+            <div class="api-platform-card">
+              <div class="api-platform-header">
+                <div class="api-platform-logo api-platform-logo--meta">f</div>
+                <div>
+                  <h3>Meta — Facebook &amp; Instagram</h3>
+                  <p>One API connection covers both platforms via Meta Graph API v18+</p>
+                </div>
+                <span class="api-status-badge api-status-badge--pending" id="metaStatus">Not Connected</span>
+              </div>
+              <div class="api-platform-body">
+                <div class="api-step">
+                  <div class="api-step-num">1</div>
+                  <div class="api-step-content">
+                    <h4>Create a Meta Developer App</h4>
+                    <p>Go to developers.facebook.com → My Apps → Create App. Choose "Business" type. Add the "Pages API" and "Instagram Graph API" products.</p>
+                  </div>
+                </div>
+                <div class="api-step">
+                  <div class="api-step-num">2</div>
+                  <div class="api-step-content">
+                    <h4>Get a Page Access Token</h4>
+                    <p>In the Graph API Explorer, generate a long-lived Page Access Token with permissions: <code>pages_manage_posts</code>, <code>instagram_content_publish</code>, <code>pages_read_engagement</code></p>
+                  </div>
+                </div>
+                <div class="api-step">
+                  <div class="api-step-num">3</div>
+                  <div class="api-step-content">
+                    <h4>Find Your Page ID and IG User ID</h4>
+                    <p>Call <code>GET /me/accounts</code> to get your Facebook Page ID. Then call <code>GET /{page-id}?fields=instagram_business_account</code> for your IG User ID.</p>
+                  </div>
+                </div>
+                <div class="api-config-fields">
+                  <div class="api-field">
+                    <label>Page Access Token</label>
+                    <div class="api-field-row">
+                      <input type="password" id="metaToken" placeholder="EAAxxxxxxxxxxxxx..." />
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="api-field">
+                      <label>Facebook Page ID</label>
+                      <input type="text" id="metaPageId" placeholder="123456789012345" />
+                    </div>
+                    <div class="api-field">
+                      <label>Instagram User ID</label>
+                      <input type="text" id="metaIgId" placeholder="17841234567890123" />
+                    </div>
+                  </div>
+                  <button class="api-test-btn" id="testMetaBtn">Test &amp; Save Meta Connection</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- TikTok -->
+            <div class="api-platform-card">
+              <div class="api-platform-header">
+                <div class="api-platform-logo api-platform-logo--tiktok">♪</div>
+                <div>
+                  <h3>TikTok Content Posting API</h3>
+                  <p>Requires TikTok Developer account and business approval for Content Posting API</p>
+                </div>
+                <span class="api-status-badge api-status-badge--pending" id="tiktokStatus">Not Connected</span>
+              </div>
+              <div class="api-platform-body">
+                <div class="api-step">
+                  <div class="api-step-num">1</div>
+                  <div class="api-step-content">
+                    <h4>Register as a TikTok Developer</h4>
+                    <p>Go to developers.tiktok.com → Create App. Choose the "Content Posting API" product. You'll need a TikTok Business or Creator account.</p>
+                  </div>
+                </div>
+                <div class="api-step">
+                  <div class="api-step-num">2</div>
+                  <div class="api-step-content">
+                    <h4>Authorize and Get Access Token</h4>
+                    <p>Complete the OAuth flow. Required scopes: <code>video.publish</code>, <code>video.upload</code>. Store the access token and refresh token securely.</p>
+                  </div>
+                </div>
+                <div class="api-step">
+                  <div class="api-step-num">3</div>
+                  <div class="api-step-content">
+                    <h4>Upload Videos via Direct Post API</h4>
+                    <p>Use <code>POST /v2/post/publish/video/init</code> to initialize an upload, then send the video file, then call <code>/publish/status/fetch</code> to confirm.</p>
+                  </div>
+                </div>
+                <div class="api-config-fields">
+                  <div class="api-field">
+                    <label>TikTok Access Token</label>
+                    <div class="api-field-row">
+                      <input type="password" id="tiktokToken" placeholder="act.xxxxxxxxxxxxxxxxxx..." />
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="api-field">
+                      <label>Client Key</label>
+                      <input type="text" id="tiktokClientKey" placeholder="awxxxxxxxxxx" />
+                    </div>
+                    <div class="api-field">
+                      <label>Client Secret</label>
+                      <input type="password" id="tiktokClientSecret" placeholder="•••••••••••••••" />
+                    </div>
+                  </div>
+                  <button class="api-test-btn" id="testTikTokBtn">Test &amp; Save TikTok Connection</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Server Status -->
+            <div class="api-platform-card">
+              <div class="api-platform-header">
+                <div class="api-platform-logo" style="background:var(--bg-3);border:1px solid var(--border)">⚡</div>
+                <div>
+                  <h3>Backend Server</h3>
+                  <p>Node.js + Express — required for API posting and lead storage</p>
+                </div>
+                <span class="api-status-badge api-status-badge--pending" id="serverStatus">Checking...</span>
+              </div>
+              <div class="api-platform-body">
+                <div class="api-step">
+                  <div class="api-step-num">1</div>
+                  <div class="api-step-content">
+                    <h4>Start the backend server</h4>
+                    <p>From the <code>server/</code> directory: run <code>npm install</code> then <code>npm start</code>. Server listens on port 3001 by default.</p>
+                  </div>
+                </div>
+                <div class="api-step">
+                  <div class="api-step-num">2</div>
+                  <div class="api-step-content">
+                    <h4>Configure environment variables</h4>
+                    <p>Copy <code>server/.env.example</code> to <code>server/.env</code> and fill in your API keys. The server reads these on startup.</p>
+                  </div>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                  <button class="api-test-btn" id="checkServerBtn">Check Server Status</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+    <footer class="dash-footer">
+      <span>Wright Click Studio — Social Dashboard · <a href="index.html">Back to Site</a></span>
+      <span style="color:var(--text-dim);font-family:var(--mono);font-size:0.75rem" id="serverPing">server: checking...</span>
+    </footer>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
