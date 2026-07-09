@@ -1,702 +1,934 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wright Click Studio — Web Design &amp; Digital Creation</title>
-  <meta name="description" content="Wright Click Studio is a web design and digital creation firm. We design, build, and craft exceptional digital experiences." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Grace & Glory Church — Real people. Real life. Real faith. Find a campus near you or watch online every Sunday.">
+    <title>Grace & Glory Church</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/church.css">
 </head>
 <body>
 
-  <!-- Custom cursor -->
-  <div class="cursor" id="cursor">
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
-  </div>
-  <div class="cursor-click-ripple" id="cursorRipple"></div>
-
-  <!-- Context Menu (appears on right-click anywhere) -->
-  <div class="context-menu" id="contextMenu" role="menu" aria-label="Wright Click Studio menu">
-    <div class="context-menu-header">
-      <span class="context-menu-logo">⌘</span>
-      <span>Wright Click Studio</span>
+<!-- ── ANNOUNCEMENT BAR ──────────────────────────────────── -->
+<div id="announce-bar">
+    <div class="announce-inner">
+        <div class="announce-pulse"></div>
+        <p>
+            <strong>This Sunday:</strong> Summer Revival begins June 15 — Guest speaker Pastor David Chen.
+            <a href="#events" class="announce-link">Learn More →</a>
+        </p>
     </div>
-    <div class="context-menu-divider"></div>
-    <button class="context-menu-item" data-target="services" role="menuitem">
-      <span class="ctx-icon">✦</span> Our Services
-      <span class="ctx-arrow">›</span>
-    </button>
-    <button class="context-menu-item" data-target="work" role="menuitem">
-      <span class="ctx-icon">◈</span> View Portfolio
-    </button>
-    <button class="context-menu-item" data-target="process" role="menuitem">
-      <span class="ctx-icon">◎</span> How We Work
-    </button>
-    <button class="context-menu-item" data-target="about" role="menuitem">
-      <span class="ctx-icon">◉</span> About Us
-    </button>
-    <div class="context-menu-divider"></div>
-    <button class="context-menu-item context-menu-item--highlight" data-target="contact" role="menuitem">
-      <span class="ctx-icon">✉</span> Start a Project
-    </button>
-    <div class="context-menu-divider"></div>
-    <div class="context-menu-meta">Right-click anywhere to reopen</div>
-  </div>
+    <button class="announce-close" id="announceClose" aria-label="Dismiss">✕</button>
+</div>
 
-  <!-- Navigation -->
-  <nav class="nav" id="nav">
+<!-- ── NAVBAR ────────────────────────────────────────────── -->
+<nav id="navbar">
     <div class="nav-inner">
-      <a href="#hero" class="nav-logo">
-        <span class="nav-logo-icon">⌘</span>
-        <span class="nav-logo-text">Wright Click<span class="nav-logo-studio"> Studio</span></span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#work" class="nav-link">Work</a></li>
-        <li><a href="#process" class="nav-link">Process</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#contact" class="nav-link nav-link--cta">Start a Project</a></li>
-      </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+        <a href="#hero" class="nav-logo">
+            <div class="logo-icon">✦</div>
+            <div class="logo-words">
+                <span class="logo-main">GRACE &amp; GLORY</span>
+                <span class="logo-sub">CHURCH</span>
+            </div>
+        </a>
 
-  <!-- ====== HERO ====== -->
-  <section class="hero" id="hero">
-    <div class="hero-bg">
-      <canvas id="heroCanvas"></canvas>
-      <div class="hero-grid"></div>
-    </div>
+        <div class="nav-links" id="navLinks">
+            <a href="#messages"  class="nav-link">Messages</a>
+            <a href="#new-here"  class="nav-link">New Here</a>
+            <a href="#campuses"  class="nav-link">Campuses</a>
+            <a href="#give"      class="nav-link">Give</a>
+            <a href="#groups"    class="nav-link">Groups</a>
+        </div>
 
-    <!-- Animated desktop cursor + context menu demo -->
-    <div class="hero-demo" id="heroDemo" aria-hidden="true">
-      <div class="demo-cursor" id="demoCursor">
-        <svg width="22" height="26" viewBox="0 0 22 26" fill="none">
-          <path d="M1 1L1 20.5L6.5 15.5L9.5 24L12.5 23L9.5 14H17.5L1 1Z" fill="white" stroke="#111" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <div class="demo-context-menu" id="demoContextMenu">
-        <div class="dcm-header">⌘ Wright Click Studio</div>
-        <div class="dcm-divider"></div>
-        <div class="dcm-item dcm-item--active">✦ Web Design</div>
-        <div class="dcm-item">◈ Branding</div>
-        <div class="dcm-item">◎ Development</div>
-        <div class="dcm-divider"></div>
-        <div class="dcm-item dcm-item--highlight">✉ Let's Build</div>
-      </div>
+        <div class="nav-right">
+            <a href="#live" class="live-btn" id="liveBtn">
+                <span class="live-dot"></span>
+                <span>Watch Live</span>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- ── HERO ──────────────────────────────────────────────── -->
+<section id="hero">
+    <div class="hero-media">
+        <div class="hero-video-wrap">
+            <iframe
+                id="heroBgVideo"
+                src="https://www.youtube.com/embed/rFRYFj5FajU?autoplay=1&mute=1&loop=1&playlist=rFRYFj5FajU&controls=0&rel=0&modestbranding=1&playsinline=1&disablekb=1"
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <canvas id="heroCanvas"></canvas>
+        <div class="hero-overlay"></div>
     </div>
 
     <div class="hero-content">
-      <div class="hero-eyebrow">
-        <span class="eyebrow-dot"></span>
-        Right-click. Create. Launch.
-      </div>
-      <h1 class="hero-title">
-        <span class="hero-title-line">We Make the</span>
-        <span class="hero-title-line hero-title-line--accent">
-          <span class="typewriter" id="typewriter"></span>
-          <span class="typewriter-cursor">|</span>
-        </span>
-        <span class="hero-title-line">Worth Clicking.</span>
-      </h1>
-      <p class="hero-sub">
-        Wright Click Studio is a boutique web design &amp; digital creation firm.
-        We build stunning websites, brands, and experiences — one right click at a time.
-      </p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn--primary">
-          <span>Start a Project</span>
-          <span class="btn-arrow">→</span>
+        <div class="hero-badge">
+            <span class="badge-dot"></span>
+            Sunday Services — 9 &amp; 11 AM · 6 PM
+        </div>
+        <h1 class="hero-headline">
+            <span class="hl-row hl-normal">REAL PEOPLE.</span>
+            <span class="hl-row hl-accent">REAL FAITH.</span>
+            <span class="hl-row hl-normal">REAL LIFE.</span>
+        </h1>
+        <p class="hero-body">
+            No matter where you've been or what you've been through — <br>
+            you have a place here.
+        </p>
+        <div class="hero-ctas">
+            <a href="#new-here" class="cta-primary">
+                <span>I'm New Here</span>
+            </a>
+            <a href="#live" class="cta-secondary">
+                <span class="play-dot">▶</span>
+                <span>Watch Online</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="hero-service-bar">
+        <div class="service-bar-inner">
+            <div class="sb-item">
+                <span class="sb-day">Sunday</span>
+                <span class="sb-time">9:00 AM &amp; 11:00 AM</span>
+                <span class="sb-note">All campuses</span>
+            </div>
+            <div class="sb-divider"></div>
+            <div class="sb-item">
+                <span class="sb-day">Sunday Evening</span>
+                <span class="sb-time">6:00 PM</span>
+                <span class="sb-note">Main campus only</span>
+            </div>
+            <div class="sb-divider"></div>
+            <div class="sb-item">
+                <span class="sb-day">Wednesday</span>
+                <span class="sb-time">7:00 PM</span>
+                <span class="sb-note">Bible study &amp; youth</span>
+            </div>
+            <div class="sb-divider"></div>
+            <div class="sb-item">
+                <span class="sb-day">Online Campus</span>
+                <span class="sb-time">Always On</span>
+                <span class="sb-note">Watch from anywhere</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── QUICK ACCESS (Life.church 4-tile pattern) ─────────── -->
+<section id="quick-access">
+    <div class="qa-grid">
+        <a href="#live" class="qa-card">
+            <div class="qa-icon">📺</div>
+            <div class="qa-text">
+                <strong>Watch Live</strong>
+                <span>Stream this Sunday's service</span>
+            </div>
+            <div class="qa-arrow">→</div>
         </a>
-        <a href="#work" class="btn btn--ghost">
-          View Our Work
+        <a href="#new-here" class="qa-card">
+            <div class="qa-icon">👋</div>
+            <div class="qa-text">
+                <strong>Plan a Visit</strong>
+                <span>We'll be ready when you arrive</span>
+            </div>
+            <div class="qa-arrow">→</div>
         </a>
-      </div>
-      <div class="hero-hint">
-        <span class="hint-icon">🖱</span>
-        <span>Right-click anywhere for the menu</span>
-      </div>
+        <a href="#campuses" class="qa-card">
+            <div class="qa-icon">📍</div>
+            <div class="qa-text">
+                <strong>Find a Campus</strong>
+                <span>4 locations near you</span>
+            </div>
+            <div class="qa-arrow">→</div>
+        </a>
+        <a href="#give" class="qa-card">
+            <div class="qa-icon">💛</div>
+            <div class="qa-text">
+                <strong>Give</strong>
+                <span>Support our mission</span>
+            </div>
+            <div class="qa-arrow">→</div>
+        </a>
     </div>
+</section>
 
-    <div class="hero-scroll-indicator">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
+<!-- ── CURRENT SERIES (Elevation-style, featured art card) ─ -->
+<section id="current-series">
+    <div class="cs-container">
+        <div class="cs-label">CURRENT SERIES</div>
+
+        <div class="cs-feature">
+            <!-- CSS series art -->
+            <div class="series-art sa-anchor">
+                <div class="sa-bg-layer"></div>
+                <div class="sa-graphic">
+                    <div class="sa-circle sa-circle-1"></div>
+                    <div class="sa-circle sa-circle-2"></div>
+                    <div class="sa-line sa-line-1"></div>
+                    <div class="sa-line sa-line-2"></div>
+                </div>
+                <div class="sa-content-inner">
+                    <div class="sa-series-label">SERIES 4 OF 6</div>
+                    <h2 class="sa-title">ANCHOR</h2>
+                    <p class="sa-tagline">What keeps you grounded when everything shifts?</p>
+                </div>
+            </div>
+
+            <div class="cs-info">
+                <div class="cs-series-name">ANCHOR — A 6-Part Series</div>
+                <h3 class="cs-message-title">When the Storm Doesn't Stop</h3>
+                <p class="cs-desc">
+                    We all face seasons where the ground shakes beneath us. This week, Pastor James unpacks Hebrews 6 and the unshakeable hope that holds us through every season of life.
+                </p>
+                <div class="cs-meta">
+                    <span>📅 June 8, 2026</span>
+                    <span>⏱ 52 min</span>
+                    <span>📖 Hebrews 6:17–20</span>
+                </div>
+
+                <div class="cs-actions">
+                    <a href="#" class="cta-primary">Watch Now</a>
+                    <a href="#" class="cs-link">View Full Series →</a>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
 
-  <!-- ====== MARQUEE STRIP ====== -->
-  <div class="marquee-strip">
-    <div class="marquee-track">
-      <span>Web Design</span><span class="marquee-dot">✦</span>
-      <span>Branding</span><span class="marquee-dot">✦</span>
-      <span>UI / UX</span><span class="marquee-dot">✦</span>
-      <span>Development</span><span class="marquee-dot">✦</span>
-      <span>Motion Graphics</span><span class="marquee-dot">✦</span>
-      <span>SEO Strategy</span><span class="marquee-dot">✦</span>
-      <span>Social Media</span><span class="marquee-dot">✦</span>
-      <span>E-Commerce</span><span class="marquee-dot">✦</span>
-      <span>Web Design</span><span class="marquee-dot">✦</span>
-      <span>Branding</span><span class="marquee-dot">✦</span>
-      <span>UI / UX</span><span class="marquee-dot">✦</span>
-      <span>Development</span><span class="marquee-dot">✦</span>
-      <span>Motion Graphics</span><span class="marquee-dot">✦</span>
-      <span>SEO Strategy</span><span class="marquee-dot">✦</span>
-      <span>Social Media</span><span class="marquee-dot">✦</span>
-      <span>E-Commerce</span><span class="marquee-dot">✦</span>
-    </div>
-  </div>
-
-  <!-- ====== SERVICES ====== -->
-  <section class="services section" id="services">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">What We Do</div>
-        <h2 class="section-title">Every Click, <br/>A New Possibility</h2>
-        <p class="section-desc">From first concept to final launch, we handle every layer of your digital presence.</p>
-      </div>
-
-      <div class="services-grid">
-        <div class="service-card reveal" data-menu-label="Web Design">
-          <div class="service-card-top">
-            <div class="service-icon">
-              <svg viewBox="0 0 48 48" fill="none"><rect x="4" y="8" width="40" height="28" rx="4" stroke="currentColor" stroke-width="2.5"/><path d="M16 36v4M32 36v4M12 40h24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M4 16h40" stroke="currentColor" stroke-width="2.5"/><circle cx="10" cy="12" r="2" fill="currentColor"/><circle cx="16" cy="12" r="2" fill="currentColor"/><circle cx="22" cy="12" r="2" fill="currentColor"/></svg>
-            </div>
-            <div class="service-number">01</div>
-          </div>
-          <h3>Web Design</h3>
-          <p>Pixel-perfect, responsive designs that captivate from the first scroll. We turn your vision into a visual story.</p>
-          <div class="service-hover-menu">
-            <div class="shm-item">Custom Layouts</div>
-            <div class="shm-item">Responsive Design</div>
-            <div class="shm-item">Animations</div>
-          </div>
-        </div>
-
-        <div class="service-card reveal" data-menu-label="Branding">
-          <div class="service-card-top">
-            <div class="service-icon">
-              <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2.5"/><path d="M24 6v4M24 38v4M6 24h4M38 24h4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="2" fill="currentColor"/></svg>
-            </div>
-            <div class="service-number">02</div>
-          </div>
-          <h3>Brand Identity</h3>
-          <p>Logos, color systems, and brand guidelines that make you instantly recognizable and unforgettable.</p>
-          <div class="service-hover-menu">
-            <div class="shm-item">Logo Design</div>
-            <div class="shm-item">Style Guides</div>
-            <div class="shm-item">Brand Strategy</div>
-          </div>
-        </div>
-
-        <div class="service-card reveal" data-menu-label="UI / UX">
-          <div class="service-card-top">
-            <div class="service-icon">
-              <svg viewBox="0 0 48 48" fill="none"><path d="M8 12h32M8 24h20M8 36h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><rect x="32" y="28" width="12" height="14" rx="2" stroke="currentColor" stroke-width="2.5"/><path d="M38 28v-4a2 2 0 0 0-2-2h-2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
-            </div>
-            <div class="service-number">03</div>
-          </div>
-          <h3>UI / UX Design</h3>
-          <p>Intuitive interfaces grounded in user research. We make complex things simple and simple things beautiful.</p>
-          <div class="service-hover-menu">
-            <div class="shm-item">Wireframing</div>
-            <div class="shm-item">Prototyping</div>
-            <div class="shm-item">Usability Testing</div>
-          </div>
-        </div>
-
-        <div class="service-card reveal" data-menu-label="Development">
-          <div class="service-card-top">
-            <div class="service-icon">
-              <svg viewBox="0 0 48 48" fill="none"><path d="M14 18L6 24l8 6M34 18l8 6-8 6M28 14l-8 20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div class="service-number">04</div>
-          </div>
-          <h3>Web Development</h3>
-          <p>Clean, performant code built to scale. From marketing sites to full-stack apps — we ship fast and solid.</p>
-          <div class="service-hover-menu">
-            <div class="shm-item">React / Next.js</div>
-            <div class="shm-item">CMS Integration</div>
-            <div class="shm-item">Performance</div>
-          </div>
-        </div>
-
-        <div class="service-card reveal" data-menu-label="E-Commerce">
-          <div class="service-card-top">
-            <div class="service-icon">
-              <svg viewBox="0 0 48 48" fill="none"><path d="M6 8h4l5 22h22l4-14H14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="36" r="3" stroke="currentColor" stroke-width="2.5"/><circle cx="34" cy="36" r="3" stroke="currentColor" stroke-width="2.5"/></svg>
-            </div>
-            <div class="service-number">05</div>
-          </div>
-          <h3>E-Commerce</h3>
-          <p>Online stores designed to convert. Beautiful product pages, seamless checkout, and maximum revenue.</p>
-          <div class="service-hover-menu">
-            <div class="shm-item">Shopify / WooCommerce</div>
-            <div class="shm-item">Product Design</div>
-            <div class="shm-item">Conversion Optimization</div>
-          </div>
-        </div>
-
-        <div class="service-card service-card--cta reveal">
-          <div class="service-cta-content">
-            <span class="service-cta-icon">⌘</span>
-            <h3>Something Else?</h3>
-            <p>Right-click and let's talk. We love ambitious, unconventional projects.</p>
-            <a href="#contact" class="btn btn--primary btn--sm">Get in Touch</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== WORK / PORTFOLIO ====== -->
-  <section class="work section" id="work">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Portfolio</div>
-        <h2 class="section-title">Selected Work</h2>
-        <p class="section-desc">A curated look at projects we've crafted with care.</p>
-      </div>
-
-      <div class="work-grid">
-        <div class="work-card work-card--featured reveal">
-          <div class="work-card-img work-card-img--1">
-            <div class="work-card-overlay">
-              <div class="work-overlay-menu">
-                <div class="wom-label">⌘ Apex Commerce</div>
-                <div class="wom-divider"></div>
-                <div class="wom-item">Open Project →</div>
-                <div class="wom-item">View Case Study →</div>
-              </div>
-            </div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-tags"><span>E-Commerce</span><span>Branding</span></div>
-            <h3>Apex Commerce</h3>
-            <p>Full rebrand and Shopify build for a premium outdoor gear retailer. 3× conversion lift post-launch.</p>
-          </div>
-        </div>
-
-        <div class="work-card reveal">
-          <div class="work-card-img work-card-img--2">
-            <div class="work-card-overlay">
-              <div class="work-overlay-menu">
-                <div class="wom-label">⌘ Luma Labs</div>
-                <div class="wom-divider"></div>
-                <div class="wom-item">Open Project →</div>
-              </div>
-            </div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-tags"><span>SaaS</span><span>UI/UX</span></div>
-            <h3>Luma Labs</h3>
-            <p>Dashboard redesign for an AI analytics startup. Clarity and speed at every click.</p>
-          </div>
-        </div>
-
-        <div class="work-card reveal">
-          <div class="work-card-img work-card-img--3">
-            <div class="work-card-overlay">
-              <div class="work-overlay-menu">
-                <div class="wom-label">⌘ Noire Collective</div>
-                <div class="wom-divider"></div>
-                <div class="wom-item">Open Project →</div>
-              </div>
-            </div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-tags"><span>Branding</span><span>Web</span></div>
-            <h3>Noire Collective</h3>
-            <p>Luxury fashion brand identity and editorial website with immersive scroll storytelling.</p>
-          </div>
-        </div>
-
-        <div class="work-card reveal">
-          <div class="work-card-img work-card-img--4">
-            <div class="work-card-overlay">
-              <div class="work-overlay-menu">
-                <div class="wom-label">⌘ Orbit Agency</div>
-                <div class="wom-divider"></div>
-                <div class="wom-item">Open Project →</div>
-              </div>
-            </div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-tags"><span>Agency</span><span>Development</span></div>
-            <h3>Orbit Agency</h3>
-            <p>Marketing agency site with award-winning micro-animations and blazing performance scores.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="work-cta reveal">
-        <p>Want to see more? Let's build yours next.</p>
-        <a href="#contact" class="btn btn--primary">Start Your Project →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== PROCESS ====== -->
-  <section class="process section" id="process">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">How We Work</div>
-        <h2 class="section-title">The Right-Click <br/>Process</h2>
-        <p class="section-desc">Four focused steps from idea to launched product.</p>
-      </div>
-
-      <div class="process-steps">
-        <div class="process-step reveal">
-          <div class="process-step-num">
-            <span>01</span>
-            <div class="process-connector"></div>
-          </div>
-          <div class="process-step-content">
-            <div class="process-menu-item">
-              <span class="pmi-icon">◎</span>
-              <span class="pmi-label">Discover</span>
-            </div>
-            <h3>Right-Click: Explore</h3>
-            <p>We dig into your goals, audience, and competition. Every project starts with listening — then strategy.</p>
-            <ul class="process-list">
-              <li>Discovery call &amp; brief</li>
-              <li>Competitor analysis</li>
-              <li>User research</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="process-step reveal">
-          <div class="process-step-num">
-            <span>02</span>
-            <div class="process-connector"></div>
-          </div>
-          <div class="process-step-content">
-            <div class="process-menu-item">
-              <span class="pmi-icon">✦</span>
-              <span class="pmi-label">Design</span>
-            </div>
-            <h3>Right-Click: Create</h3>
-            <p>Wireframes, moodboards, and high-fidelity designs reviewed in real time. You'll see it before we build it.</p>
-            <ul class="process-list">
-              <li>Wireframing</li>
-              <li>Visual design</li>
-              <li>Interactive prototypes</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="process-step reveal">
-          <div class="process-step-num">
-            <span>03</span>
-            <div class="process-connector"></div>
-          </div>
-          <div class="process-step-content">
-            <div class="process-menu-item">
-              <span class="pmi-icon">◈</span>
-              <span class="pmi-label">Build</span>
-            </div>
-            <h3>Right-Click: Build</h3>
-            <p>Pixel-perfect development with performance baked in. We test across every device and browser.</p>
-            <ul class="process-list">
-              <li>Front-end development</li>
-              <li>CMS &amp; integrations</li>
-              <li>QA &amp; testing</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="process-step reveal">
-          <div class="process-step-num">
-            <span>04</span>
-          </div>
-          <div class="process-step-content">
-            <div class="process-menu-item process-menu-item--highlight">
-              <span class="pmi-icon">✉</span>
-              <span class="pmi-label">Launch</span>
-            </div>
-            <h3>Right-Click: Launch</h3>
-            <p>Go live with confidence. We handle deployment, SEO setup, analytics, and post-launch support.</p>
-            <ul class="process-list">
-              <li>Deployment &amp; DNS</li>
-              <li>Analytics &amp; SEO</li>
-              <li>Ongoing support</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== STATS ====== -->
-  <section class="stats">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item reveal">
-          <div class="stat-num" data-target="120">0</div>
-          <div class="stat-plus">+</div>
-          <div class="stat-label">Projects Launched</div>
-        </div>
-        <div class="stat-item reveal">
-          <div class="stat-num" data-target="98">0</div>
-          <div class="stat-plus">%</div>
-          <div class="stat-label">Client Satisfaction</div>
-        </div>
-        <div class="stat-item reveal">
-          <div class="stat-num" data-target="7">0</div>
-          <div class="stat-plus">+</div>
-          <div class="stat-label">Years in Business</div>
-        </div>
-        <div class="stat-item reveal">
-          <div class="stat-num" data-target="40">0</div>
-          <div class="stat-plus">+</div>
-          <div class="stat-label">Industries Served</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== ABOUT ====== -->
-  <section class="about section" id="about">
-    <div class="container">
-      <div class="about-layout">
-        <div class="about-visual reveal">
-          <div class="about-window">
-            <div class="window-titlebar">
-              <span class="window-btn window-btn--red"></span>
-              <span class="window-btn window-btn--yellow"></span>
-              <span class="window-btn window-btn--green"></span>
-              <span class="window-title">About Wright Click Studio</span>
-            </div>
-            <div class="window-body">
-              <div class="about-code">
-                <div class="code-line"><span class="code-key">const</span> <span class="code-var">studio</span> = {</div>
-                <div class="code-line code-indent"><span class="code-prop">name</span>: <span class="code-str">"Wright Click Studio"</span>,</div>
-                <div class="code-line code-indent"><span class="code-prop">founded</span>: <span class="code-num">2019</span>,</div>
-                <div class="code-line code-indent"><span class="code-prop">specialty</span>: [</div>
-                <div class="code-line code-indent2"><span class="code-str">"Web Design"</span>,</div>
-                <div class="code-line code-indent2"><span class="code-str">"Brand Identity"</span>,</div>
-                <div class="code-line code-indent2"><span class="code-str">"Digital Creation"</span></div>
-                <div class="code-line code-indent">],</div>
-                <div class="code-line code-indent"><span class="code-prop">philosophy</span>: <span class="code-str">"Make it wright."</span>,</div>
-                <div class="code-line code-indent"><span class="code-prop">status</span>: <span class="code-bool">true</span> <span class="code-comment">// accepting projects</span></div>
-                <div class="code-line">};</div>
-              </div>
-            </div>
-          </div>
-          <div class="about-badge">
-            <span class="badge-icon">✦</span>
-            <span>Est. 2019</span>
-          </div>
-        </div>
-
-        <div class="about-text">
-          <div class="section-label">About Us</div>
-          <h2 class="section-title">We Didn't Reinvent<br/>the Click.</h2>
-          <p>We just made it matter more.</p>
-          <p>Wright Click Studio was built on a simple belief: every interaction on the web should feel intentional, beautiful, and effortless. We're a tight-knit team of designers, developers, and storytellers who obsess over the details — from the first pixel to the final deploy.</p>
-          <p>We work with founders, brands, and agencies who want more than a template. They want something crafted. Something that makes people stop, look, and click again.</p>
-          <div class="about-values">
-            <div class="value-item">
-              <span class="value-icon">✦</span>
-              <div>
-                <strong>Craft First</strong>
-                <p>Every detail gets our full attention, every time.</p>
-              </div>
-            </div>
-            <div class="value-item">
-              <span class="value-icon">◈</span>
-              <div>
-                <strong>Ship with Confidence</strong>
-                <p>Beautiful work, delivered on time and on budget.</p>
-              </div>
-            </div>
-            <div class="value-item">
-              <span class="value-icon">◉</span>
-              <div>
-                <strong>Long-term Thinking</strong>
-                <p>We build relationships, not just websites.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== TESTIMONIALS ====== -->
-  <section class="testimonials section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Kind Words</div>
-        <h2 class="section-title">Clients Who Clicked</h2>
-      </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card reveal">
-          <div class="testimonial-quote">"Wright Click completely transformed our online presence. Our site went from an afterthought to our #1 sales channel."</div>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar testimonial-avatar--1">JM</div>
+<!-- ── RECENT MESSAGES (Elevation Netflix-style row) ────── -->
+<section id="messages">
+    <div class="msg-container">
+        <div class="msg-header">
             <div>
-              <strong>Jordan Miller</strong>
-              <span>CEO, Apex Commerce</span>
+                <div class="section-kicker">RECENT MESSAGES</div>
+                <h2 class="section-title-lg">Watch at Your Own Pace</h2>
             </div>
-          </div>
-        </div>
-        <div class="testimonial-card reveal">
-          <div class="testimonial-quote">"The process was seamless. They understood our product better than most engineers we've worked with."</div>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar testimonial-avatar--2">SR</div>
-            <div>
-              <strong>Samira Rashid</strong>
-              <span>Founder, Luma Labs</span>
+            <div class="msg-nav-btns">
+                <button class="msg-scroll-btn" id="msgLeft"  aria-label="Scroll left">←</button>
+                <button class="msg-scroll-btn" id="msgRight" aria-label="Scroll right">→</button>
             </div>
-          </div>
         </div>
-        <div class="testimonial-card reveal">
-          <div class="testimonial-quote">"Every pixel was deliberate. The site gets compliments from everyone who sees it. Absolute artistry."</div>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar testimonial-avatar--3">TP</div>
-            <div>
-              <strong>Thomas Park</strong>
-              <span>Creative Director, Noire</span>
+
+        <div class="msg-scroll" id="msgScroll">
+            <!-- Message cards — CSS-generated artwork thumbnails -->
+            <div class="msg-card">
+                <div class="msg-thumb" style="--sa:1">
+                    <div class="mt-overlay">
+                        <div class="mt-series">ANCHOR</div>
+                        <div class="mt-play">▶</div>
+                    </div>
+                </div>
+                <div class="msg-info">
+                    <span class="msg-series">ANCHOR</span>
+                    <h4 class="msg-title">When the Storm Doesn't Stop</h4>
+                    <span class="msg-meta">June 8 &bull; 52 min</span>
+                </div>
             </div>
-          </div>
+
+            <div class="msg-card">
+                <div class="msg-thumb" style="--sa:2">
+                    <div class="mt-overlay">
+                        <div class="mt-series">ANCHOR</div>
+                        <div class="mt-play">▶</div>
+                    </div>
+                </div>
+                <div class="msg-info">
+                    <span class="msg-series">ANCHOR</span>
+                    <h4 class="msg-title">The Weight You Weren't Meant to Carry</h4>
+                    <span class="msg-meta">June 1 &bull; 48 min</span>
+                </div>
+            </div>
+
+            <div class="msg-card">
+                <div class="msg-thumb" style="--sa:3">
+                    <div class="mt-overlay">
+                        <div class="mt-series">ANCHOR</div>
+                        <div class="mt-play">▶</div>
+                    </div>
+                </div>
+                <div class="msg-info">
+                    <span class="msg-series">ANCHOR</span>
+                    <h4 class="msg-title">Roots Before Branches</h4>
+                    <span class="msg-meta">May 25 &bull; 44 min</span>
+                </div>
+            </div>
+
+            <div class="msg-card">
+                <div class="msg-thumb" style="--sa:4">
+                    <div class="mt-overlay">
+                        <div class="mt-series">FLOOD</div>
+                        <div class="mt-play">▶</div>
+                    </div>
+                </div>
+                <div class="msg-info">
+                    <span class="msg-series">FLOOD</span>
+                    <h4 class="msg-title">Carried by What You Can't See</h4>
+                    <span class="msg-meta">May 18 &bull; 50 min</span>
+                </div>
+            </div>
+
+            <div class="msg-card">
+                <div class="msg-thumb" style="--sa:5">
+                    <div class="mt-overlay">
+                        <div class="mt-series">FLOOD</div>
+                        <div class="mt-play">▶</div>
+                    </div>
+                </div>
+                <div class="msg-info">
+                    <span class="msg-series">FLOOD</span>
+                    <h4 class="msg-title">Under Pressure, Not Under Water</h4>
+                    <span class="msg-meta">May 11 &bull; 46 min</span>
+                </div>
+            </div>
+
+            <div class="msg-card">
+                <div class="msg-thumb" style="--sa:6">
+                    <div class="mt-overlay">
+                        <div class="mt-series">RISE</div>
+                        <div class="mt-play">▶</div>
+                    </div>
+                </div>
+                <div class="msg-info">
+                    <span class="msg-series">RISE</span>
+                    <h4 class="msg-title">You Were Made for This Moment</h4>
+                    <span class="msg-meta">May 4 &bull; 53 min</span>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <div class="msg-footer">
+            <a href="#" class="msg-all-link">View All Messages →</a>
+        </div>
     </div>
-  </section>
+</section>
 
-  <!-- ====== CONTACT ====== -->
-  <section class="contact section" id="contact">
-    <div class="container">
-      <div class="contact-layout">
-        <div class="contact-info reveal">
-          <div class="section-label">Get In Touch</div>
-          <h2 class="section-title">Let's Build<br/>Something Wright.</h2>
-          <p>Have a project in mind? Drop us a line. We usually respond within 24 hours.</p>
-
-          <div class="contact-details">
-            <div class="contact-detail">
-              <span class="contact-detail-icon">✉</span>
-              <div>
-                <strong>Email</strong>
-                <span>hello@wrightclickstudio.com</span>
-              </div>
+<!-- ── WATCH LIVE EMBED ───────────────────────────────────── -->
+<section id="live" class="section-dark">
+    <div class="live-container">
+        <div class="live-header reveal-up">
+            <div class="live-indicator">
+                <span class="live-dot-red"></span>
+                LIVE SUNDAYS 9 &amp; 11 AM
             </div>
-            <div class="contact-detail">
-              <span class="contact-detail-icon">◎</span>
-              <div>
-                <strong>Location</strong>
-                <span>Remote-first · Worldwide</span>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <span class="contact-detail-icon">✦</span>
-              <div>
-                <strong>Availability</strong>
-                <span>Open for new projects</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="contact-social">
-            <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
-            <a href="#" class="social-link" aria-label="Instagram">◈</a>
-            <a href="#" class="social-link" aria-label="LinkedIn">in</a>
-            <a href="#" class="social-link" aria-label="Dribbble">◉</a>
-          </div>
+            <h2 class="section-title-lg">Watch <span class="text-accent">Online</span></h2>
+            <p class="section-body-text">Can't make it in person? Join thousands watching online every week. Same message, same community — just from your couch.</p>
         </div>
-
-        <div class="contact-form-wrap reveal">
-          <form class="contact-form" id="contactForm" novalidate>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="fname" placeholder="Jane" required />
-              </div>
-              <div class="form-group">
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lname" placeholder="Doe" required />
-              </div>
+        <div class="live-video-wrap reveal-up">
+            <div class="video-frame">
+                <div class="video-ratio">
+                    <iframe
+                        src="https://www.youtube.com/embed/SJmFn6LQYMU?rel=0&modestbranding=1&color=white"
+                        title="Watch Grace & Glory Live"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-border-glow"></div>
             </div>
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="jane@company.com" required />
-            </div>
-            <div class="form-group">
-              <label for="service">Service Needed</label>
-              <select id="service" name="service">
-                <option value="">Select a service...</option>
-                <option>Web Design</option>
-                <option>Brand Identity</option>
-                <option>UI / UX Design</option>
-                <option>Web Development</option>
-                <option>E-Commerce</option>
-                <option>Other / Let's talk</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">Tell us about your project</label>
-              <textarea id="message" name="message" rows="5" placeholder="Give us a brief overview — vision, timeline, budget range..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn--primary btn--full">
-              <span>Send Message</span>
-              <span class="btn-arrow">→</span>
-            </button>
-            <div class="form-success" id="formSuccess" aria-live="polite">
-              <span>✦</span> Message sent! We'll be in touch within 24 hours.
-            </div>
-          </form>
         </div>
-      </div>
+        <div class="live-ctas reveal-up">
+            <a href="#" class="cta-primary">Subscribe on YouTube</a>
+            <a href="#" class="cta-outline">Listen on Podcast</a>
+            <a href="#" class="cta-outline">Watch on App</a>
+        </div>
     </div>
-  </section>
+</section>
 
-  <!-- ====== FOOTER ====== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <span class="nav-logo-icon">⌘</span>
-            <span>Wright Click Studio</span>
-          </div>
-          <p>We design. We build. We Wright Click.</p>
+<!-- ── NEW HERE (Elevation "New Here?" pathway) ──────────── -->
+<section id="new-here" class="section-alt">
+    <div class="nh-container">
+        <div class="nh-split">
+            <div class="nh-left reveal-left">
+                <div class="section-kicker">FIRST TIME?</div>
+                <h2 class="section-title-lg">We've Been <br><span class="text-accent">Expecting You</span></h2>
+                <p class="section-body-text">
+                    Whether you grew up in church, walked away from one, or have never set foot inside —
+                    you're not just welcome here, you're wanted here.
+                </p>
+                <p class="section-body-text">
+                    No dress code. No perfect record required. Just come as you are.
+                </p>
+                <div class="nh-steps">
+                    <div class="nh-step">
+                        <div class="step-num">01</div>
+                        <div class="step-text">
+                            <strong>Pick a Service Time</strong>
+                            <span>Sunday 9 AM, 11 AM, or 6 PM</span>
+                        </div>
+                    </div>
+                    <div class="nh-step">
+                        <div class="step-num">02</div>
+                        <div class="step-text">
+                            <strong>Show Up</strong>
+                            <span>Parking and a greeter are waiting</span>
+                        </div>
+                    </div>
+                    <div class="nh-step">
+                        <div class="step-num">03</div>
+                        <div class="step-text">
+                            <strong>We'll Handle the Rest</strong>
+                            <span>Find your seats, enjoy the service</span>
+                        </div>
+                    </div>
+                </div>
+                <a href="#contact" class="cta-primary" style="margin-top:2rem;display:inline-flex">Plan Your Visit</a>
+            </div>
+
+            <div class="nh-right reveal-right">
+                <div class="nh-visual">
+                    <div class="nh-card nh-card-1">
+                        <div class="nhc-icon">☕</div>
+                        <div class="nhc-text">
+                            <strong>Free Coffee</strong>
+                            <span>Lobby opens 20 min before service</span>
+                        </div>
+                    </div>
+                    <div class="nh-card nh-card-2">
+                        <div class="nhc-icon">👶</div>
+                        <div class="nhc-text">
+                            <strong>Kids Are Covered</strong>
+                            <span>Safe, fun childcare birth–5th grade</span>
+                        </div>
+                    </div>
+                    <div class="nh-card nh-card-3">
+                        <div class="nhc-icon">♿</div>
+                        <div class="nhc-text">
+                            <strong>Fully Accessible</strong>
+                            <span>Hearing loops, ASL &amp; overflow rooms</span>
+                        </div>
+                    </div>
+                    <div class="nh-card nh-card-4">
+                        <div class="nhc-icon">🅿️</div>
+                        <div class="nhc-text">
+                            <strong>Free Parking</strong>
+                            <span>Plenty of space, easy in and out</span>
+                        </div>
+                    </div>
+                    <div class="nh-visual-glow"></div>
+                </div>
+            </div>
         </div>
-        <div class="footer-links-group">
-          <strong>Studio</strong>
-          <a href="#services">Services</a>
-          <a href="#work">Portfolio</a>
-          <a href="#process">Process</a>
-          <a href="#about">About</a>
-        </div>
-        <div class="footer-links-group">
-          <strong>Services</strong>
-          <a href="#services">Web Design</a>
-          <a href="#services">Branding</a>
-          <a href="#services">Development</a>
-          <a href="#services">E-Commerce</a>
-        </div>
-        <div class="footer-links-group">
-          <strong>Connect</strong>
-          <a href="#">Twitter / X</a>
-          <a href="#">Instagram</a>
-          <a href="#">LinkedIn</a>
-          <a href="#contact">hello@wrightclickstudio.com</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2025 Wright Click Studio. All rights reserved.</span>
-        <span class="footer-hint">Right-click for options 🖱</span>
-      </div>
     </div>
-  </footer>
+</section>
 
-  <script src="js/main.js"></script>
+<!-- ── CAMPUSES (Life.church campus finder) ───────────────── -->
+<section id="campuses" class="section-dark">
+    <div class="cam-container">
+        <div class="cam-header reveal-up">
+            <div class="section-kicker">4 LOCATIONS</div>
+            <h2 class="section-title-lg">Find Your <span class="text-accent">Campus</span></h2>
+            <p class="section-body-text">We're right in your neighborhood. Find the campus closest to you, or join us online from anywhere in the world.</p>
+        </div>
+
+        <div class="cam-grid">
+            <div class="campus-card reveal-up" style="--delay:0s">
+                <div class="campus-art ca-main"></div>
+                <div class="campus-info">
+                    <div class="campus-tag">MAIN CAMPUS</div>
+                    <h3>Greenville Downtown</h3>
+                    <p>4521 Grace Boulevard, Greenville, SC 29601</p>
+                    <div class="campus-times">
+                        <span>Sun 9:00 AM</span>
+                        <span>Sun 11:00 AM</span>
+                        <span>Sun 6:00 PM</span>
+                    </div>
+                    <a href="#" class="campus-link">Get Directions →</a>
+                </div>
+            </div>
+
+            <div class="campus-card reveal-up" style="--delay:0.1s">
+                <div class="campus-art ca-north"></div>
+                <div class="campus-info">
+                    <div class="campus-tag">NORTH CAMPUS</div>
+                    <h3>Greenville North</h3>
+                    <p>892 Riverside Drive, Greenville, SC 29609</p>
+                    <div class="campus-times">
+                        <span>Sun 9:00 AM</span>
+                        <span>Sun 11:00 AM</span>
+                    </div>
+                    <a href="#" class="campus-link">Get Directions →</a>
+                </div>
+            </div>
+
+            <div class="campus-card reveal-up" style="--delay:0.2s">
+                <div class="campus-art ca-east"></div>
+                <div class="campus-info">
+                    <div class="campus-tag">EAST CAMPUS</div>
+                    <h3>Simpsonville</h3>
+                    <p>210 Woodruff Road, Simpsonville, SC 29681</p>
+                    <div class="campus-times">
+                        <span>Sun 9:00 AM</span>
+                        <span>Sun 11:00 AM</span>
+                    </div>
+                    <a href="#" class="campus-link">Get Directions →</a>
+                </div>
+            </div>
+
+            <div class="campus-card reveal-up" style="--delay:0.3s">
+                <div class="campus-art ca-online"></div>
+                <div class="campus-info">
+                    <div class="campus-tag">ONLINE CAMPUS</div>
+                    <h3>Church Online</h3>
+                    <p>Stream live from anywhere in the world</p>
+                    <div class="campus-times">
+                        <span>Sun 9:00 AM</span>
+                        <span>Sun 11:00 AM</span>
+                        <span>Always On-Demand</span>
+                    </div>
+                    <a href="#live" class="campus-link">Watch Online →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── EVENTS ─────────────────────────────────────────────── -->
+<section id="events" class="section-alt">
+    <div class="ev-container">
+        <div class="ev-header reveal-up">
+            <div class="section-kicker">HAPPENING SOON</div>
+            <h2 class="section-title-lg">Don't Miss <span class="text-accent">What's Next</span></h2>
+        </div>
+
+        <div class="ev-grid">
+            <div class="ev-feature glass-card reveal-left">
+                <div class="ev-feature-art">
+                    <div class="efa-date">
+                        <span class="efa-month">JUN</span>
+                        <span class="efa-day">15</span>
+                    </div>
+                    <div class="efa-glow"></div>
+                </div>
+                <div class="ev-feature-body">
+                    <div class="ev-badge">FEATURED EVENT</div>
+                    <h3>Summer Revival Weekend</h3>
+                    <p>Three nights of worship, teaching, and community. Guest speaker Pastor David Chen. This is the one you've been waiting for.</p>
+                    <div class="ev-detail-row">
+                        <span>📍 Main Sanctuary</span>
+                        <span>⏰ June 15–17, 6 PM</span>
+                    </div>
+                    <div class="ev-countdown" id="revivalCountdown">
+                        <div class="ecd-unit">
+                            <span class="ecd-n" id="ecd-d">—</span>
+                            <span class="ecd-l">Days</span>
+                        </div>
+                        <div class="ecd-sep">:</div>
+                        <div class="ecd-unit">
+                            <span class="ecd-n" id="ecd-h">—</span>
+                            <span class="ecd-l">Hrs</span>
+                        </div>
+                        <div class="ecd-sep">:</div>
+                        <div class="ecd-unit">
+                            <span class="ecd-n" id="ecd-m">—</span>
+                            <span class="ecd-l">Min</span>
+                        </div>
+                    </div>
+                    <a href="#" class="cta-primary">Register — It's Free</a>
+                </div>
+            </div>
+
+            <div class="ev-list">
+                <div class="ev-item glass-card reveal-right" style="--delay:0.05s">
+                    <div class="ev-item-date"><span>JUN</span><span>21</span></div>
+                    <div class="ev-item-body">
+                        <h4>Marriage Retreat</h4>
+                        <p>Blue Ridge Mountains · Fri–Sun</p>
+                    </div>
+                    <a href="#" class="ev-item-arrow">→</a>
+                </div>
+                <div class="ev-item glass-card reveal-right" style="--delay:0.1s">
+                    <div class="ev-item-date"><span>JUN</span><span>28</span></div>
+                    <div class="ev-item-body">
+                        <h4>Community Food Drive</h4>
+                        <p>Church Parking Lot · 9 AM</p>
+                    </div>
+                    <a href="#" class="ev-item-arrow">→</a>
+                </div>
+                <div class="ev-item glass-card reveal-right" style="--delay:0.15s">
+                    <div class="ev-item-date"><span>JUL</span><span>4</span></div>
+                    <div class="ev-item-body">
+                        <h4>Freedom Celebration</h4>
+                        <p>Church Grounds · 4 PM · Fireworks</p>
+                    </div>
+                    <a href="#" class="ev-item-arrow">→</a>
+                </div>
+                <div class="ev-item glass-card reveal-right" style="--delay:0.2s">
+                    <div class="ev-item-date"><span>JUL</span><span>12</span></div>
+                    <div class="ev-item-body">
+                        <h4>Youth Summer Camp</h4>
+                        <p>Camp Pinecrest · Mon–Sat</p>
+                    </div>
+                    <a href="#" class="ev-item-arrow">→</a>
+                </div>
+                <div class="ev-item glass-card reveal-right" style="--delay:0.25s">
+                    <div class="ev-item-date"><span>JUL</span><span>19</span></div>
+                    <div class="ev-item-body">
+                        <h4>Baptism Sunday</h4>
+                        <p>All Campuses · 11 AM Service</p>
+                    </div>
+                    <a href="#" class="ev-item-arrow">→</a>
+                </div>
+                <div class="ev-item glass-card reveal-right" style="--delay:0.3s">
+                    <div class="ev-item-date"><span>AUG</span><span>3</span></div>
+                    <div class="ev-item-body">
+                        <h4>Life Groups Launch</h4>
+                        <p>Fall semester sign-ups begin</p>
+                    </div>
+                    <a href="#" class="ev-item-arrow">→</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── LIFE GROUPS (Life.church + Ginghamsburg "Groups") ─── -->
+<section id="groups" class="section-dark">
+    <div class="lg-container">
+        <div class="lg-header reveal-up">
+            <div class="section-kicker">LIFE GROUPS</div>
+            <h2 class="section-title-lg">Life Is Better <span class="text-accent">Together</span></h2>
+            <p class="section-body-text max-600">Life Groups are small, intentional communities meeting weekly in homes, coffee shops, and neighborhoods. This is where real friendships form and real life happens.</p>
+        </div>
+        <div class="lg-grid">
+            <div class="lg-card glass-card reveal-up" style="--delay:0s;--accent:#3b82f6">
+                <div class="lg-icon-wrap"><span>👨‍👩‍👧‍👦</span></div>
+                <h3>Family Groups</h3>
+                <p>For married couples and parents navigating the beautiful chaos of family life.</p>
+                <a href="#" class="lg-link">Find a Group →</a>
+            </div>
+            <div class="lg-card glass-card reveal-up" style="--delay:0.07s;--accent:#8b5cf6">
+                <div class="lg-icon-wrap"><span>🧑‍🤝‍🧑</span></div>
+                <h3>Young Adults</h3>
+                <p>College-age to mid-30s building friendships and faith in every season of life.</p>
+                <a href="#" class="lg-link">Find a Group →</a>
+            </div>
+            <div class="lg-card glass-card reveal-up" style="--delay:0.14s;--accent:#10b981">
+                <div class="lg-icon-wrap"><span>📖</span></div>
+                <h3>Bible Study</h3>
+                <p>Go deep. Weekly study groups for every background, from seeker to seminary grad.</p>
+                <a href="#" class="lg-link">Find a Group →</a>
+            </div>
+            <div class="lg-card glass-card reveal-up" style="--delay:0.21s;--accent:#f59e0b">
+                <div class="lg-icon-wrap"><span>🌍</span></div>
+                <h3>Serve Together</h3>
+                <p>Mission-focused groups that serve our city side by side — every week.</p>
+                <a href="#" class="lg-link">Find a Group →</a>
+            </div>
+        </div>
+        <div class="lg-footer reveal-up">
+            <a href="#" class="cta-primary">Browse All Life Groups</a>
+        </div>
+    </div>
+</section>
+
+<!-- ── MISSION / SERVE (Ginghamsburg DNA) ────────────────── -->
+<section id="serve" class="section-serve">
+    <canvas id="serveCanvas"></canvas>
+    <div class="serve-overlay"></div>
+    <div class="serve-container">
+        <div class="serve-inner reveal-up">
+            <div class="section-kicker">OUR MISSION</div>
+            <h2 class="serve-headline">
+                Love Jesus.<br>
+                <span class="text-accent">Do Something About It.</span>
+            </h2>
+            <p class="section-body-text max-600">
+                Faith without action is just words. We're committed to tangible love — feeding the hungry, housing the vulnerable, and carrying the gospel to the ends of the earth.
+            </p>
+            <div class="serve-stats">
+                <div class="serve-stat">
+                    <span class="ss-num stat-number" data-target="180000">0</span>
+                    <span class="ss-suf">+ meals</span>
+                    <span class="ss-label">served this year</span>
+                </div>
+                <div class="serve-stat">
+                    <span class="ss-num stat-number" data-target="120">0</span>
+                    <span class="ss-suf">+ countries</span>
+                    <span class="ss-label">mission partners</span>
+                </div>
+                <div class="serve-stat">
+                    <span class="ss-num stat-number" data-target="3200">0</span>
+                    <span class="ss-suf">+ volunteers</span>
+                    <span class="ss-label">serving monthly</span>
+                </div>
+                <div class="serve-stat">
+                    <span class="ss-num stat-number" data-target="2400000">0</span>
+                    <span class="ss-suf">+</span>
+                    <span class="ss-label">given to missions ($)</span>
+                </div>
+            </div>
+            <div class="serve-ctas">
+                <a href="#" class="cta-primary">Serve This Weekend</a>
+                <a href="#" class="cta-outline">Support Missions</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── GIVE ───────────────────────────────────────────────── -->
+<section id="give" class="section-dark">
+    <div class="give-container">
+        <div class="give-split">
+            <div class="give-left reveal-left">
+                <div class="section-kicker">GENEROSITY</div>
+                <h2 class="section-title-lg">Every Gift <span class="text-accent">Multiplies</span></h2>
+                <p class="section-body-text">
+                    You're not just giving money — you're feeding families, planting churches, and changing lives around the world. 100% of every gift goes toward the mission.
+                </p>
+                <div class="give-ways">
+                    <a href="#" class="give-way glass-card">
+                        <span class="gw-icon">💳</span>
+                        <div>
+                            <strong>Give Online</strong>
+                            <span>One-time or recurring</span>
+                        </div>
+                    </a>
+                    <a href="#" class="give-way glass-card">
+                        <span class="gw-icon">📱</span>
+                        <div>
+                            <strong>Text to Give</strong>
+                            <span>Text GIVE to (864) 555-0100</span>
+                        </div>
+                    </a>
+                    <a href="#" class="give-way glass-card">
+                        <span class="gw-icon">📲</span>
+                        <div>
+                            <strong>Give on the App</strong>
+                            <span>Fastest, easiest way to give</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="give-right reveal-right">
+                <div class="give-quote glass-card">
+                    <div class="gq-mark">"</div>
+                    <blockquote>Where your treasure is, there your heart will be also.</blockquote>
+                    <cite>— Matthew 6:21</cite>
+                    <div class="gq-glow"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── APP (Life.church app-first DNA) ───────────────────── -->
+<section id="app" class="section-alt">
+    <div class="app-container">
+        <div class="app-split">
+            <div class="app-left reveal-left">
+                <div class="section-kicker">GRACE &amp; GLORY APP</div>
+                <h2 class="section-title-lg">Church in <span class="text-accent">Your Pocket</span></h2>
+                <p class="section-body-text">Watch messages, give, find a group, submit prayer requests, and check in your kids — all from one app.</p>
+                <ul class="app-features">
+                    <li><span class="af-check">✓</span> Stream live services &amp; past messages</li>
+                    <li><span class="af-check">✓</span> Give online in seconds</li>
+                    <li><span class="af-check">✓</span> Find and join a Life Group</li>
+                    <li><span class="af-check">✓</span> Submit prayer requests</li>
+                    <li><span class="af-check">✓</span> Check in kids without the line</li>
+                    <li><span class="af-check">✓</span> Daily devotionals &amp; Bible reading</li>
+                </ul>
+                <div class="app-badges">
+                    <a href="#" class="app-badge">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                        <div><span>Download on the</span><strong>App Store</strong></div>
+                    </a>
+                    <a href="#" class="app-badge">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+                        <div><span>Get it on</span><strong>Google Play</strong></div>
+                    </a>
+                </div>
+            </div>
+            <div class="app-right reveal-right">
+                <div class="app-phone-frame">
+                    <div class="apf-screen">
+                        <div class="apf-nav">
+                            <span class="apf-logo">G&amp;G</span>
+                            <span class="apf-time">9:41</span>
+                        </div>
+                        <div class="apf-hero-thumb">
+                            <div class="apf-live">
+                                <span class="live-dot-red"></span> LIVE
+                            </div>
+                            <div class="apf-series-name">ANCHOR</div>
+                        </div>
+                        <div class="apf-section">
+                            <div class="apf-row-title">Recent Messages</div>
+                            <div class="apf-cards">
+                                <div class="apf-card" style="--sa:1"></div>
+                                <div class="apf-card" style="--sa:2"></div>
+                                <div class="apf-card" style="--sa:3"></div>
+                            </div>
+                        </div>
+                        <div class="apf-actions">
+                            <div class="apf-action">📺 Watch</div>
+                            <div class="apf-action">🙏 Pray</div>
+                            <div class="apf-action">💛 Give</div>
+                        </div>
+                    </div>
+                    <div class="apf-glow"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── CONTACT ────────────────────────────────────────────── -->
+<section id="contact" class="section-dark">
+    <div class="ct-container">
+        <div class="ct-grid">
+            <div class="ct-left reveal-left">
+                <div class="section-kicker">CONNECT</div>
+                <h2 class="section-title-lg">We'd Love to <span class="text-accent">Hear From You</span></h2>
+                <p class="section-body-text">Whether you're ready to plan a visit, have questions, or just want someone to pray with you — we're here.</p>
+                <div class="ct-info">
+                    <div class="ct-row">
+                        <span class="ct-ico">📍</span>
+                        <div>
+                            <strong>Main Campus</strong>
+                            <p>4521 Grace Boulevard, Greenville, SC 29601</p>
+                        </div>
+                    </div>
+                    <div class="ct-row">
+                        <span class="ct-ico">📞</span>
+                        <div>
+                            <strong>Phone / Text</strong>
+                            <p>(864) 555-0199</p>
+                        </div>
+                    </div>
+                    <div class="ct-row">
+                        <span class="ct-ico">✉️</span>
+                        <div>
+                            <strong>Email</strong>
+                            <p>hello@graceandglory.church</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ct-social">
+                    <a href="#" class="ct-soc-btn">YouTube</a>
+                    <a href="#" class="ct-soc-btn">Instagram</a>
+                    <a href="#" class="ct-soc-btn">Facebook</a>
+                    <a href="#" class="ct-soc-btn">Spotify</a>
+                </div>
+            </div>
+            <div class="ct-right reveal-right">
+                <div class="ct-form glass-card">
+                    <h3>Plan Your Visit</h3>
+                    <form id="visitForm" novalidate>
+                        <div class="fg-row">
+                            <div class="fg">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" placeholder="John" required>
+                            </div>
+                            <div class="fg">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" placeholder="Smith" required>
+                            </div>
+                        </div>
+                        <div class="fg">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="john@email.com" required>
+                        </div>
+                        <div class="fg">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" placeholder="(555) 000-0000">
+                        </div>
+                        <div class="fg">
+                            <label for="campus">Preferred Campus</label>
+                            <select id="campus">
+                                <option value="">— Select a campus —</option>
+                                <option>Downtown Greenville</option>
+                                <option>Greenville North</option>
+                                <option>Simpsonville</option>
+                                <option>Online</option>
+                            </select>
+                        </div>
+                        <div class="fg">
+                            <label for="message">Anything we should know?</label>
+                            <textarea id="message" rows="3" placeholder="Prayer requests, questions, or just a hello…"></textarea>
+                        </div>
+                        <button type="submit" class="cta-primary cta-block">Send Message</button>
+                    </form>
+                    <div class="form-success" id="formSuccess" hidden>
+                        <div class="fs-check">✓</div>
+                        <h3>See You Sunday!</h3>
+                        <p>We'll be in touch within 24 hours. Can't wait to meet you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <div class="logo-icon">✦</div>
+                    <div class="logo-words">
+                        <span class="logo-main">GRACE &amp; GLORY</span>
+                        <span class="logo-sub">CHURCH</span>
+                    </div>
+                </div>
+                <p>Real people. Real faith. Real life.<br>You have a place here.</p>
+            </div>
+
+            <div class="footer-cols">
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <a href="#quick-access">Watch Live</a>
+                    <a href="#new-here">Plan a Visit</a>
+                    <a href="#campuses">Find a Campus</a>
+                    <a href="#app">Get the App</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Grow</h4>
+                    <a href="#messages">Messages</a>
+                    <a href="#groups">Life Groups</a>
+                    <a href="#">Baptism</a>
+                    <a href="#">Next Steps</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Serve</h4>
+                    <a href="#serve">Volunteer</a>
+                    <a href="#">Missions</a>
+                    <a href="#">Outreach</a>
+                    <a href="#give">Give</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Service Times</h4>
+                    <p>Sunday 9 AM &amp; 11 AM</p>
+                    <p>Sunday 6 PM (Main Campus)</p>
+                    <p>Wednesday 7 PM</p>
+                    <p>Online — Always</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Grace &amp; Glory Church. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Giving Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="js/church.js"></script>
 </body>
 </html>
