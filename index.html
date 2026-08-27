@@ -1,702 +1,579 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wright Click Studio — Web Design &amp; Digital Creation</title>
-  <meta name="description" content="Wright Click Studio is a web design and digital creation firm. We design, build, and craft exceptional digital experiences." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Wright Click Studio — The Web, Directed.</title>
+<meta name="description" content="Wright Click Studio designs and builds custom websites with the weight of a feature film. Strategy, design, engineering, motion and release — no templates." />
+<meta name="theme-color" content="#06070A" />
+<link rel="canonical" href="https://wrightclickstudio.com/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://wrightclickstudio.com/" />
+<meta property="og:site_name" content="Wright Click Studio" />
+<meta property="og:title" content="Wright Click Studio — The Web, Directed." />
+<meta property="og:description" content="Custom websites built like feature films. Cast, lit, cut, released." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Wright Click Studio — The Web, Directed." />
+<meta name="twitter:description" content="Custom websites built like feature films. Cast, lit, cut, released." />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2306070A'/%3E%3Cpath d='M6 9h4l2.2 10L15 9h2.4l2.8 10L22.4 9H26l-4.3 15h-3.1L16 14.6 13.4 24h-3.1z' fill='%23F2B45E'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Archivo:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/site.css" />
+<script>document.documentElement.classList.add('js');</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Wright Click Studio",
+  "url": "https://wrightclickstudio.com/",
+  "description": "Web design and development studio building custom, high-performance websites.",
+  "email": "hello@wrightclickstudio.com",
+  "areaServed": "Worldwide",
+  "serviceType": ["Web Design", "Web Development", "Brand Identity", "E-Commerce", "Motion Design"]
+}
+</script>
 </head>
-<body>
+<body class="is-booting">
 
-  <!-- Custom cursor -->
-  <div class="cursor" id="cursor">
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
+<!-- ============ COLD OPEN ============ -->
+<div class="coldopen" id="coldopen" aria-hidden="true">
+  <div class="coldopen-mark">
+    <span class="co-w">W</span><span class="co-c">C</span><span class="co-s">S</span>
   </div>
-  <div class="cursor-click-ripple" id="cursorRipple"></div>
+  <div class="coldopen-line">A WRIGHT CLICK STUDIO PICTURE</div>
+</div>
 
-  <!-- Context Menu (appears on right-click anywhere) -->
-  <div class="context-menu" id="contextMenu" role="menu" aria-label="Wright Click Studio menu">
-    <div class="context-menu-header">
-      <span class="context-menu-logo">⌘</span>
-      <span>Wright Click Studio</span>
-    </div>
-    <div class="context-menu-divider"></div>
-    <button class="context-menu-item" data-target="services" role="menuitem">
-      <span class="ctx-icon">✦</span> Our Services
-      <span class="ctx-arrow">›</span>
-    </button>
-    <button class="context-menu-item" data-target="work" role="menuitem">
-      <span class="ctx-icon">◈</span> View Portfolio
-    </button>
-    <button class="context-menu-item" data-target="process" role="menuitem">
-      <span class="ctx-icon">◎</span> How We Work
-    </button>
-    <button class="context-menu-item" data-target="about" role="menuitem">
-      <span class="ctx-icon">◉</span> About Us
-    </button>
-    <div class="context-menu-divider"></div>
-    <button class="context-menu-item context-menu-item--highlight" data-target="contact" role="menuitem">
-      <span class="ctx-icon">✉</span> Start a Project
-    </button>
-    <div class="context-menu-divider"></div>
-    <div class="context-menu-meta">Right-click anywhere to reopen</div>
-  </div>
+<!-- ============ ATMOSPHERE LAYERS ============ -->
+<div class="keylight" id="keylight" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="gate gate--top" aria-hidden="true"></div>
+<div class="gate gate--bot" aria-hidden="true"></div>
+<div class="focusring" id="focusring" aria-hidden="true">
+  <i></i><i></i><i></i><i></i>
+</div>
 
-  <!-- Navigation -->
-  <nav class="nav" id="nav">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-logo">
-        <span class="nav-logo-icon">⌘</span>
-        <span class="nav-logo-text">Wright Click<span class="nav-logo-studio"> Studio</span></span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#work" class="nav-link">Work</a></li>
-        <li><a href="#process" class="nav-link">Process</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#contact" class="nav-link nav-link--cta">Start a Project</a></li>
-      </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+<a class="skip" href="#titlecard">Skip to content</a>
+
+<!-- ============ HEADER ============ -->
+<header class="head" id="head">
+  <a class="mark" href="#titlecard" aria-label="Wright Click Studio, home">
+    <span class="mark-glyph" aria-hidden="true">W</span>
+    <span class="mark-name">Wright&nbsp;Click<span class="mark-sub">Studio</span></span>
+  </a>
+  <nav class="head-nav" aria-label="Primary">
+    <a href="#reel">Reel</a>
+    <a href="#departments">Departments</a>
+    <a href="#production">Production</a>
+    <a href="#studio">Studio</a>
   </nav>
+  <a class="head-cta" href="#contact" data-frame>
+    <span>Start a Production</span>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+  <button class="head-burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+    <span></span><span></span>
+  </button>
+</header>
 
-  <!-- ====== HERO ====== -->
-  <section class="hero" id="hero">
-    <div class="hero-bg">
-      <canvas id="heroCanvas"></canvas>
-      <div class="hero-grid"></div>
-    </div>
+<div class="drawer" id="drawer" hidden>
+  <a href="#reel">Reel</a>
+  <a href="#departments">Departments</a>
+  <a href="#production">Production</a>
+  <a href="#studio">Studio</a>
+  <a href="#contact" class="drawer-cta">Start a Production</a>
+</div>
 
-    <!-- Animated desktop cursor + context menu demo -->
-    <div class="hero-demo" id="heroDemo" aria-hidden="true">
-      <div class="demo-cursor" id="demoCursor">
-        <svg width="22" height="26" viewBox="0 0 22 26" fill="none">
-          <path d="M1 1L1 20.5L6.5 15.5L9.5 24L12.5 23L9.5 14H17.5L1 1Z" fill="white" stroke="#111" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <div class="demo-context-menu" id="demoContextMenu">
-        <div class="dcm-header">⌘ Wright Click Studio</div>
-        <div class="dcm-divider"></div>
-        <div class="dcm-item dcm-item--active">✦ Web Design</div>
-        <div class="dcm-item">◈ Branding</div>
-        <div class="dcm-item">◎ Development</div>
-        <div class="dcm-divider"></div>
-        <div class="dcm-item dcm-item--highlight">✉ Let's Build</div>
-      </div>
-    </div>
+<!-- ============ TRANSPORT / CHAPTER SCRUBBER ============ -->
+<aside class="scrub" id="rail" aria-hidden="true">
+  <span class="scrub-tc" id="railTc">00:00:00</span>
+  <span class="scrub-now" id="railNow">Title</span>
+  <ol class="scrub-list">
+    <li data-rail="titlecard"></li>
+    <li data-rail="reel"></li>
+    <li data-rail="departments"></li>
+    <li data-rail="production"></li>
+    <li data-rail="studio"></li>
+    <li data-rail="contact"></li>
+  </ol>
+  <span class="scrub-count"><b id="railIdx">01</b>&thinsp;/&thinsp;06</span>
+</aside>
 
-    <div class="hero-content">
-      <div class="hero-eyebrow">
-        <span class="eyebrow-dot"></span>
-        Right-click. Create. Launch.
-      </div>
-      <h1 class="hero-title">
-        <span class="hero-title-line">We Make the</span>
-        <span class="hero-title-line hero-title-line--accent">
-          <span class="typewriter" id="typewriter"></span>
-          <span class="typewriter-cursor">|</span>
-        </span>
-        <span class="hero-title-line">Worth Clicking.</span>
-      </h1>
-      <p class="hero-sub">
-        Wright Click Studio is a boutique web design &amp; digital creation firm.
-        We build stunning websites, brands, and experiences — one right click at a time.
-      </p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn--primary">
-          <span>Start a Project</span>
-          <span class="btn-arrow">→</span>
-        </a>
-        <a href="#work" class="btn btn--ghost">
-          View Our Work
-        </a>
-      </div>
-      <div class="hero-hint">
-        <span class="hint-icon">🖱</span>
-        <span>Right-click anywhere for the menu</span>
-      </div>
-    </div>
+<main>
 
-    <div class="hero-scroll-indicator">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+<!-- ============ TITLE CARD ============ -->
+<section class="title" id="titlecard">
+  <div class="title-stage">
+    <p class="slate">
+      <span>Reel 01</span><b></b><span>Wright Click Studio</span><b></b><span>MMXXVI</span>
+    </p>
 
-  <!-- ====== MARQUEE STRIP ====== -->
-  <div class="marquee-strip">
-    <div class="marquee-track">
-      <span>Web Design</span><span class="marquee-dot">✦</span>
-      <span>Branding</span><span class="marquee-dot">✦</span>
-      <span>UI / UX</span><span class="marquee-dot">✦</span>
-      <span>Development</span><span class="marquee-dot">✦</span>
-      <span>Motion Graphics</span><span class="marquee-dot">✦</span>
-      <span>SEO Strategy</span><span class="marquee-dot">✦</span>
-      <span>Social Media</span><span class="marquee-dot">✦</span>
-      <span>E-Commerce</span><span class="marquee-dot">✦</span>
-      <span>Web Design</span><span class="marquee-dot">✦</span>
-      <span>Branding</span><span class="marquee-dot">✦</span>
-      <span>UI / UX</span><span class="marquee-dot">✦</span>
-      <span>Development</span><span class="marquee-dot">✦</span>
-      <span>Motion Graphics</span><span class="marquee-dot">✦</span>
-      <span>SEO Strategy</span><span class="marquee-dot">✦</span>
-      <span>Social Media</span><span class="marquee-dot">✦</span>
-      <span>E-Commerce</span><span class="marquee-dot">✦</span>
+    <h1 class="title-h1">
+      <span class="line"><span class="lit" data-lit>The&nbsp;Web,</span></span>
+      <span class="line"><em class="lit" data-lit>Directed.</em></span>
+    </h1>
+
+    <p class="title-sub">
+      We are a web design &amp; build studio. Your site gets what a picture gets —
+      a point of view, a cast, a light plot, a cut, and a release date.
+      Everything custom. Nothing off a shelf.
+    </p>
+
+    <div class="title-actions">
+      <a class="btn btn--key" href="#contact" data-frame>
+        <span>Start a Production</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="btn btn--wire" href="#reel" data-frame>
+        <span class="btn-play" aria-hidden="true"></span>
+        <span>Roll the Reel</span>
+      </a>
     </div>
   </div>
 
-  <!-- ====== SERVICES ====== -->
-  <section class="services section" id="services">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">What We Do</div>
-        <h2 class="section-title">Every Click, <br/>A New Possibility</h2>
-        <p class="section-desc">From first concept to final launch, we handle every layer of your digital presence.</p>
+  <div class="title-foot">
+    <span class="tf-item"><i class="dot"></i> Booking new productions</span>
+    <span class="tf-item">Remote &middot; Working worldwide</span>
+    <span class="tf-item tf-scroll">Scroll<i class="tf-rule"></i></span>
+  </div>
+</section>
+
+<!-- ============ THE REEL ============ -->
+<section class="reel" id="reel">
+  <div class="reel-track" id="reelTrack">
+    <div class="reel-viewport">
+
+      <header class="reel-head">
+        <p class="chapter"><span>02</span> The Reel</p>
+        <h2 class="h2">What we<br /><em>build.</em></h2>
+        <p class="reel-note">
+          Five formats we shoot. Each one built from a blank file —
+          structure, type, motion and code written for that brand alone.
+        </p>
+        <p class="reel-hint" aria-hidden="true">Scroll &rarr;</p>
+      </header>
+
+      <ol class="strip" id="strip">
+
+        <li class="frame" data-frame>
+          <div class="frame-plate frame-plate--a" aria-hidden="true">
+            <div class="plate-art plate-art--commerce"></div>
+          </div>
+          <div class="frame-meta">
+            <span class="frame-no">FRAME 01</span>
+            <h3>Editorial Commerce</h3>
+            <p>Shops that read like magazines. Custom storefronts on Shopify or headless, where the product photography gets the space it deserves.</p>
+            <span class="frame-tags">Storefront &middot; Art direction &middot; Checkout</span>
+          </div>
+        </li>
+
+        <li class="frame" data-frame>
+          <div class="frame-plate frame-plate--b" aria-hidden="true">
+            <div class="plate-art plate-art--launch"></div>
+          </div>
+          <div class="frame-meta">
+            <span class="frame-no">FRAME 02</span>
+            <h3>The Product Launch</h3>
+            <p>One page, one job: make the thing feel inevitable. Scroll choreography, a story that builds, and a call to action that lands.</p>
+            <span class="frame-tags">Landing &middot; Motion &middot; Conversion</span>
+          </div>
+        </li>
+
+        <li class="frame" data-frame>
+          <div class="frame-plate frame-plate--c" aria-hidden="true">
+            <div class="plate-art plate-art--folio"></div>
+          </div>
+          <div class="frame-meta">
+            <span class="frame-no">FRAME 03</span>
+            <h3>Studio &amp; Portfolio</h3>
+            <p>For people whose work is the pitch. Galleries that load instantly, case studies that hold attention, and a CMS you can actually run.</p>
+            <span class="frame-tags">Gallery &middot; CMS &middot; Case studies</span>
+          </div>
+        </li>
+
+        <li class="frame" data-frame>
+          <div class="frame-plate frame-plate--d" aria-hidden="true">
+            <div class="plate-art plate-art--local"></div>
+          </div>
+          <div class="frame-meta">
+            <span class="frame-no">FRAME 04</span>
+            <h3>Local &amp; Booking</h3>
+            <p>Trades, clinics, restaurants, venues. Fast on a phone, honest about hours and prices, and wired straight into your calendar and inbox.</p>
+            <span class="frame-tags">Local SEO &middot; Booking &middot; Maps</span>
+          </div>
+        </li>
+
+        <li class="frame" data-frame>
+          <div class="frame-plate frame-plate--e" aria-hidden="true">
+            <div class="plate-art plate-art--brand"></div>
+          </div>
+          <div class="frame-meta">
+            <span class="frame-no">FRAME 05</span>
+            <h3>The Brand Feature</h3>
+            <p>The full picture. Identity, voice, a design system and a site that can grow for years without a rebuild in year two.</p>
+            <span class="frame-tags">Identity &middot; System &middot; Build</span>
+          </div>
+        </li>
+
+        <li class="frame frame--end" data-frame>
+          <div class="frame-end">
+            <p class="frame-end-kicker">Frame 06</p>
+            <h3>Yours.</h3>
+            <p class="frame-end-copy">
+              The reel is young and we like it that way — every project still
+              gets the studio's whole attention.
+            </p>
+            <a class="btn btn--key" href="#contact">
+              <span>Claim the frame</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </li>
+
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEPARTMENTS ============ -->
+<section class="depts" id="departments">
+  <div class="wrap">
+    <header class="sec-head">
+      <p class="chapter"><span>03</span> Departments</p>
+      <h2 class="h2">Every craft<br />under <em>one roof.</em></h2>
+      <p class="sec-note">
+        No hand-offs between four vendors. The person who plans it
+        is the person who draws it and the person who ships it.
+      </p>
+    </header>
+
+    <ol class="dept-list">
+
+      <li class="dept" data-frame>
+        <span class="dept-no">01</span>
+        <h3 class="dept-name">Direction</h3>
+        <p class="dept-log">Positioning, message, structure. What the site has to say before a single pixel is drawn.</p>
+        <ul class="dept-crew">
+          <li>Discovery &amp; audit</li>
+          <li>Messaging &amp; copy direction</li>
+          <li>Sitemap &amp; wireframes</li>
+        </ul>
+      </li>
+
+      <li class="dept" data-frame>
+        <span class="dept-no">02</span>
+        <h3 class="dept-name">Design</h3>
+        <p class="dept-log">The look, drawn for you. Type, colour, grid and image treated as one system, not a theme with your logo dropped in.</p>
+        <ul class="dept-crew">
+          <li>Art direction</li>
+          <li>Interface &amp; layout</li>
+          <li>Design system</li>
+        </ul>
+      </li>
+
+      <li class="dept" data-frame>
+        <span class="dept-no">03</span>
+        <h3 class="dept-name">Engineering</h3>
+        <p class="dept-log">Hand-written front-ends that stay fast on a five-year-old phone, on a CMS your team can run without calling us.</p>
+        <ul class="dept-crew">
+          <li>Front-end build</li>
+          <li>CMS &amp; e-commerce</li>
+          <li>Performance &amp; accessibility</li>
+        </ul>
+      </li>
+
+      <li class="dept" data-frame>
+        <span class="dept-no">04</span>
+        <h3 class="dept-name">Motion</h3>
+        <p class="dept-log">Movement with a reason. Scroll that reveals, transitions that orient, timing tuned by hand — and it all switches off for reduced motion.</p>
+        <ul class="dept-crew">
+          <li>Scroll choreography</li>
+          <li>Transitions &amp; micro-interaction</li>
+          <li>Loading &amp; state</li>
+        </ul>
+      </li>
+
+      <li class="dept" data-frame>
+        <span class="dept-no">05</span>
+        <h3 class="dept-name">Release</h3>
+        <p class="dept-log">Launch day handled: domains, analytics, search, and someone who answers the phone in month seven.</p>
+        <ul class="dept-crew">
+          <li>Deploy &amp; DNS</li>
+          <li>SEO &amp; analytics</li>
+          <li>Aftercare &amp; retainers</li>
+        </ul>
+      </li>
+
+    </ol>
+  </div>
+</section>
+
+<!-- ============ INTERLUDE ============ -->
+<section class="interlude" aria-label="Studio promise">
+  <div class="crawl" aria-hidden="true">
+    <div class="crawl-run">
+      <span>Made to be seen</span><i>&#9679;</i><span>Built to be kept</span><i>&#9679;</i><span>No templates</span><i>&#9679;</i>
+      <span>Made to be seen</span><i>&#9679;</i><span>Built to be kept</span><i>&#9679;</i><span>No templates</span><i>&#9679;</i>
+      <span>Made to be seen</span><i>&#9679;</i><span>Built to be kept</span><i>&#9679;</i><span>No templates</span><i>&#9679;</i>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <ul class="specs">
+      <li data-frame><span class="spec-n" data-count="0">0</span><span class="spec-l">Templates<br />ever used</span></li>
+      <li data-frame><span class="spec-n" data-count="95" data-suffix="+">0</span><span class="spec-l">Lighthouse target<br />on every launch</span></li>
+      <li data-frame><span class="spec-n" data-count="2" data-suffix=" wks">0</span><span class="spec-l">Typical wait<br />for a first look</span></li>
+      <li data-frame><span class="spec-n spec-n--ratio">1:1</span><span class="spec-l">You talk to the person<br />building it</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PRODUCTION ============ -->
+<section class="prod" id="production">
+  <div class="wrap">
+    <header class="sec-head">
+      <p class="chapter"><span>04</span> Production</p>
+      <h2 class="h2">The call<br /><em>sheet.</em></h2>
+      <p class="sec-note">
+        Four phases, fixed scope, dates you can plan around.
+        You see the work at the end of every one.
+      </p>
+    </header>
+
+    <div class="sheet" role="table" aria-label="Production schedule">
+      <div class="sheet-row sheet-row--head" role="row">
+        <span role="columnheader">Phase</span>
+        <span role="columnheader">Unit</span>
+        <span role="columnheader">On set</span>
+        <span role="columnheader">You receive</span>
       </div>
 
-      <div class="services-grid">
-        <div class="service-card reveal" data-menu-label="Web Design">
-          <div class="service-card-top">
-            <div class="service-icon">
-              <svg viewBox="0 0 48 48" fill="none"><rect x="4" y="8" width="40" height="28" rx="4" stroke="currentColor" stroke-width="2.5"/><path d="M16 36v4M32 36v4M12 40h24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M4 16h40" stroke="currentColor" stroke-width="2.5"/><circle cx="10" cy="12" r="2" fill="currentColor"/><circle cx="16" cy="12" r="2" fill="currentColor"/><circle cx="22" cy="12" r="2" fill="currentColor"/></svg>
-            </div>
-            <div class="service-number">01</div>
-          </div>
-          <h3>Web Design</h3>
-          <p>Pixel-perfect, responsive designs that captivate from the first scroll. We turn your vision into a visual story.</p>
-          <div class="service-hover-menu">
-            <div class="shm-item">Custom Layouts</div>
-            <div class="shm-item">Responsive Design</div>
-            <div class="shm-item">Animations</div>
-          </div>
+      <div class="sheet-row" role="row" data-frame>
+        <span class="sh-ph" role="cell"><b>01</b> Pre-production</span>
+        <span class="sh-un" role="cell">Direction</span>
+        <span class="sh-on" role="cell">Kick-off call, competitor teardown, sitemap, copy plan. We argue about the point of the site until it's clear.</span>
+        <span class="sh-yr" role="cell">Brief &amp; sitemap</span>
+      </div>
+
+      <div class="sheet-row" role="row" data-frame>
+        <span class="sh-ph" role="cell"><b>02</b> Principal</span>
+        <span class="sh-un" role="cell">Design</span>
+        <span class="sh-on" role="cell">The look gets drawn — home page first, in full, so you can judge the real thing rather than a mood board.</span>
+        <span class="sh-yr" role="cell">Designs &amp; prototype</span>
+      </div>
+
+      <div class="sheet-row" role="row" data-frame>
+        <span class="sh-ph" role="cell"><b>03</b> Post</span>
+        <span class="sh-un" role="cell">Engineering &amp; Motion</span>
+        <span class="sh-on" role="cell">Build, motion pass, CMS wiring, then testing across real devices, screen readers and slow connections.</span>
+        <span class="sh-yr" role="cell">Staging site</span>
+      </div>
+
+      <div class="sheet-row" role="row" data-frame>
+        <span class="sh-ph" role="cell"><b>04</b> Release</span>
+        <span class="sh-un" role="cell">Release</span>
+        <span class="sh-on" role="cell">Go live, search and analytics configured, a walkthrough recorded for your team, then 30 days of aftercare.</span>
+        <span class="sh-yr" role="cell">Live site &amp; handover</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE STUDIO ============ -->
+<section class="studio" id="studio">
+  <div class="wrap studio-grid">
+    <div class="studio-copy">
+      <p class="chapter"><span>05</span> The Studio</p>
+      <h2 class="h2">A <em>wright</em><br />is a maker.</h2>
+      <p class="lede">
+        Shipwright. Playwright. Wheelwright. The word attaches itself to
+        people who build things that carry other people somewhere.
+      </p>
+      <p>
+        That's the half of our name we care about. Wright Click Studio builds
+        the thing that carries a stranger to the point where they trust you
+        enough to call. Most of the web has stopped trying to do that — the
+        same five layouts, the same stock photograph of a handshake, the same
+        forgettable arrival.
+      </p>
+      <p>
+        We work with a small number of clients at a time and give each one the
+        full production: a point of view, a design drawn from scratch, code
+        written by hand, and a launch that's actually planned. If you want a
+        site up by Friday for a few hundred dollars, we're the wrong studio and
+        we'll tell you so on the call.
+      </p>
+
+      <ul class="creed">
+        <li data-frame><b>Custom or nothing.</b> No themes, no page builders, no recycled layout with your colours poured over it.</li>
+        <li data-frame><b>Fast is a feature.</b> Speed and accessibility are scoped in from day one, never bolted on after.</li>
+        <li data-frame><b>You own everything.</b> Code, content, domains, accounts. No hostage situations.</li>
+      </ul>
+    </div>
+
+    <aside class="studio-plate" data-frame>
+      <div class="clap" aria-hidden="true">
+        <div class="clap-bar">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <dl class="clap-body">
+          <div><dt>Production</dt><dd>Wright Click Studio</dd></div>
+          <div><dt>Director</dt><dd>Studio principal</dd></div>
+          <div><dt>Scene</dt><dd>Your website</dd></div>
+          <div><dt>Take</dt><dd>01</dd></div>
+          <div><dt>Format</dt><dd>Custom build</dd></div>
+          <div><dt>Status</dt><dd class="clap-live"><i></i>Rolling</dd></div>
+        </dl>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ END CARD / CONTACT ============ -->
+<section class="endcard" id="contact">
+  <div class="wrap">
+    <header class="sec-head sec-head--center">
+      <p class="chapter"><span>06</span> End Card</p>
+      <h2 class="h2 h2--big">Roll it.</h2>
+      <p class="sec-note sec-note--center">
+        Tell us what you're building. You'll get a real reply from a person
+        within one business day — scope, rough timeline, and an honest read on
+        whether we're the right studio for it.
+      </p>
+    </header>
+
+    <div class="end-grid">
+
+      <div class="tiers">
+        <article class="tier" data-frame>
+          <h3>Short Film</h3>
+          <p>A single, seriously good page. Launches, campaigns, coming-soon.</p>
+          <ul><li>1&ndash;3 sections deep</li><li>Custom design &amp; build</li><li>Form &amp; analytics wired</li></ul>
+        </article>
+        <article class="tier tier--lit" data-frame>
+          <span class="tier-flag">Most productions</span>
+          <h3>Feature</h3>
+          <p>The full site. Structure, design system, CMS, the works.</p>
+          <ul><li>Five pages and up</li><li>CMS or e-commerce</li><li>Motion &amp; SEO pass</li><li>30 days aftercare</li></ul>
+        </article>
+        <article class="tier" data-frame>
+          <h3>Series</h3>
+          <p>Ongoing. We stay on as your studio, month to month.</p>
+          <ul><li>New pages &amp; campaigns</li><li>Iteration on results</li><li>Priority turnaround</li></ul>
+        </article>
+        <!-- Pricing is scoped per project. To publish rates, add a
+             <p class="tier-price">from $X,XXX</p> under each <h3>. -->
+        <p class="tiers-note">Scoped per project — no packages priced before we know what it is.</p>
+      </div>
+
+      <form class="brief" id="brief" novalidate>
+        <p class="brief-title"><span class="brief-tc">REC</span> Production brief</p>
+
+        <div class="fld-row">
+          <p class="fld">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required placeholder="Your name" />
+          </p>
+          <p class="fld">
+            <label for="f-org">Company</label>
+            <input id="f-org" name="company" type="text" autocomplete="organization" placeholder="Optional" />
+          </p>
         </div>
 
-        <div class="service-card reveal" data-menu-label="Branding">
-          <div class="service-card-top">
-            <div class="service-icon">
-              <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2.5"/><path d="M24 6v4M24 38v4M6 24h4M38 24h4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="2" fill="currentColor"/></svg>
-            </div>
-            <div class="service-number">02</div>
-          </div>
-          <h3>Brand Identity</h3>
-          <p>Logos, color systems, and brand guidelines that make you instantly recognizable and unforgettable.</p>
-          <div class="service-hover-menu">
-            <div class="shm-item">Logo Design</div>
-            <div class="shm-item">Style Guides</div>
-            <div class="shm-item">Brand Strategy</div>
-          </div>
+        <p class="fld">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" />
+        </p>
+
+        <div class="fld-row">
+          <p class="fld">
+            <label for="f-type">Format</label>
+            <select id="f-type" name="format">
+              <option>Short Film — one page</option>
+              <option selected>Feature — full site</option>
+              <option>Series — ongoing</option>
+              <option>E-commerce</option>
+              <option>Not sure yet</option>
+            </select>
+          </p>
+          <p class="fld">
+            <label for="f-when">Release by</label>
+            <select id="f-when" name="timeline">
+              <option>As soon as possible</option>
+              <option selected>Next 1&ndash;2 months</option>
+              <option>This quarter</option>
+              <option>Exploring / no date</option>
+            </select>
+          </p>
         </div>
 
-        <div class="service-card reveal" data-menu-label="UI / UX">
-          <div class="service-card-top">
-            <div class="service-icon">
-              <svg viewBox="0 0 48 48" fill="none"><path d="M8 12h32M8 24h20M8 36h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><rect x="32" y="28" width="12" height="14" rx="2" stroke="currentColor" stroke-width="2.5"/><path d="M38 28v-4a2 2 0 0 0-2-2h-2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
-            </div>
-            <div class="service-number">03</div>
-          </div>
-          <h3>UI / UX Design</h3>
-          <p>Intuitive interfaces grounded in user research. We make complex things simple and simple things beautiful.</p>
-          <div class="service-hover-menu">
-            <div class="shm-item">Wireframing</div>
-            <div class="shm-item">Prototyping</div>
-            <div class="shm-item">Usability Testing</div>
-          </div>
-        </div>
+        <p class="fld">
+          <label for="f-brief">The brief</label>
+          <textarea id="f-brief" name="brief" rows="4" required placeholder="What are you building, who is it for, and what has to happen when someone lands on it?"></textarea>
+        </p>
 
-        <div class="service-card reveal" data-menu-label="Development">
-          <div class="service-card-top">
-            <div class="service-icon">
-              <svg viewBox="0 0 48 48" fill="none"><path d="M14 18L6 24l8 6M34 18l8 6-8 6M28 14l-8 20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div class="service-number">04</div>
-          </div>
-          <h3>Web Development</h3>
-          <p>Clean, performant code built to scale. From marketing sites to full-stack apps — we ship fast and solid.</p>
-          <div class="service-hover-menu">
-            <div class="shm-item">React / Next.js</div>
-            <div class="shm-item">CMS Integration</div>
-            <div class="shm-item">Performance</div>
-          </div>
-        </div>
+        <button class="btn btn--key btn--wide" type="submit">
+          <span>Send the brief</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
 
-        <div class="service-card reveal" data-menu-label="E-Commerce">
-          <div class="service-card-top">
-            <div class="service-icon">
-              <svg viewBox="0 0 48 48" fill="none"><path d="M6 8h4l5 22h22l4-14H14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="36" r="3" stroke="currentColor" stroke-width="2.5"/><circle cx="34" cy="36" r="3" stroke="currentColor" stroke-width="2.5"/></svg>
-            </div>
-            <div class="service-number">05</div>
-          </div>
-          <h3>E-Commerce</h3>
-          <p>Online stores designed to convert. Beautiful product pages, seamless checkout, and maximum revenue.</p>
-          <div class="service-hover-menu">
-            <div class="shm-item">Shopify / WooCommerce</div>
-            <div class="shm-item">Product Design</div>
-            <div class="shm-item">Conversion Optimization</div>
-          </div>
-        </div>
+        <p class="brief-alt">
+          Rather just email? <a href="mailto:hello@wrightclickstudio.com">hello@wrightclickstudio.com</a>
+        </p>
+        <p class="brief-status" id="briefStatus" role="status" aria-live="polite"></p>
+      </form>
 
-        <div class="service-card service-card--cta reveal">
-          <div class="service-cta-content">
-            <span class="service-cta-icon">⌘</span>
-            <h3>Something Else?</h3>
-            <p>Right-click and let's talk. We love ambitious, unconventional projects.</p>
-            <a href="#contact" class="btn btn--primary btn--sm">Get in Touch</a>
-          </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ CREDITS ============ -->
+<footer class="credits">
+  <div class="wrap">
+    <div class="credits-top">
+      <div class="credits-brand">
+        <span class="mark-glyph" aria-hidden="true">W</span>
+        <p class="credits-tag">The Web, Directed.</p>
+        <p class="credits-line">Wright Click Studio &mdash; a web design and build studio working remotely with clients worldwide.</p>
+      </div>
+      <div class="credits-cols">
+        <div>
+          <h4>Picture</h4>
+          <a href="#reel">The Reel</a>
+          <a href="#departments">Departments</a>
+          <a href="#production">Production</a>
+          <a href="#studio">The Studio</a>
+        </div>
+        <div>
+          <h4>Departments</h4>
+          <a href="#departments">Direction</a>
+          <a href="#departments">Design</a>
+          <a href="#departments">Engineering</a>
+          <a href="#departments">Release</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="mailto:hello@wrightclickstudio.com">hello@wrightclickstudio.com</a>
+          <a href="#contact">Start a production</a>
+          <a href="privacy-policy.html">Privacy</a>
+          <a href="terms-of-service.html">Terms</a>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- ====== WORK / PORTFOLIO ====== -->
-  <section class="work section" id="work">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Portfolio</div>
-        <h2 class="section-title">Selected Work</h2>
-        <p class="section-desc">A curated look at projects we've crafted with care.</p>
-      </div>
-
-      <div class="work-grid">
-        <div class="work-card work-card--featured reveal">
-          <div class="work-card-img work-card-img--1">
-            <div class="work-card-overlay">
-              <div class="work-overlay-menu">
-                <div class="wom-label">⌘ Apex Commerce</div>
-                <div class="wom-divider"></div>
-                <div class="wom-item">Open Project →</div>
-                <div class="wom-item">View Case Study →</div>
-              </div>
-            </div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-tags"><span>E-Commerce</span><span>Branding</span></div>
-            <h3>Apex Commerce</h3>
-            <p>Full rebrand and Shopify build for a premium outdoor gear retailer. 3× conversion lift post-launch.</p>
-          </div>
-        </div>
-
-        <div class="work-card reveal">
-          <div class="work-card-img work-card-img--2">
-            <div class="work-card-overlay">
-              <div class="work-overlay-menu">
-                <div class="wom-label">⌘ Luma Labs</div>
-                <div class="wom-divider"></div>
-                <div class="wom-item">Open Project →</div>
-              </div>
-            </div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-tags"><span>SaaS</span><span>UI/UX</span></div>
-            <h3>Luma Labs</h3>
-            <p>Dashboard redesign for an AI analytics startup. Clarity and speed at every click.</p>
-          </div>
-        </div>
-
-        <div class="work-card reveal">
-          <div class="work-card-img work-card-img--3">
-            <div class="work-card-overlay">
-              <div class="work-overlay-menu">
-                <div class="wom-label">⌘ Noire Collective</div>
-                <div class="wom-divider"></div>
-                <div class="wom-item">Open Project →</div>
-              </div>
-            </div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-tags"><span>Branding</span><span>Web</span></div>
-            <h3>Noire Collective</h3>
-            <p>Luxury fashion brand identity and editorial website with immersive scroll storytelling.</p>
-          </div>
-        </div>
-
-        <div class="work-card reveal">
-          <div class="work-card-img work-card-img--4">
-            <div class="work-card-overlay">
-              <div class="work-overlay-menu">
-                <div class="wom-label">⌘ Orbit Agency</div>
-                <div class="wom-divider"></div>
-                <div class="wom-item">Open Project →</div>
-              </div>
-            </div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-tags"><span>Agency</span><span>Development</span></div>
-            <h3>Orbit Agency</h3>
-            <p>Marketing agency site with award-winning micro-animations and blazing performance scores.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="work-cta reveal">
-        <p>Want to see more? Let's build yours next.</p>
-        <a href="#contact" class="btn btn--primary">Start Your Project →</a>
-      </div>
+    <div class="credits-bot">
+      <span>&copy; <span id="yr">2026</span> Wright Click Studio</span>
+      <span class="credits-end">&mdash; End of reel &mdash;</span>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- ====== PROCESS ====== -->
-  <section class="process section" id="process">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">How We Work</div>
-        <h2 class="section-title">The Right-Click <br/>Process</h2>
-        <p class="section-desc">Four focused steps from idea to launched product.</p>
-      </div>
-
-      <div class="process-steps">
-        <div class="process-step reveal">
-          <div class="process-step-num">
-            <span>01</span>
-            <div class="process-connector"></div>
-          </div>
-          <div class="process-step-content">
-            <div class="process-menu-item">
-              <span class="pmi-icon">◎</span>
-              <span class="pmi-label">Discover</span>
-            </div>
-            <h3>Right-Click: Explore</h3>
-            <p>We dig into your goals, audience, and competition. Every project starts with listening — then strategy.</p>
-            <ul class="process-list">
-              <li>Discovery call &amp; brief</li>
-              <li>Competitor analysis</li>
-              <li>User research</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="process-step reveal">
-          <div class="process-step-num">
-            <span>02</span>
-            <div class="process-connector"></div>
-          </div>
-          <div class="process-step-content">
-            <div class="process-menu-item">
-              <span class="pmi-icon">✦</span>
-              <span class="pmi-label">Design</span>
-            </div>
-            <h3>Right-Click: Create</h3>
-            <p>Wireframes, moodboards, and high-fidelity designs reviewed in real time. You'll see it before we build it.</p>
-            <ul class="process-list">
-              <li>Wireframing</li>
-              <li>Visual design</li>
-              <li>Interactive prototypes</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="process-step reveal">
-          <div class="process-step-num">
-            <span>03</span>
-            <div class="process-connector"></div>
-          </div>
-          <div class="process-step-content">
-            <div class="process-menu-item">
-              <span class="pmi-icon">◈</span>
-              <span class="pmi-label">Build</span>
-            </div>
-            <h3>Right-Click: Build</h3>
-            <p>Pixel-perfect development with performance baked in. We test across every device and browser.</p>
-            <ul class="process-list">
-              <li>Front-end development</li>
-              <li>CMS &amp; integrations</li>
-              <li>QA &amp; testing</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="process-step reveal">
-          <div class="process-step-num">
-            <span>04</span>
-          </div>
-          <div class="process-step-content">
-            <div class="process-menu-item process-menu-item--highlight">
-              <span class="pmi-icon">✉</span>
-              <span class="pmi-label">Launch</span>
-            </div>
-            <h3>Right-Click: Launch</h3>
-            <p>Go live with confidence. We handle deployment, SEO setup, analytics, and post-launch support.</p>
-            <ul class="process-list">
-              <li>Deployment &amp; DNS</li>
-              <li>Analytics &amp; SEO</li>
-              <li>Ongoing support</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== STATS ====== -->
-  <section class="stats">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item reveal">
-          <div class="stat-num" data-target="120">0</div>
-          <div class="stat-plus">+</div>
-          <div class="stat-label">Projects Launched</div>
-        </div>
-        <div class="stat-item reveal">
-          <div class="stat-num" data-target="98">0</div>
-          <div class="stat-plus">%</div>
-          <div class="stat-label">Client Satisfaction</div>
-        </div>
-        <div class="stat-item reveal">
-          <div class="stat-num" data-target="7">0</div>
-          <div class="stat-plus">+</div>
-          <div class="stat-label">Years in Business</div>
-        </div>
-        <div class="stat-item reveal">
-          <div class="stat-num" data-target="40">0</div>
-          <div class="stat-plus">+</div>
-          <div class="stat-label">Industries Served</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== ABOUT ====== -->
-  <section class="about section" id="about">
-    <div class="container">
-      <div class="about-layout">
-        <div class="about-visual reveal">
-          <div class="about-window">
-            <div class="window-titlebar">
-              <span class="window-btn window-btn--red"></span>
-              <span class="window-btn window-btn--yellow"></span>
-              <span class="window-btn window-btn--green"></span>
-              <span class="window-title">About Wright Click Studio</span>
-            </div>
-            <div class="window-body">
-              <div class="about-code">
-                <div class="code-line"><span class="code-key">const</span> <span class="code-var">studio</span> = {</div>
-                <div class="code-line code-indent"><span class="code-prop">name</span>: <span class="code-str">"Wright Click Studio"</span>,</div>
-                <div class="code-line code-indent"><span class="code-prop">founded</span>: <span class="code-num">2019</span>,</div>
-                <div class="code-line code-indent"><span class="code-prop">specialty</span>: [</div>
-                <div class="code-line code-indent2"><span class="code-str">"Web Design"</span>,</div>
-                <div class="code-line code-indent2"><span class="code-str">"Brand Identity"</span>,</div>
-                <div class="code-line code-indent2"><span class="code-str">"Digital Creation"</span></div>
-                <div class="code-line code-indent">],</div>
-                <div class="code-line code-indent"><span class="code-prop">philosophy</span>: <span class="code-str">"Make it wright."</span>,</div>
-                <div class="code-line code-indent"><span class="code-prop">status</span>: <span class="code-bool">true</span> <span class="code-comment">// accepting projects</span></div>
-                <div class="code-line">};</div>
-              </div>
-            </div>
-          </div>
-          <div class="about-badge">
-            <span class="badge-icon">✦</span>
-            <span>Est. 2019</span>
-          </div>
-        </div>
-
-        <div class="about-text">
-          <div class="section-label">About Us</div>
-          <h2 class="section-title">We Didn't Reinvent<br/>the Click.</h2>
-          <p>We just made it matter more.</p>
-          <p>Wright Click Studio was built on a simple belief: every interaction on the web should feel intentional, beautiful, and effortless. We're a tight-knit team of designers, developers, and storytellers who obsess over the details — from the first pixel to the final deploy.</p>
-          <p>We work with founders, brands, and agencies who want more than a template. They want something crafted. Something that makes people stop, look, and click again.</p>
-          <div class="about-values">
-            <div class="value-item">
-              <span class="value-icon">✦</span>
-              <div>
-                <strong>Craft First</strong>
-                <p>Every detail gets our full attention, every time.</p>
-              </div>
-            </div>
-            <div class="value-item">
-              <span class="value-icon">◈</span>
-              <div>
-                <strong>Ship with Confidence</strong>
-                <p>Beautiful work, delivered on time and on budget.</p>
-              </div>
-            </div>
-            <div class="value-item">
-              <span class="value-icon">◉</span>
-              <div>
-                <strong>Long-term Thinking</strong>
-                <p>We build relationships, not just websites.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== TESTIMONIALS ====== -->
-  <section class="testimonials section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Kind Words</div>
-        <h2 class="section-title">Clients Who Clicked</h2>
-      </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card reveal">
-          <div class="testimonial-quote">"Wright Click completely transformed our online presence. Our site went from an afterthought to our #1 sales channel."</div>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar testimonial-avatar--1">JM</div>
-            <div>
-              <strong>Jordan Miller</strong>
-              <span>CEO, Apex Commerce</span>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card reveal">
-          <div class="testimonial-quote">"The process was seamless. They understood our product better than most engineers we've worked with."</div>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar testimonial-avatar--2">SR</div>
-            <div>
-              <strong>Samira Rashid</strong>
-              <span>Founder, Luma Labs</span>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card reveal">
-          <div class="testimonial-quote">"Every pixel was deliberate. The site gets compliments from everyone who sees it. Absolute artistry."</div>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar testimonial-avatar--3">TP</div>
-            <div>
-              <strong>Thomas Park</strong>
-              <span>Creative Director, Noire</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== CONTACT ====== -->
-  <section class="contact section" id="contact">
-    <div class="container">
-      <div class="contact-layout">
-        <div class="contact-info reveal">
-          <div class="section-label">Get In Touch</div>
-          <h2 class="section-title">Let's Build<br/>Something Wright.</h2>
-          <p>Have a project in mind? Drop us a line. We usually respond within 24 hours.</p>
-
-          <div class="contact-details">
-            <div class="contact-detail">
-              <span class="contact-detail-icon">✉</span>
-              <div>
-                <strong>Email</strong>
-                <span>hello@wrightclickstudio.com</span>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <span class="contact-detail-icon">◎</span>
-              <div>
-                <strong>Location</strong>
-                <span>Remote-first · Worldwide</span>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <span class="contact-detail-icon">✦</span>
-              <div>
-                <strong>Availability</strong>
-                <span>Open for new projects</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="contact-social">
-            <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
-            <a href="#" class="social-link" aria-label="Instagram">◈</a>
-            <a href="#" class="social-link" aria-label="LinkedIn">in</a>
-            <a href="#" class="social-link" aria-label="Dribbble">◉</a>
-          </div>
-        </div>
-
-        <div class="contact-form-wrap reveal">
-          <form class="contact-form" id="contactForm" novalidate>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="fname" placeholder="Jane" required />
-              </div>
-              <div class="form-group">
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lname" placeholder="Doe" required />
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="jane@company.com" required />
-            </div>
-            <div class="form-group">
-              <label for="service">Service Needed</label>
-              <select id="service" name="service">
-                <option value="">Select a service...</option>
-                <option>Web Design</option>
-                <option>Brand Identity</option>
-                <option>UI / UX Design</option>
-                <option>Web Development</option>
-                <option>E-Commerce</option>
-                <option>Other / Let's talk</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">Tell us about your project</label>
-              <textarea id="message" name="message" rows="5" placeholder="Give us a brief overview — vision, timeline, budget range..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn--primary btn--full">
-              <span>Send Message</span>
-              <span class="btn-arrow">→</span>
-            </button>
-            <div class="form-success" id="formSuccess" aria-live="polite">
-              <span>✦</span> Message sent! We'll be in touch within 24 hours.
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== FOOTER ====== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <span class="nav-logo-icon">⌘</span>
-            <span>Wright Click Studio</span>
-          </div>
-          <p>We design. We build. We Wright Click.</p>
-        </div>
-        <div class="footer-links-group">
-          <strong>Studio</strong>
-          <a href="#services">Services</a>
-          <a href="#work">Portfolio</a>
-          <a href="#process">Process</a>
-          <a href="#about">About</a>
-        </div>
-        <div class="footer-links-group">
-          <strong>Services</strong>
-          <a href="#services">Web Design</a>
-          <a href="#services">Branding</a>
-          <a href="#services">Development</a>
-          <a href="#services">E-Commerce</a>
-        </div>
-        <div class="footer-links-group">
-          <strong>Connect</strong>
-          <a href="#">Twitter / X</a>
-          <a href="#">Instagram</a>
-          <a href="#">LinkedIn</a>
-          <a href="#contact">hello@wrightclickstudio.com</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2025 Wright Click Studio. All rights reserved.</span>
-        <span class="footer-hint">Right-click for options 🖱</span>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
+<script src="js/site.js" defer></script>
 </body>
 </html>
