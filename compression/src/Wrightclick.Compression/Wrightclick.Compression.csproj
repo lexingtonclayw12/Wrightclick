@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Referenced by both the API and the Blazor client so the encoder and decoder
+    are literally the same code. No JS decoder to keep in step.
+    Depends only on the BCL, so it runs unchanged under WebAssembly.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <IsTrimmable>true</IsTrimmable>
+  </PropertyGroup>
+
+</Project>
