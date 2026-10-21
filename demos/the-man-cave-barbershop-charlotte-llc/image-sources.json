@@ -1,0 +1,34 @@
+{
+  "license": "Unsplash License",
+  "license_url": "https://unsplash.com/license",
+  "checked_on": "2026-10-20",
+  "usage": "Stock design illustration; not this business, its team, premises, customers or work.",
+  "images": [
+    {
+      "file": "barber-craft.jpg",
+      "photographer": "Allef Vinicius",
+      "source": "https://unsplash.com/photos/IvQeAVeJULw",
+      "download": "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&fm=jpg&q=85&w=1800"
+    },
+    {
+      "file": "barber-chair.jpg",
+      "photographer": "Michael DeMoya",
+      "source": "https://unsplash.com/photos/rORMzm03iGY",
+      "download": "https://images.unsplash.com/photo-1593702265374-bf6398700204?auto=format&fit=crop&fm=jpg&q=85&w=1800"
+    },
+    {
+      "file": "barber-cut.jpg",
+      "photographer": "Jonathan Cooper",
+      "source": "https://unsplash.com/photos/XqVhINFvXK0",
+      "download": "https://images.unsplash.com/photo-1653875700322-cf550d9a52ff?auto=format&fit=crop&fm=jpg&q=85&w=1600"
+    }
+  ],
+  "business_logo": {
+    "source": "Agency owner supplied storefront screenshot, retained privately with the project.",
+    "provided_by": "Agency owner in this conversation",
+    "business_match": "User identifies screenshot as The Man Cave logo; sign lettering matches business name. Not independently confirmed by the business owner.",
+    "restoration": "AI-assisted extraction, straightening and reconstruction from screenshot for demo use; original retained. Not an official vector master.",
+    "file": "assets/man-cave-logo-restored.png",
+    "rights": "No transfer of trademark rights or business approval implied."
+  }
+}
